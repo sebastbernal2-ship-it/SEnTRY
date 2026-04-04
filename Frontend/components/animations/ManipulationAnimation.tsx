@@ -118,7 +118,7 @@ const SentryShield = ({ visible }: { visible: boolean }) => (
     <path
       d="M 0 -69 L 54 -39 L 54 15 Q 54 54 0 75 Q -54 54 -54 15 L -54 -39 Z"
       fill="#020817"
-      stroke="#22d3ee"
+      stroke="#00FF41"
       strokeWidth={2.5}
     />
     <path
@@ -132,7 +132,7 @@ const SentryShield = ({ visible }: { visible: boolean }) => (
       textAnchor="middle"
       fontSize={38}
       fontWeight="bold"
-      fill="#22d3ee"
+      fill="#00FF41"
       fontFamily="monospace"
     >
       S
@@ -141,7 +141,7 @@ const SentryShield = ({ visible }: { visible: boolean }) => (
       x={0} y={95}
       textAnchor="middle"
       fontSize={9}
-      fill="#22d3ee"
+      fill="#00FF41"
       fontFamily="monospace"
       letterSpacing={3}
     >
@@ -156,13 +156,32 @@ const TravelingMessage = ({
 }: {
   visible: boolean;
 }) => {
+  const [arrived, setArrived] = useState(false);
+
+  useEffect(() => {
+    if (!visible && arrived) {
+      // wait for fade out to finish before resetting
+      const t = setTimeout(() => setArrived(false), 300);
+      return () => clearTimeout(t);
+    }
+  }, [visible]);
+
   return (
     <motion.g
       initial={{ x: 670, opacity: 0 }}
-      animate={visible ? { x: 400, opacity: 1 } : { opacity: 0 }}
+      animate={
+        arrived && !visible
+          ? { x: 400, opacity: 0 }
+          : visible
+          ? { x: 400, opacity: 1 }
+          : { x: 670, opacity: 0 }
+      }
       transition={{
-        duration: 0.9,
+        duration: visible ? 0.9 : 0.2,
         ease: "easeInOut",
+      }}
+      onAnimationComplete={() => {
+        if (visible) setArrived(true);
       }}
     >
       <rect x={-38} y={-16} width={76} height={32} rx={6} fill="#1a0505" stroke="#ef4444" strokeWidth={1.5} />
@@ -213,6 +232,7 @@ export const ManipulationAnimation = () => {
       setPhase(5);
       await new Promise(r => setTimeout(r, 3500));
       setPhase(6);
+      await new Promise(r => setTimeout(r, 400));
       setPhase(0);
       await new Promise(r => setTimeout(r, 600));
       await evilControls.start({ x: 0, opacity: 1, transition: { duration: 0 } });
@@ -271,12 +291,12 @@ export const ManipulationAnimation = () => {
 
         {/* Traveling message */}
         <g transform="translate(0, 130)">
-          <TravelingMessage visible={phase >= 2} />
+          <TravelingMessage visible={phase >= 2 && phase < 6} />
         </g>
 
         {/* SENTRY shield */}
         <g transform="translate(400, 148)">
-          <SentryShield visible={phase >= 3} />
+          <SentryShield visible={phase >= 3 && phase <= 6} />
         </g>
 
         {/* Evil speech bubble — above evil bot at x=670 */}

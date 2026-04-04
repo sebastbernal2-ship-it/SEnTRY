@@ -29,7 +29,7 @@ import { ManipulationAnimation } from "@/components/animations/ManipulationAnima
 export const Problems = () => {
   return (
     <div style={{ position: "relative" }}>
-      <div style={{ minHeight: "100vh", padding: "120px 32px 80px", maxWidth: 900, margin: "0 auto" }}>
+      <div style={{ minHeight: "100vh", padding: "40px 32px 120px", maxWidth: 900, margin: "0 auto" }}>
         {/* Header */}
         <div style={{ marginBottom: 64 }}>
           <p style={{ fontSize: 11, color: "#475569", letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: 12 }}>

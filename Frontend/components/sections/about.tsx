@@ -7,7 +7,7 @@ const team = ["Nicolas", "Sebastian", "Dario"];
 export const About = () => {
   return (
     <div style={{ position: "relative" }}>
-      <div style={{ minHeight: "100vh", padding: "120px 32px 80px", maxWidth: 900, margin: "0 auto", display: "flex", flexDirection: "column", gap: 64 }}>
+      <div style={{ minHeight: "100vh", padding: "40px 32px 120px", maxWidth: 900, margin: "0 auto", display: "flex", flexDirection: "column", gap: 64 }}>
 
         {/* Header */}
         <div>

@@ -77,7 +77,7 @@ const td: React.CSSProperties = {
 export const Dashboard = () => {
   return (
     <div style={{ position: "relative" }}>
-      <div style={{ minHeight: "100vh", padding: "120px 32px 80px", maxWidth: 1100, margin: "0 auto", display: "flex", flexDirection: "column", gap: 64 }}>
+      <div style={{ minHeight: "100vh", padding: "40px 32px 120px", maxWidth: 1100, margin: "0 auto", display: "flex", flexDirection: "column", gap: 64 }}>
 
         {/* Page header */}
         <div>
