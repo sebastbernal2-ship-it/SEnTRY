@@ -1,28 +1,6 @@
 // components/sections/dashboard.tsx
 "use client";
-import { PulseBeams } from "@/components/ui/pulse-beams";
 import { AlertTriangle, CheckCircle, XCircle, Clock } from "lucide-react";
-
-const beams = [
-  {
-    path: "M0 100H200C205.523 100 210 104.477 210 110V200",
-    gradientConfig: {
-      initial: { x1: "0%", x2: "0%", y1: "0%", y2: "20%" },
-      animate: { x1: ["0%", "100%", "100%"], x2: ["0%", "90%", "90%"], y1: ["0%", "0%", "100%"], y2: ["20%", "20%", "120%"] },
-      transition: { duration: 4, repeat: Infinity, repeatType: "loop", ease: "linear", repeatDelay: 2, delay: 0 },
-    },
-  },
-  {
-    path: "M858 300H700C694.477 300 690 295.523 690 290V100",
-    gradientConfig: {
-      initial: { x1: "100%", x2: "100%", y1: "100%", y2: "80%" },
-      animate: { x1: ["100%", "0%", "0%"], x2: ["90%", "0%", "0%"], y1: ["100%", "0%", "0%"], y2: ["80%", "0%", "0%"] },
-      transition: { duration: 4, repeat: Infinity, repeatType: "loop", ease: "linear", repeatDelay: 2, delay: 2 },
-    },
-  },
-];
-
-const gradientColors = { start: "#18CCFC", middle: "#6344F5", end: "#AE48FF" };
 
 // ── MOCK DATA ──────────────────────────────────────────────────────────────────
 // TODO: Replace with real API responses
@@ -64,12 +42,12 @@ const amlAddresses = [
 ];
 // ──────────────────────────────────────────────────────────────────────────────
 
-const riskColor = (s: number) => s <= 30 ? "#4ade80" : s <= 70 ? "#facc15" : "#f87171";
-const riskBg    = (s: number) => s <= 30 ? "rgba(74,222,128,0.1)"  : s <= 70 ? "rgba(250,204,21,0.1)"  : "rgba(248,113,113,0.1)";
-const riskBorder= (s: number) => s <= 30 ? "rgba(74,222,128,0.2)"  : s <= 70 ? "rgba(250,204,21,0.2)"  : "rgba(248,113,113,0.2)";
+const riskColor  = (s: number) => s <= 30 ? "#00FF41" : s <= 70 ? "#facc15" : "#f87171";
+const riskBg     = (s: number) => s <= 30 ? "rgba(0,255,65,0.1)"   : s <= 70 ? "rgba(250,204,21,0.1)"  : "rgba(248,113,113,0.1)";
+const riskBorder = (s: number) => s <= 30 ? "rgba(0,255,65,0.2)"   : s <= 70 ? "rgba(250,204,21,0.2)"  : "rgba(248,113,113,0.2)";
 
 const StatusIcon = ({ status }: { status: string }) => {
-  if (status === "normal")  return <CheckCircle  size={12} color="#4ade80" />;
+  if (status === "normal")  return <CheckCircle  size={12} color="#00FF41" />;
   if (status === "flagged") return <AlertTriangle size={12} color="#facc15" />;
   return <XCircle size={12} color="#f87171" />;
 };
@@ -78,12 +56,12 @@ const SectionHeader = ({ label, title }: { label: string; title: string }) => (
   <div style={{ marginBottom: 24 }}>
     <p style={{ fontSize: 10, color: "#475569", letterSpacing: "0.2em", textTransform: "uppercase", margin: "0 0 8px" }}>{label}</p>
     <h3 style={{ fontSize: 18, fontWeight: 100, letterSpacing: "0.15em", color: "#fff", textTransform: "uppercase", margin: "0 0 12px" }}>{title}</h3>
-    <div style={{ width: 32, height: 1, background: "rgba(34,211,238,0.4)" }} />
+    <div style={{ width: 32, height: 1, background: "rgba(0,255,65,0.4)" }} />
   </div>
 );
 
 const card: React.CSSProperties = {
-  border: "1px solid #1e293b", background: "rgba(15,23,42,0.2)", borderRadius: 2, overflow: "hidden",
+  border: "1px solid #1e293b", background: "rgba(0,0,0,0.6)", borderRadius: 2, overflow: "hidden",
 };
 
 const th: React.CSSProperties = {
@@ -98,18 +76,17 @@ const td: React.CSSProperties = {
 
 export const Dashboard = () => {
   return (
-    <PulseBeams beams={beams} gradientColors={gradientColors} className="bg-[#020817]">
+    <div style={{ position: "relative" }}>
       <div style={{ minHeight: "100vh", padding: "120px 32px 80px", maxWidth: 1100, margin: "0 auto", display: "flex", flexDirection: "column", gap: 64 }}>
 
         {/* Page header */}
         <div>
           <p style={{ fontSize: 11, color: "#475569", letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: 12 }}>Live Monitoring</p>
           <h2 style={{ fontSize: 28, fontWeight: 100, letterSpacing: "0.2em", color: "#fff", textTransform: "uppercase", margin: 0 }}>Dashboard</h2>
-          <div style={{ width: 48, height: 1, background: "rgba(34,211,238,0.4)", marginTop: 16 }} />
+          <div style={{ width: 48, height: 1, background: "rgba(0,255,65,0.4)", marginTop: 16 }} />
         </div>
 
         {/* ── UNIFIED RISK SCORE ── */}
-        {/* TODO: Drive dynamically from /api/risk/unified */}
         <section>
           <SectionHeader label="Module 0" title="Unified Risk Score" />
           <div style={{ ...card, padding: 32, display: "flex", flexDirection: "column", gap: 24 }}>
@@ -118,15 +95,13 @@ export const Dashboard = () => {
               <span style={{ fontSize: 13, color: "#334155", marginBottom: 6 }}>/100</span>
             </div>
             <div style={{ height: 2, background: "#1e293b", borderRadius: 999, overflow: "hidden" }}>
-              <div style={{ height: "100%", width: `${unifiedRiskScore}%`, background: riskColor(unifiedRiskScore), borderRadius: 999, transition: "width 0.7s ease" }} />
+              <div style={{ height: "100%", width: `${unifiedRiskScore}%`, background: riskColor(unifiedRiskScore), borderRadius: 999 }} />
             </div>
             <div style={{ display: "flex", gap: 24, fontSize: 11, letterSpacing: "0.1em" }}>
-              <span style={{ color: "rgba(74,222,128,0.6)" }}>0–30 Auto-approve</span>
+              <span style={{ color: "rgba(0,255,65,0.6)" }}>0–30 Auto-approve</span>
               <span style={{ color: "rgba(250,204,21,0.6)" }}>30–70 Soft-block</span>
               <span style={{ color: "rgba(248,113,113,0.6)" }}>70–100 Block + Alert</span>
             </div>
-            {/* Sub-scores */}
-            {/* TODO: Replace values with real module outputs */}
             <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 24, paddingTop: 24, borderTop: "1px solid #1e293b" }}>
               {[{ label: "Anomaly", value: 45 }, { label: "Manipulation", value: 74 }, { label: "Text Risk", value: 88 }, { label: "AML", value: 62 }].map(item => (
                 <div key={item.label} style={{ display: "flex", flexDirection: "column", gap: 8 }}>
@@ -142,27 +117,20 @@ export const Dashboard = () => {
         </section>
 
         {/* ── ANOMALY DETECTION ── */}
-        {/* TODO: Connect to GET /api/anomaly/transactions?agent_id=<id> */}
         <section>
           <SectionHeader label="Module 1" title="Anomaly Detection" />
           <div style={card}>
             <table style={{ width: "100%", borderCollapse: "collapse" }}>
               <thead>
-                <tr>
-                  {["TX ID", "Token", "Amount", "Time", "Destination", "Risk Score", "Status"].map(h => (
-                    <th key={h} style={th}>{h}</th>
-                  ))}
-                </tr>
+                <tr>{["TX ID", "Token", "Amount", "Time", "Destination", "Risk Score", "Status"].map(h => <th key={h} style={th}>{h}</th>)}</tr>
               </thead>
               <tbody>
                 {anomalyTransactions.map((tx, i) => (
-                  <tr key={tx.id} style={{ background: i % 2 === 0 ? "transparent" : "rgba(15,23,42,0.2)" }}>
+                  <tr key={tx.id} style={{ background: i % 2 === 0 ? "transparent" : "rgba(0,0,0,0.2)" }}>
                     <td style={{ ...td, fontFamily: "monospace", color: "#64748b" }}>{tx.id}</td>
                     <td style={td}>{tx.token}</td>
                     <td style={td}>{tx.amount}</td>
-                    <td style={{ ...td, display: "flex", alignItems: "center", gap: 4 }}>
-                      <Clock size={11} color="#475569" />{tx.time}
-                    </td>
+                    <td style={{ ...td, display: "flex", alignItems: "center", gap: 4 }}><Clock size={11} color="#475569" />{tx.time}</td>
                     <td style={{ ...td, fontFamily: "monospace", color: "#64748b" }}>{tx.destination}</td>
                     <td style={{ ...td, color: riskColor(tx.score), fontFamily: "monospace" }}>{tx.score}</td>
                     <td style={td}>
@@ -179,7 +147,6 @@ export const Dashboard = () => {
         </section>
 
         {/* ── MANIPULATION SCORING ── */}
-        {/* TODO: Connect to GET /api/manipulation/agents?agent_id=<id> */}
         <section>
           <SectionHeader label="Module 2" title="Behavior-Based Manipulation Scoring" />
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
@@ -205,7 +172,7 @@ export const Dashboard = () => {
                     <span style={{ fontSize: 12, fontFamily: "monospace", color: riskColor(agent.score) }}>{agent.score}</span>
                   </div>
                   <div style={{ height: 1, background: "#1e293b", position: "relative" }}>
-                    <div style={{ position: "absolute", top: 0, left: 0, height: "100%", width: `${agent.score}%`, background: riskColor(agent.score), transition: "width 0.7s ease" }} />
+                    <div style={{ position: "absolute", top: 0, left: 0, height: "100%", width: `${agent.score}%`, background: riskColor(agent.score) }} />
                   </div>
                 </div>
               </div>
@@ -214,7 +181,6 @@ export const Dashboard = () => {
         </section>
 
         {/* ── TEXT / PROMPT INJECTION ── */}
-        {/* TODO: Connect to POST /api/text/analyze */}
         <section>
           <SectionHeader label="Module 3" title="Prompt-Injection Detection" />
           <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
@@ -232,21 +198,16 @@ export const Dashboard = () => {
         </section>
 
         {/* ── AML DETECTION ── */}
-        {/* TODO: Connect to GET /api/aml/score?address=<address> */}
         <section>
           <SectionHeader label="Module 4" title="Money Laundering Detection" />
           <div style={card}>
             <table style={{ width: "100%", borderCollapse: "collapse" }}>
               <thead>
-                <tr>
-                  {["Address", "Fan-Out", "Burst Activity", "Mixer Contact", "AML Score", "Label"].map(h => (
-                    <th key={h} style={th}>{h}</th>
-                  ))}
-                </tr>
+                <tr>{["Address", "Fan-Out", "Burst Activity", "Mixer Contact", "AML Score", "Label"].map(h => <th key={h} style={th}>{h}</th>)}</tr>
               </thead>
               <tbody>
                 {amlAddresses.map((row, i) => (
-                  <tr key={row.address} style={{ background: i % 2 === 0 ? "transparent" : "rgba(15,23,42,0.2)" }}>
+                  <tr key={row.address} style={{ background: i % 2 === 0 ? "transparent" : "rgba(0,0,0,0.2)" }}>
                     <td style={{ ...td, fontFamily: "monospace", color: "#64748b" }}>{row.address}</td>
                     <td style={td}>{row.fanOut}</td>
                     <td style={td}>{row.burst}</td>
@@ -265,6 +226,6 @@ export const Dashboard = () => {
         </section>
 
       </div>
-    </PulseBeams>
+    </div>
   );
 };

@@ -7,9 +7,9 @@ import { useEffect, useState } from "react";
 const AILogo = ({ x, y }: { x: number; y: number }) => (
   <text
     x={x}
-    y={y + 6}
+    y={y+7}
     textAnchor="middle"
-    fontSize={14}
+    fontSize={30}
     fill="#ffffff"
     fontFamily="monospace"
     fontWeight="900"
@@ -152,25 +152,23 @@ const SentryShield = ({ visible }: { visible: boolean }) => (
 
 // ── Traveling Message ─────────────────────────────────────────────────────────
 const TravelingMessage = ({
-  visible, blocked,
+  visible,
 }: {
-  visible: boolean; blocked: boolean;
+  visible: boolean;
 }) => {
-  const targetX = blocked ? 400 : 150;
-
   return (
     <motion.g
       initial={{ x: 670, opacity: 0 }}
-      animate={visible ? { x: targetX, opacity: 1 } : { x: 670, opacity: 0 }}
+      animate={visible ? { x: 400, opacity: 1 } : { opacity: 0 }}
       transition={{
-        duration: blocked ? 0.8 : 1.4,
-        ease: blocked ? "easeOut" : "easeInOut",
+        duration: 0.9,
+        ease: "easeInOut",
       }}
     >
       <rect x={-38} y={-16} width={76} height={32} rx={6} fill="#1a0505" stroke="#ef4444" strokeWidth={1.5} />
       <polygon points="-38,-5 -50,0 -38,5" fill="#ef4444" />
       <text x={2} y={-3} textAnchor="middle" fontSize={9} fill="#ef4444" fontFamily="monospace">
-        💰 GUARANTEED
+        GUARANTEED
       </text>
       <text x={2} y={10} textAnchor="middle" fontSize={9} fill="#ef4444" fontFamily="monospace">
         900% APY!!!
@@ -198,7 +196,7 @@ export const ManipulationAnimation = () => {
       setPhase(1);
       await new Promise(r => setTimeout(r, 2400));
       setPhase(2);
-      await new Promise(r => setTimeout(r, 700));
+      await new Promise(r => setTimeout(r, 1000));
       setPhase(3);
       await new Promise(r => setTimeout(r, 1000));
       setPhase(4);
@@ -215,10 +213,10 @@ export const ManipulationAnimation = () => {
       setPhase(5);
       await new Promise(r => setTimeout(r, 3500));
       setPhase(6);
-      await evilControls.start({ x: 0, opacity: 1, transition: { duration: 0 } });
-      await new Promise(r => setTimeout(r, 400));
       setPhase(0);
       await new Promise(r => setTimeout(r, 600));
+      await evilControls.start({ x: 0, opacity: 1, transition: { duration: 0 } });
+      await new Promise(r => setTimeout(r, 400));
       run();
     } catch (e) {
       // component unmounted mid-animation, safe to ignore
@@ -273,10 +271,7 @@ export const ManipulationAnimation = () => {
 
         {/* Traveling message */}
         <g transform="translate(0, 130)">
-          <TravelingMessage
-            visible={phase >= 2}
-            blocked={phase >= 3}
-          />
+          <TravelingMessage visible={phase >= 2} />
         </g>
 
         {/* SENTRY shield */}

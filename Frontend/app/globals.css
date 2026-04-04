@@ -7,7 +7,7 @@
 }
 
 html, body {
-  background: #020817;
+  background: #000000;
   color: #f8fafc;
   overflow-x: hidden;
   scroll-behavior: smooth;
@@ -15,5 +15,5 @@ html, body {
 }
 
 ::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: #020817; }
-::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 2px; }
+::-webkit-scrollbar-track { background: #000000; }
+::-webkit-scrollbar-thumb { background: #000000; border-radius: 2px; }
