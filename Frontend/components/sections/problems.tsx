@@ -1,6 +1,7 @@
 // components/sections/problems.tsx
 "use client";
 import { PulseBeams } from "@/components/ui/pulse-beams";
+import { ManipulationAnimation } from "@/components/animations/ManipulationAnimation";
 
 const beams = [
   {
@@ -25,21 +26,25 @@ const gradientColors = { start: "#18CCFC", middle: "#6344F5", end: "#AE48FF" };
 
 const problems = [
   {
+    id : "01",
     number: "01",
     title: "Anomaly Detection for Transactions",
     statement: "Autonomous on-chain agents operate continuously and at speed, making it impossible for users to manually review every transaction. Without a baseline of normal behavior, malicious or erroneous transactions — such as sudden large swaps or interactions with unknown contracts — go undetected until damage is done.",
   },
   {
+    id : "02",
     number: "02",
     title: "Behavior-Based Manipulation Scoring",
     statement: "In multi-agent environments, a user's agent receives proposals and signals from many external agents, some of which may be adversarial. There is currently no systematic way to track whether an external agent is behaving suspiciously over time, leaving users vulnerable to coordinated manipulation campaigns that unfold gradually across many interactions.",
   },
   {
+    id : "03",
     number: "03",
     title: "Prompt-Injection & Manipulation-Signal Detection",
     statement: "Agents that communicate via natural language are susceptible to text-based manipulation, where an adversarial agent embeds urgency cues, false guarantees, or deceptive framing into its messages to override the receiving agent's judgment. No lightweight, real-time filter exists at the message layer to catch this before it influences a transaction decision.",
   },
   {
+    id : "04",
     number: "04",
     title: "Money Laundering Detection",
     statement: "When an autonomous agent executes payments on behalf of a user, it has no mechanism to assess whether the counterparty address is embedded in a laundering network. Interacting with such addresses exposes users to regulatory, reputational, and financial risk — risk that structured on-chain behavioral patterns could identify before a transaction is approved.",
@@ -83,16 +88,25 @@ export const Problems = () => {
               </div>
 
               {/* Animation placeholder */}
-              {/* TODO: Replace with your video/animation component */}
               <div style={{
-                width: 240, height: 140, border: "1px solid #1e293b",
-                borderRadius: 2, background: "rgba(15,23,42,0.4)",
-                display: "flex", alignItems: "center", justifyContent: "center",
+                width: 240,
                 flexShrink: 0,
+                border: "1px solid #1e293b",
+                borderRadius: 2,
+                background: "rgba(15,23,42,0.4)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                overflow: "hidden",
+                minHeight: 160,
               }}>
-                <span style={{ fontSize: 10, color: "#334155", letterSpacing: "0.15em", textTransform: "uppercase" }}>
-                  Animation
-                </span>
+                {p.number === "02" ? (
+                  <ManipulationAnimation />
+                ) : (
+                  <span style={{ fontSize: 10, color: "#334155", letterSpacing: "0.15em", textTransform: "uppercase" }}>
+                    Animation
+                  </span>
+                )}
               </div>
             </div>
           ))}
