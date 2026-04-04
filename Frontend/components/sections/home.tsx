@@ -2,7 +2,8 @@
 "use client";
 import { useState } from "react";
 import { PulseBeams } from "@/components/ui/pulse-beams";
-import { Zap, Shield } from "lucide-react";
+import { TextScramble } from "@/components/ui/text-scramble";
+import { Zap } from "lucide-react";
 
 const beams = [
   {
@@ -56,7 +57,20 @@ const gradientColors = { start: "#18CCFC", middle: "#6344F5", end: "#AE48FF" };
 
 export const Home = ({ onNavigate }: { onNavigate: (s: string) => void }) => {
   const [connected, setConnected] = useState(false);
+  const [scrambleTrigger, setScrambleTrigger] = useState(true);
+  const [isScrambling, setIsScrambling] = useState(false);
   const mockAddress = "0x3f5C...a91B";
+
+  const handleMouseEnter = () => {
+    if (isScrambling) return;
+    setIsScrambling(true);
+    setScrambleTrigger(false);
+    setTimeout(() => setScrambleTrigger(true), 50);
+  };
+
+  const handleScrambleComplete = () => {
+    setIsScrambling(false);
+  };
 
   return (
     <PulseBeams beams={beams} gradientColors={gradientColors} className="bg-[#020817]">
@@ -65,6 +79,7 @@ export const Home = ({ onNavigate }: { onNavigate: (s: string) => void }) => {
         alignItems: "center", justifyContent: "center",
         gap: 32, padding: "0 24px", textAlign: "center",
       }}>
+
         {/* Badge */}
         <div style={{
           display: "flex", alignItems: "center", gap: 8,
@@ -78,20 +93,35 @@ export const Home = ({ onNavigate }: { onNavigate: (s: string) => void }) => {
         </div>
 
         {/* Title */}
-        <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-          <h1 style={{
-            fontSize: "clamp(36px, 8vw, 80px)", fontWeight: 100,
-            letterSpacing: "0.3em", color: "#fff", textTransform: "uppercase", margin: 0,
-          }}>
+        <div
+          style={{ display: "flex", flexDirection: "column", gap: 12, alignItems: "center", cursor: "default" }}
+          onMouseEnter={handleMouseEnter}
+        >
+          <TextScramble
+            as="h1"
+            duration={1.5}
+            speed={0.04}
+            characterSet="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*"
+            trigger={scrambleTrigger}
+            onScrambleComplete={handleScrambleComplete}
+            style={{
+              fontSize: "clamp(36px, 8vw, 80px)",
+              fontWeight: 900,
+              letterSpacing: "0.3em",
+              color: "#fff",
+              textTransform: "uppercase",
+              margin: 0,
+            }}
+          >
             S.E.N.T.R.Y.
-          </h1>
+          </TextScramble>
           <p style={{ fontSize: 11, letterSpacing: "0.2em", color: "#475569", textTransform: "uppercase" }}>
             Secure ENgine for Transaction Risk & Yield-protection
           </p>
         </div>
 
         {/* Description */}
-        <p style={{ maxWidth: 420, fontSize: 13, color: "#94a3b8", lineHeight: 1.8, fontWeight: 300 }}>
+        <p style={{ maxWidth: 420, fontSize: 13, color: "#94a3b8", lineHeight: 1.8 }}>
           An AI security layer between your trading agent and the blockchain.
           Detect manipulation, flag anomalies, and block risky transactions before they hit the chain.
         </p>
@@ -125,11 +155,10 @@ export const Home = ({ onNavigate }: { onNavigate: (s: string) => void }) => {
               padding: "8px 16px", border: "1px solid rgba(74,222,128,0.2)",
               background: "rgba(74,222,128,0.05)", borderRadius: 2,
             }}>
-              <div style={{
-                width: 6, height: 6, borderRadius: "50%", background: "#4ade80",
-                animation: "pulse 2s infinite",
-              }} />
-              <span style={{ fontSize: 11, color: "#4ade80", letterSpacing: "0.15em" }}>{mockAddress}</span>
+              <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#4ade80" }} />
+              <span style={{ fontSize: 11, color: "#4ade80", letterSpacing: "0.15em" }}>
+                {mockAddress}
+              </span>
             </div>
             <button
               onClick={() => onNavigate("dashboard")}

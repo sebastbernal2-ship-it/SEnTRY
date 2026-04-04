@@ -1,4 +1,3 @@
-// app/layout.tsx
 import type { Metadata } from "next";
 import "./globals.css";
 
@@ -14,7 +13,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body style={{ margin: 0, padding: 0, background: "#020817", color: "#f8fafc", fontFamily: "monospace" }}>
+      <body style={{ margin: 0, padding: 0, background: "#020817", color: "#f8fafc" }}>
         {children}
       </body>
     </html>
