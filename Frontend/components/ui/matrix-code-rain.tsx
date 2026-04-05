@@ -98,7 +98,7 @@ export const MatrixCodeRain = ({
     strands.current = strands.current.filter(strand => {
       strand.y += strand.speed * deltaTime * 0.05;
 
-      const baseOpacity = strand.layer === 0 ? 0.4 : strand.layer === 1 ? 0.6 : 0.8;
+      const baseOpacity = strand.layer === 0 ? 0.6 : strand.layer === 1 ? 0.8 : 1.0;
       const scaledFontSize = fontSize * strand.scale;
 
       ctx.font = `${scaledFontSize}px monospace`;

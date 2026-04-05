@@ -35,7 +35,7 @@ export default function Page() {
         position: "fixed",
         inset: 0,
         zIndex: 1,
-        background: "radial-gradient(ellipse at center, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.92) 100%)",
+        background: "radial-gradient(ellipse at center, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.75) 100%)",
         pointerEvents: "none",
       }} />
       {/* All content sits above */}

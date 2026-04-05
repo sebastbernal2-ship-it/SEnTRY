@@ -82,25 +82,25 @@ const TypingBubble = ({
     return () => clearInterval(interval);
   }, [visible, text]);
 
-  const w = 150;
-  const h = 52;
-  const tailX = alignTail === "right" ? w - 20 : 20;
+  const w = 220;
+  const h = 76;
+  const tailX = alignTail === "right" ? w - 30 : 30;
 
   if (!visible && displayed === "") return null;
 
   return (
     <g transform={`translate(${x}, ${y})`} opacity={visible ? 1 : 0}>
-      <rect x={0} y={0} width={w} height={h} rx={10} fill="#0a0f1e" stroke={color} strokeWidth={1.5} />
+      <rect x={0} y={0} width={w} height={h} rx={12} fill="#0a0f1e" stroke={color} strokeWidth={2} />
       <polygon
-        points={`${tailX - 7},${h} ${tailX + 7},${h} ${tailX},${h + 12}`}
+        points={`${tailX - 10},${h} ${tailX + 10},${h} ${tailX},${h + 16}`}
         fill="#0a0f1e"
         stroke={color}
-        strokeWidth={1.5}
+        strokeWidth={2}
       />
-      <line x1={tailX - 6} y1={h} x2={tailX + 6} y2={h} stroke="#0a0f1e" strokeWidth={2} />
-      <text fontSize={10} fill={color} fontFamily="monospace">
+      <line x1={tailX - 8} y1={h} x2={tailX + 8} y2={h} stroke="#0a0f1e" strokeWidth={3} />
+      <text fontSize={20} fill={color} fontFamily="monospace">
         {displayed.split("\n").map((line, i) => (
-          <tspan key={i} x={12} dy={i === 0 ? 18 : 15}>{line}</tspan>
+          <tspan key={i} x={16} dy={i === 0 ? 26 : 22}>{line}</tspan>
         ))}
       </text>
     </g>
@@ -140,7 +140,7 @@ const SentryShield = ({ visible }: { visible: boolean }) => (
     <text
       x={0} y={95}
       textAnchor="middle"
-      fontSize={9}
+      fontSize={15}
       fill="#00FF41"
       fontFamily="monospace"
       letterSpacing={3}
@@ -160,7 +160,6 @@ const TravelingMessage = ({
 
   useEffect(() => {
     if (!visible && arrived) {
-      // wait for fade out to finish before resetting
       const t = setTimeout(() => setArrived(false), 300);
       return () => clearTimeout(t);
     }
@@ -168,13 +167,13 @@ const TravelingMessage = ({
 
   return (
     <motion.g
-      initial={{ x: 670, opacity: 0 }}
+      initial={{ x: 760, opacity: 0 }}
       animate={
         arrived && !visible
-          ? { x: 400, opacity: 0 }
+          ? { x: 445, opacity: 0 }
           : visible
-          ? { x: 400, opacity: 1 }
-          : { x: 670, opacity: 0 }
+          ? { x: 445, opacity: 1 }
+          : { x: 760, opacity: 0 }
       }
       transition={{
         duration: visible ? 0.9 : 0.2,
@@ -184,14 +183,14 @@ const TravelingMessage = ({
         if (visible) setArrived(true);
       }}
     >
-      <rect x={-38} y={-16} width={76} height={32} rx={6} fill="#1a0505" stroke="#ef4444" strokeWidth={1.5} />
-      <polygon points="-38,-5 -50,0 -38,5" fill="#ef4444" />
-      <text x={2} y={-3} textAnchor="middle" fontSize={9} fill="#ef4444" fontFamily="monospace">
-        GUARANTEED
-      </text>
-      <text x={2} y={10} textAnchor="middle" fontSize={9} fill="#ef4444" fontFamily="monospace">
-        900% APY!!!
-      </text>
+        <rect x={-70} y={-30} width={140} height={60} rx={8} fill="#1a0505" stroke="#ef4444" strokeWidth={2.5} />
+        <polygon points="-70,-10 -90,0 -70,10" fill="#ef4444" />
+        <text x={2} y={-6} textAnchor="middle" fontSize={18} fill="#ef4444" fontFamily="monospace" fontWeight="bold">
+          GUARANTEED
+        </text>
+        <text x={2} y={18} textAnchor="middle" fontSize={18} fill="#ef4444" fontFamily="monospace" fontWeight="bold">
+          900% APY!!!
+        </text>
     </motion.g>
   );
 };
@@ -260,17 +259,17 @@ export const ManipulationAnimation = () => {
     };
   }, []);
 
-  return (
+ return (
     <div style={{ width: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}>
       <svg
-        viewBox="0 0 800 200"
-        style={{ width: "100%", maxWidth: 800, height: "auto", overflow: "visible" }}
+        viewBox="0 0 900 340"
+        style={{ width: "100%", maxWidth: 900, height: "auto", overflow: "visible" }}
       >
         {/* Ground */}
-        <line x1={20} y1={185} x2={780} y2={185} stroke="#1e293b" strokeWidth={1} strokeDasharray="6 4" />
+        <line x1={20} y1={320} x2={880} y2={320} stroke="#1e293b" strokeWidth={1} strokeDasharray="6 4" />
 
         {/* Good bot — fixed left */}
-        <g transform="translate(110, 100)">
+        <g transform="translate(130, 170) scale(2)">
           <GoodBot />
         </g>
 
@@ -283,36 +282,36 @@ export const ManipulationAnimation = () => {
             } : {}}
             transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
           >
-            <g transform="translate(670, 100)">
+            <g transform="translate(760, 170) scale(2)">
               <EvilBot />
             </g>
           </motion.g>
         </motion.g>
 
         {/* Traveling message */}
-        <g transform="translate(0, 130)">
+        <g transform="translate(0, 210)">
           <TravelingMessage visible={phase >= 2 && phase < 6} />
         </g>
 
         {/* SENTRY shield */}
-        <g transform="translate(400, 148)">
+        <g transform="translate(445, 200) scale(2)">
           <SentryShield visible={phase >= 3 && phase <= 6} />
         </g>
 
-        {/* Evil speech bubble — above evil bot at x=670 */}
+        {/* Evil speech bubble */}
         <TypingBubble
-          x={520}
-          y={-45}
+          x={560}
+          y={-25}
           text={"GUARANTEED\n900% APY!!!"}
           color="#ef4444"
           visible={phase === 1}
           alignTail="right"
         />
 
-        {/* Good bot reaction bubble — above good bot at x=110 */}
+        {/* Good bot reaction bubble */}
         <TypingBubble
-          x={35}
-          y={-45}
+          x={100}
+          y={-25}
           text={"Threat blocked\nby S.E.N.T.R.Y. ✓"}
           color="#22d3ee"
           visible={phase === 5}
@@ -320,10 +319,10 @@ export const ManipulationAnimation = () => {
         />
 
         {/* Labels */}
-        <text x={110} y={200} textAnchor="middle" fontSize={9} fill="#334155" fontFamily="monospace" letterSpacing={2}>
+        <text x={130} y={335} textAnchor="middle" fontSize={20} fill="#ffffff" fontFamily="monospace" letterSpacing={2}>
           YOUR AGENT
         </text>
-        <text x={670} y={200} textAnchor="middle" fontSize={9} fill="#334155" fontFamily="monospace" letterSpacing={2}>
+        <text x={760} y={335} textAnchor="middle" fontSize={20} fill="#ffffff" fontFamily="monospace" letterSpacing={2}>
           OTHER AGENT
         </text>
       </svg>

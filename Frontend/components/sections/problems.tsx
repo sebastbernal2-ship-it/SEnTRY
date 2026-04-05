@@ -29,7 +29,7 @@ import { ManipulationAnimation } from "@/components/animations/ManipulationAnima
 export const Problems = () => {
   return (
     <div style={{ position: "relative" }}>
-      <div style={{ minHeight: "100vh", padding: "40px 32px 120px", maxWidth: 900, margin: "0 auto" }}>
+      <div style={{ minHeight: "100vh", padding: "40px 32px 120px", maxWidth: 1200, margin: "0 auto" }}>
         {/* Header */}
         <div style={{ marginBottom: 64 }}>
           <p style={{ fontSize: 11, color: "#475569", letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: 12 }}>
@@ -48,9 +48,9 @@ export const Problems = () => {
               border: "1px solid #1e293b",
               background: "rgba(0,0,0,0.6)",
               borderRadius: 2,
-              padding: 32,
+              padding: 40,
               display: "flex",
-              gap: 32,
+              gap: 40,
             }}>
               <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 16 }}>
                 <span style={{ fontSize: 11, color: "#334155", fontFamily: "monospace", letterSpacing: "0.1em" }}>
@@ -66,7 +66,7 @@ export const Problems = () => {
 
               {/* TODO: Replace other placeholders with their animations */}
               <div style={{
-                width: 240,
+                width: 380,
                 flexShrink: 0,
                 border: "1px solid #1e293b",
                 borderRadius: 2,
@@ -75,9 +75,9 @@ export const Problems = () => {
                 alignItems: "center",
                 justifyContent: "center",
                 overflow: "hidden",
-                minHeight: 160,
+                minHeight: 220,
               }}>
-                {p.number === "02" ? (
+                {p.number === "03" ? (
                   <ManipulationAnimation />
                 ) : (
                   <span style={{ fontSize: 10, color: "#334155", letterSpacing: "0.15em", textTransform: "uppercase" }}>
