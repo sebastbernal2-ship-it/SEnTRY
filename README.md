@@ -82,4 +82,4 @@ python main.py
 |------|
 | Nicolas |
 | Sebastian |
-| Dario |
+| Brian |
