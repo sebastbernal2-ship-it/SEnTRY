@@ -1,23 +1,12 @@
 // components/sections/dashboard.tsx
 "use client";
-import { AlertTriangle, CheckCircle, XCircle, Clock } from "lucide-react";
+import { useEffect, useState } from "react";
+import { AlertTriangle, CheckCircle, XCircle, Clock, RefreshCw } from "lucide-react";
+import { getRandomTransactions, RandomTransaction } from "@/lib/api";
 
-// ── MOCK DATA ──────────────────────────────────────────────────────────────────
-// TODO: Replace with real API responses
+// ── MOCK DATA for modules 2, 3, 4 ─────────────────────────────────────────────
+// TODO: Replace with real API responses when those modules are built
 
-// TODO: GET /api/risk/unified?agent_id=<id>
-const unifiedRiskScore = 67;
-
-// TODO: GET /api/anomaly/transactions?agent_id=<id>
-const anomalyTransactions = [
-  { id: "TX-001", token: "ETH",  amount: "0.45",  time: "14:32", destination: "0xaB3f...221C", score: 12, status: "normal" },
-  { id: "TX-002", token: "USDC", amount: "1,200", time: "14:45", destination: "0x9f2A...88BD", score: 78, status: "flagged" },
-  { id: "TX-003", token: "WBTC", amount: "0.02",  time: "15:01", destination: "0x1122...AABB", score: 23, status: "normal" },
-  { id: "TX-004", token: "ETH",  amount: "12.0",  time: "15:10", destination: "0xDEAD...BEEF", score: 91, status: "blocked" },
-  { id: "TX-005", token: "DAI",  amount: "500",   time: "15:22", destination: "0x5544...33CC", score: 34, status: "normal" },
-];
-
-// TODO: GET /api/manipulation/agents?agent_id=<id>
 const externalAgents = [
   { id: "AGT-A", proposals: 12,  avgSize: "0.3 ETH", successRate: "91%", score: 18, label: "Likely Benign" },
   { id: "AGT-B", proposals: 87,  avgSize: "4.2 ETH", successRate: "44%", score: 74, label: "Suspicious" },
@@ -25,7 +14,6 @@ const externalAgents = [
   { id: "AGT-D", proposals: 142, avgSize: "8.9 ETH", successRate: "21%", score: 93, label: "Requires Manual Review" },
 ];
 
-// TODO: POST /api/text/analyze { message: string }
 const textSamples = [
   { id: "MSG-01", preview: "Swap 0.5 ETH to USDC at market rate.", score: 5,  label: "Clean" },
   { id: "MSG-02", preview: "GUARANTEED 900% APY — act NOW before it's gone!", score: 96, label: "Manipulative" },
@@ -33,14 +21,14 @@ const textSamples = [
   { id: "MSG-04", preview: "Last chance — high-yield opportunity expires in 60 seconds.", score: 88, label: "Manipulative" },
 ];
 
-// TODO: GET /api/aml/score?address=<address>
 const amlAddresses = [
   { address: "0xaB3f...221C", fanOut: "Low",       burst: "No",  mixer: "No",  score: 8,  label: "Clean" },
   { address: "0x9f2A...88BD", fanOut: "High",      burst: "Yes", mixer: "No",  score: 62, label: "Suspicious" },
   { address: "0xDEAD...BEEF", fanOut: "Very High", burst: "Yes", mixer: "Yes", score: 95, label: "High Risk" },
   { address: "0x5544...33CC", fanOut: "Low",       burst: "No",  mixer: "No",  score: 14, label: "Clean" },
 ];
-// ──────────────────────────────────────────────────────────────────────────────
+
+
 
 const riskColor  = (s: number) => s <= 30 ? "#00FF41" : s <= 70 ? "#facc15" : "#f87171";
 const riskBg     = (s: number) => s <= 30 ? "rgba(0,255,65,0.1)"   : s <= 70 ? "rgba(250,204,21,0.1)"  : "rgba(248,113,113,0.1)";
@@ -75,15 +63,62 @@ const td: React.CSSProperties = {
 };
 
 export const Dashboard = () => {
+  const [loading, setLoading] = useState(true);
+  const [apiOnline, setApiOnline] = useState(false);
+
+  // ── Fetch real scores from API on mount ──────────────────────────────────
+  const [transactions, setTransactions] = useState<RandomTransaction[]>([]);
+
+  const fetchScores = async () => {
+    setLoading(true);
+    try {
+      const results = await getRandomTransactions();
+      setTransactions(results);
+      setApiOnline(true);
+    } catch (e) {
+      console.error("API not reachable", e);
+      setApiOnline(false);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchScores();
+  }, []);
+
+
+  // ── Unified risk score — average of all module scores ────────────────────
+  const anomalyAvg = transactions.length > 0
+    ? Math.round(transactions.reduce((a, b) => a + b.risk_score, 0) / transactions.length)
+    : 0;
+
+  const unifiedRiskScore = Math.round((anomalyAvg + 74 + 88 + 62) / 4);
+
   return (
     <div style={{ position: "relative" }}>
-      <div style={{ minHeight: "100vh", padding: "40px 32px 120px", maxWidth: 1100, margin: "0 auto", display: "flex", flexDirection: "column", gap: 64 }}>
+      <div style={{ minHeight: "100vh", padding: "80px 32px 120px", maxWidth: 1100, margin: "0 auto", display: "flex", flexDirection: "column", gap: 64 }}>
 
         {/* Page header */}
-        <div>
-          <p style={{ fontSize: 11, color: "#475569", letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: 12 }}>Live Monitoring</p>
-          <h2 style={{ fontSize: 28, fontWeight: 100, letterSpacing: "0.2em", color: "#fff", textTransform: "uppercase", margin: 0 }}>Dashboard</h2>
-          <div style={{ width: 48, height: 1, background: "rgba(0,255,65,0.4)", marginTop: 16 }} />
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
+          <div>
+            <p style={{ fontSize: 11, color: "#475569", letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: 12 }}>Live Monitoring</p>
+            <h2 style={{ fontSize: 28, fontWeight: 100, letterSpacing: "0.2em", color: "#fff", textTransform: "uppercase", margin: 0 }}>Dashboard</h2>
+            <div style={{ width: 48, height: 1, background: "rgba(0,255,65,0.4)", marginTop: 16 }} />
+          </div>
+          {/* API status indicator */}
+          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+            <div style={{ width: 6, height: 6, borderRadius: "50%", background: apiOnline ? "#00FF41" : "#f87171" }} />
+            <span style={{ fontSize: 10, color: apiOnline ? "#00FF41" : "#f87171", letterSpacing: "0.15em", textTransform: "uppercase" }}>
+              {apiOnline ? "API Online" : "API Offline"}
+            </span>
+            <button
+              onClick={fetchScores}
+              style={{ background: "transparent", border: "none", cursor: "pointer", padding: 4, color: "#475569" }}
+            >
+              <RefreshCw size={12} color="#475569" />
+            </button>
+          </div>
         </div>
 
         {/* ── UNIFIED RISK SCORE ── */}
@@ -91,7 +126,9 @@ export const Dashboard = () => {
           <SectionHeader label="Module 0" title="Unified Risk Score" />
           <div style={{ ...card, padding: 32, display: "flex", flexDirection: "column", gap: 24 }}>
             <div style={{ display: "flex", alignItems: "flex-end", gap: 8 }}>
-              <span style={{ fontSize: 64, fontWeight: 100, color: riskColor(unifiedRiskScore), lineHeight: 1 }}>{unifiedRiskScore}</span>
+              <span style={{ fontSize: 64, fontWeight: 100, color: riskColor(unifiedRiskScore), lineHeight: 1 }}>
+                {loading ? "..." : unifiedRiskScore}
+              </span>
               <span style={{ fontSize: 13, color: "#334155", marginBottom: 6 }}>/100</span>
             </div>
             <div style={{ height: 2, background: "#1e293b", borderRadius: 999, overflow: "hidden" }}>
@@ -103,47 +140,63 @@ export const Dashboard = () => {
               <span style={{ color: "rgba(248,113,113,0.6)" }}>70–100 Block + Alert</span>
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 24, paddingTop: 24, borderTop: "1px solid #1e293b" }}>
-              {[{ label: "Anomaly", value: 45 }, { label: "Manipulation", value: 74 }, { label: "Text Risk", value: 88 }, { label: "AML", value: 62 }].map(item => (
+              {[
+                { label: "Anomaly",      value: anomalyAvg },
+                { label: "Manipulation", value: 74 },
+                { label: "Text Risk",    value: 88 },
+                { label: "AML",          value: 62 },
+              ].map(item => (
                 <div key={item.label} style={{ display: "flex", flexDirection: "column", gap: 8 }}>
                   <span style={{ fontSize: 10, color: "#475569", letterSpacing: "0.15em", textTransform: "uppercase" }}>{item.label}</span>
                   <div style={{ height: 1, background: "#1e293b", position: "relative" }}>
                     <div style={{ position: "absolute", top: 0, left: 0, height: "100%", width: `${item.value}%`, background: riskColor(item.value) }} />
                   </div>
-                  <span style={{ fontSize: 12, fontFamily: "monospace", color: riskColor(item.value) }}>{item.value}</span>
+                  <span style={{ fontSize: 12, fontFamily: "monospace", color: riskColor(item.value) }}>
+                    {item.label === "Anomaly" ? (loading ? "..." : anomalyAvg) : item.value}
+                  </span>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* ── ANOMALY DETECTION ── */}
+        {/* ── ANOMALY DETECTION — REAL API DATA ── */}
         <section>
-          <SectionHeader label="Module 1" title="Anomaly Detection" />
-          <div style={card}>
-            <table style={{ width: "100%", borderCollapse: "collapse" }}>
-              <thead>
-                <tr>{["TX ID", "Token", "Amount", "Time", "Destination", "Risk Score", "Status"].map(h => <th key={h} style={th}>{h}</th>)}</tr>
-              </thead>
-              <tbody>
-                {anomalyTransactions.map((tx, i) => (
-                  <tr key={tx.id} style={{ background: i % 2 === 0 ? "transparent" : "rgba(0,0,0,0.2)" }}>
-                    <td style={{ ...td, fontFamily: "monospace", color: "#64748b" }}>{tx.id}</td>
-                    <td style={td}>{tx.token}</td>
-                    <td style={td}>{tx.amount}</td>
-                    <td style={{ ...td, display: "flex", alignItems: "center", gap: 4 }}><Clock size={11} color="#475569" />{tx.time}</td>
-                    <td style={{ ...td, fontFamily: "monospace", color: "#64748b" }}>{tx.destination}</td>
-                    <td style={{ ...td, color: riskColor(tx.score), fontFamily: "monospace" }}>{tx.score}</td>
-                    <td style={td}>
-                      <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-                        <StatusIcon status={tx.status} />
-                        <span style={{ textTransform: "capitalize" }}>{tx.status}</span>
-                      </div>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <SectionHeader label="Module 1 — PyTorch Autoencoder" title="Anomaly Detection" />
+          {loading ? (
+            <div style={{ ...card, padding: 32, textAlign: "center", color: "#475569", fontSize: 12 }}>
+              Loading scores from API...
+            </div>
+          ) : (
+            <div style={card}>
+              <table style={{ width: "100%", borderCollapse: "collapse" }}>
+                <thead>
+                  <tr>{["TX ID", "Token", "Amount", "Time", "Destination", "Risk Score", "Label"].map(h => <th key={h} style={th}>{h}</th>)}</tr>
+                </thead>
+                <tbody>
+                  {transactions.map((tx, i) => (
+                    <tr key={tx.id} style={{ background: i % 2 === 0 ? "transparent" : "rgba(0,0,0,0.2)" }}>
+                      <td style={{ ...td, fontFamily: "monospace", color: "#64748b" }}>{tx.id}</td>
+                      <td style={td}>{tx.token}</td>
+                      <td style={td}>{tx.amount}</td>
+                      <td style={{ ...td, display: "flex", alignItems: "center", gap: 4 }}>
+                        <Clock size={11} color="#475569" />
+                        {tx.time}
+                      </td>
+                      <td style={{ ...td, fontFamily: "monospace", color: "#64748b" }}>{tx.destination}</td>
+                      <td style={{ ...td, color: riskColor(tx.risk_score), fontFamily: "monospace" }}>{tx.risk_score}</td>
+                      <td style={td}>
+                        <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                          <StatusIcon status={tx.label} />
+                          <span style={{ textTransform: "capitalize" }}>{tx.label}</span>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
         </section>
 
         {/* ── MANIPULATION SCORING ── */}

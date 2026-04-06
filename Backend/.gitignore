@@ -1,0 +1,12 @@
+# Python
+venv/
+__pycache__/
+**/__pycache__/
+*.pyc
+.env
+
+# Model weights and generated files
+data/scaler.pkl
+data/saved_model.pth
+data/training_loss.png
+data/transactions.csv
