@@ -7,6 +7,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pickle
 import os
+from dotenv import load_dotenv
+
+# Load env vars
+load_dotenv()
 
 from torch.utils.data import DataLoader, TensorDataset
 from sklearn.preprocessing import MinMaxScaler
@@ -21,12 +25,21 @@ EPOCHS      = 100      # how many times to loop through the full dataset
 LEARNING_RATE = 0.001  # how big each weight update step is
 # ──────────────────────────────────────────────────────────────────────────────
 
-def load_data(path: str = "../data/transactions.csv"):
+def load_data():
     """
     Loads the transaction CSV and returns only the normal transactions.
-    We train ONLY on normal data so the model never learns
-    to reconstruct anomalies.
+    Checks environment variables to decide between synthetic or real data.
     """
+    use_real = os.getenv("USE_REAL_DATA", "False").lower() == "true"
+    default_path = "../data/transactions_real.csv" if use_real else "../data/transactions.csv"
+    path = os.getenv("DATA_PATH", default_path)
+    
+    # ensure path is absolute or relative to the script
+    if not os.path.isabs(path):
+        # normalize path relative to this script
+        path = os.path.join(os.path.dirname(__file__), path)
+
+    print(f"Loading data from: {path}")
     df = pd.read_csv(path)
 
     print(f"Total transactions loaded:    {len(df)}")
