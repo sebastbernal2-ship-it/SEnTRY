@@ -4,6 +4,12 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import uvicorn
+from dotenv import load_dotenv
+import os
+
+# Load env vars
+load_dotenv()
+
 from scorer import AnomalyScorer
 
 # ── FastAPI app ────────────────────────────────────────────────────────────────
