@@ -5,6 +5,10 @@ import pickle
 import numpy as np
 import sys
 import os
+from dotenv import load_dotenv
+
+# Load env vars
+load_dotenv()
 
 # add model folder to path so we can import Autoencoder
 sys.path.append(os.path.join(os.path.dirname(__file__), "../model"))
