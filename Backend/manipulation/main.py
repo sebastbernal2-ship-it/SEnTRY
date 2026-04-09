@@ -101,3 +101,34 @@ def get_latest_features(source_key: str, db: Session = Depends(get_db)):
             } for s in snapshots
         ]
     }
+
+from .scoring_engine import score_all_sources
+
+@app.post("/scoring/run")
+def post_run_scoring(window: str = "1h", db: Session = Depends(get_db)):
+    """Runs the deterministic scoring engine for all sources based on recent snapshots."""
+    count = score_all_sources(db, window_name=window)
+    return {"status": "success", "scored_sources_count": count}
+
+@app.get("/scoring/{source_key}")
+def get_latest_score(source_key: str, db: Session = Depends(get_db)):
+    """Fetch the latest risk score and reason codes for a given source key."""
+    source = db.query(models.Source).filter(models.Source.source_key == source_key).first()
+    if not source:
+        raise HTTPException(status_code=404, detail="Source not found")
+        
+    score = db.query(models.SourceRiskScore).filter(
+        models.SourceRiskScore.source_id == source.id
+    ).order_by(models.SourceRiskScore.as_of_time.desc()).first()
+    
+    if not score:
+        return {"status": "no_score_available"}
+        
+    return {
+        "source_key": source_key,
+        "risk_score": score.risk_score,
+        "label": score.risk_label,
+        "reasons": score.reason_codes_json,
+        "as_of_time": score.as_of_time,
+        "window": score.window_name
+    }
