@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String, Float, Boolean, DateTime, JSON, ForeignKey
 from sqlalchemy.sql import func
-from .database import Base
+from manipulation.database import Base
 
 class Source(Base):
     __tablename__ = "sources"

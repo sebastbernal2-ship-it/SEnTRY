@@ -2,8 +2,8 @@ from fastapi import FastAPI, Depends, HTTPException
 from sqlalchemy.orm import Session
 from sqlalchemy import text
 from typing import List
-from .database import engine, Base, get_db
-from . import models, schemas
+from manipulation.database import engine, Base, get_db
+from manipulation import models, schemas
 
 # Initialize Database on startup
 Base.metadata.create_all(bind=engine)
@@ -69,7 +69,7 @@ def list_events(limit: int = 50, db: Session = Depends(get_db)):
         "success_flag": e.success_flag
     } for e in events]
 
-from .feature_engine import recompute_features
+from manipulation.feature_engine import recompute_features
 
 @app.post("/features/recompute")
 def post_recompute_features(db: Session = Depends(get_db)):
@@ -102,8 +102,8 @@ def get_latest_features(source_key: str, db: Session = Depends(get_db)):
         ]
     }
 
-from .scoring_engine import score_all_sources
-from .alert_engine import generate_alerts
+from manipulation.scoring_engine import score_all_sources
+from manipulation.alert_engine import generate_alerts
 
 @app.post("/scoring/run")
 def post_run_scoring(window: str = "1h", db: Session = Depends(get_db)):
@@ -136,7 +136,7 @@ def get_alerts(limit: int = 50, status: str = "open", db: Session = Depends(get_
         "status": a.status
     } for a in alerts]
 
-from .ml_classifier import predict as predict_ml
+from manipulation.ml_classifier import predict as predict_ml
 
 @app.get("/scoring/{source_key}")
 def get_latest_score(source_key: str, db: Session = Depends(get_db)):

@@ -3,7 +3,7 @@ import requests
 from typing import List
 from datetime import datetime, timezone
 
-from .schemas import InteractionEventCreate
+from manipulation.schemas import InteractionEventCreate
 
 class BaseSourceAdapter(abc.ABC):
     """

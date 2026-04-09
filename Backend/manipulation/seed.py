@@ -1,5 +1,5 @@
-from .database import SessionLocal, engine
-from .models import Base, Source
+from manipulation.database import SessionLocal, engine
+from manipulation.models import Base, Source
 import datetime
 
 # Ensure tables are created
