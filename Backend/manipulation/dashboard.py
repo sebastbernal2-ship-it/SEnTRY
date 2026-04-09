@@ -1,7 +1,12 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-from database import engine
+import sys
+import os
+# Ensure the parent directory (Backend) is in the path
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from manipulation.database import engine
 import json
 
 st.set_page_config(page_title="Counter-Manipulator AI", layout="wide", page_icon="🛡️")
@@ -42,15 +47,16 @@ latest_scores = scores_df.loc[scores_df.groupby('source_id')['as_of_time'].idxma
 # Join with sources
 latest_scores = latest_scores.merge(sources_df, left_on='source_id', right_on='id', suffixes=('_score', '_source'))
 
+# Sort for the dashboard view - prioritize high risk
+latest_scores = latest_scores.sort_values(by='risk_score', ascending=False)
+
 # Layout
 tab1, tab2, tab3 = st.tabs(["🚦 External Agents Overview", "📊 Feature Telemetry", "🚨 Operations Alerts"])
 
 with tab1:
     st.subheader("Monitored Counterparties / Sources")
     
-    # Sort by risk score descending
-    latest_scores = latest_scores.sort_values(by='risk_score', ascending=False)
-    
+    # We already sorted latest_scores by risk_score
     for idx, row in latest_scores.iterrows():
         with st.container():
             col1, col2, col3, col4, col5 = st.columns([2, 1, 1, 3, 1])
@@ -106,7 +112,17 @@ with tab1:
 
 with tab2:
     st.subheader("Feature Snapshot Forensics")
-    selected_source = st.selectbox("Inspect Source Key", options=sources_df['source_key'].tolist())
+    
+    # Sort sources by risk score for the selector, ensuring the highest risk is default
+    # If no score exists (like for 0xabc123), it goes to the bottom
+    source_options = latest_scores['source_key'].tolist()
+    # Add any remaining sources that don't have scores yet
+    all_keys = sources_df['source_key'].tolist()
+    for k in all_keys:
+        if k not in source_options:
+            source_options.append(k)
+
+    selected_source = st.selectbox("Inspect Source Key", options=source_options)
     s_id = sources_df[sources_df['source_key'] == selected_source].iloc[0]['id']
     
     s_features = features_df[features_df['source_id'] == s_id].sort_values(by="as_of_time", ascending=False)

@@ -2,7 +2,7 @@ from sqlalchemy.orm import Session
 from datetime import datetime, timedelta, timezone
 from collections import Counter
 import statistics
-from . import models
+from manipulation import models
 
 WINDOWS = {
     "1m": timedelta(minutes=1),

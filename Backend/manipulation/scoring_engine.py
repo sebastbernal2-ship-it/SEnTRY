@@ -1,8 +1,8 @@
 from sqlalchemy.orm import Session
 from datetime import datetime, timezone
 import json
-from . import models
-from .scoring_config import WEIGHTS, THRESHOLDS, REASON_THRESHOLDS, REASON_MESSAGES
+from manipulation import models
+from manipulation.scoring_config import WEIGHTS, THRESHOLDS, REASON_THRESHOLDS, REASON_MESSAGES
 
 def normalize_features(snapshot):
     """
