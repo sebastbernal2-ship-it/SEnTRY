@@ -2,24 +2,60 @@ import os
 import pickle
 import pandas as pd
 import numpy as np
+import torch
+import torch.nn as nn
+
+class SimpleMLP(nn.Module):
+    def __init__(self, input_dim=4):
+        super(SimpleMLP, self).__init__()
+        self.net = nn.Sequential(
+            nn.Linear(input_dim, 16),
+            nn.ReLU(),
+            nn.Linear(16, 8),
+            nn.ReLU(),
+            nn.Linear(8, 1),
+            nn.Sigmoid()
+        )
+        
+    def forward(self, x):
+        return self.net(x)
 
 class ManipulationScorer:
     def __init__(self):
-        self.model_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../data/manipulation_model.pkl"))
+        self.type_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../data/manipulation_model_type.txt"))
+        self.pkl_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../data/manipulation_model.pkl"))
+        self.pth_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../data/manipulation_model.pth"))
         self.scaler_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../data/manipulation_scaler.pkl"))
         self.history_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../data/manipulation_history.csv"))
         
         self.model = None
         self.scaler = None
+        self.model_type = "sklearn"
         
-        if os.path.exists(self.model_path) and os.path.exists(self.scaler_path):
-            with open(self.model_path, "rb") as f:
-                self.model = pickle.load(f)
+        if os.path.exists(self.type_path):
+            with open(self.type_path, "r") as f:
+                self.model_type = f.read().strip()
+                
+        if os.path.exists(self.scaler_path):
             with open(self.scaler_path, "rb") as f:
                 self.scaler = pickle.load(f)
         else:
-            raise FileNotFoundError("Manipulation model or scaler not found. Run train_manipulation.py first.")
+            raise FileNotFoundError("Scaler not found. Run train_manipulation.py first.")
             
+        if self.model_type == "pytorch":
+            if os.path.exists(self.pth_path):
+                self.model = SimpleMLP()
+                self.model.load_state_dict(torch.load(self.pth_path, weights_only=True))
+                self.model.eval()
+            else:
+                raise FileNotFoundError("PyTorch model not found.")
+        else:
+            if os.path.exists(self.pkl_path):
+                with open(self.pkl_path, "rb") as f:
+                    self.model = pickle.load(f)
+            else:
+                raise FileNotFoundError("Sklearn model not found.")
+                
         self.history = self._load_history()
 
     def _load_history(self):
@@ -53,19 +89,17 @@ class ManipulationScorer:
 
     def _get_features(self, agent_id: str):
         if agent_id not in self.history:
-            return [1.0, 1.0, 1.0, 0.1] # Default safe fallback
+            return [1.0, 1.0, 1.0, 0.1] 
             
         agent = self.history[agent_id]
         n = agent["total_proposals"]
         if n == 0:
             return [0.0, 0.0, 0.0, 0.0]
             
-        # Mocking frequency as total proposals for demo simulation
         frequency = n 
         avg_size = agent["total_size"] / n
         success_rate = agent["successful_proposals"] / n
         
-        # calculate variance
         mean = avg_size
         variance = (agent["sum_sq_size"] / n) - (mean * mean)
         if variance < 0: 
@@ -81,18 +115,21 @@ class ManipulationScorer:
             
         features = self._get_features(agent_id)
         
-        # Scale features
-        # Reshape to 2D array
         features_array = np.array(features).reshape(1, -1)
         scaled_features = self.scaler.transform(features_array)
         
-        # Predict probability of class 1 (bad agent)
-        prob = self.model.predict_proba(scaled_features)[0][1]
+        if self.model_type == "pytorch":
+            with torch.no_grad():
+                X_tensor = torch.FloatTensor(scaled_features)
+                prob = self.model(X_tensor).item()
+        else:
+            if hasattr(self.model, "predict_proba"):
+                prob = self.model.predict_proba(scaled_features)[0][1]
+            else:
+                prob = float(self.model.predict(scaled_features)[0])
         
-        # Convert to 0-100 score
         risk_score = round(prob * 100, 2)
         
-        # Determine label based on SENTRY thresholds
         if risk_score > 70:
             label = "blocked"
         elif risk_score > 30:
