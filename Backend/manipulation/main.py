@@ -103,12 +103,38 @@ def get_latest_features(source_key: str, db: Session = Depends(get_db)):
     }
 
 from .scoring_engine import score_all_sources
+from .alert_engine import generate_alerts
 
 @app.post("/scoring/run")
 def post_run_scoring(window: str = "1h", db: Session = Depends(get_db)):
-    """Runs the deterministic scoring engine for all sources based on recent snapshots."""
+    """Runs the deterministic scoring engine for all sources based on recent snapshots, then generates alerts."""
     count = score_all_sources(db, window_name=window)
-    return {"status": "success", "scored_sources_count": count}
+    alerts_created = generate_alerts(db)
+    return {
+        "status": "success", 
+        "scored_sources_count": count,
+        "alerts_generated": alerts_created
+    }
+
+@app.get("/alerts")
+def get_alerts(limit: int = 50, status: str = "open", db: Session = Depends(get_db)):
+    """Fetch active alerts, optionally filtered by status."""
+    query = db.query(models.Alert)
+    if status != "all":
+         query = query.filter(models.Alert.status == status)
+         
+    alerts = query.order_by(models.Alert.created_at.desc()).limit(limit).all()
+    
+    return [{
+        "id": a.id,
+        "source_id": a.source_id,
+        "severity": a.severity,
+        "title": a.title,
+        "message": a.message,
+        "reasons": a.reason_codes_json,
+        "created_at": a.created_at,
+        "status": a.status
+    } for a in alerts]
 
 @app.get("/scoring/{source_key}")
 def get_latest_score(source_key: str, db: Session = Depends(get_db)):
