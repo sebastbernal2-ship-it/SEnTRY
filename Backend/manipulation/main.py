@@ -136,6 +136,8 @@ def get_alerts(limit: int = 50, status: str = "open", db: Session = Depends(get_
         "status": a.status
     } for a in alerts]
 
+from .ml_classifier import predict as predict_ml
+
 @app.get("/scoring/{source_key}")
 def get_latest_score(source_key: str, db: Session = Depends(get_db)):
     """Fetch the latest risk score and reason codes for a given source key."""
@@ -149,11 +151,20 @@ def get_latest_score(source_key: str, db: Session = Depends(get_db)):
     
     if not score:
         return {"status": "no_score_available"}
+
+    # Fetch snapshot to run live ML inference alongside retrieving deterministic score
+    snapshot = db.query(models.SourceFeatureSnapshot).filter(
+        models.SourceFeatureSnapshot.source_id == source.id,
+        models.SourceFeatureSnapshot.window_name == score.window_name
+    ).order_by(models.SourceFeatureSnapshot.as_of_time.desc()).first()
+    
+    ml_label = predict_ml(snapshot) if snapshot else "N/A"
         
     return {
         "source_key": source_key,
         "risk_score": score.risk_score,
-        "label": score.risk_label,
+        "label": score.risk_label,            # Rule-engine classification
+        "ml_label": ml_label,                 # ML-engine classification
         "reasons": score.reason_codes_json,
         "as_of_time": score.as_of_time,
         "window": score.window_name
