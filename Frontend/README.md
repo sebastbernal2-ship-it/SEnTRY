@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# S.E.N.T.R.Y. Dashboard
+### Unified Security Visualization Framework
+
+This is the official frontend interface for SEnTRY, providing real-time monitoring and visualization of the multi-module risk engine. The dashboard is designed to provide human operators and monitoring agents with immediate situational awareness of transaction risks, behavioral anomalies, and manipulation attempts.
+
+---
+
+## Core Features
+*   **Unified Risk HUD**: A high-contrast monitoring interface that aggregates scores from the ML Anomaly, Behavioral Manipulation, NLP Detection, and AML modules.
+*   **Real-Time Transaction Scoring**: Direct integration with the Backend API to visualize risk assessments for incoming and outgoing transactions.
+*   **Interception Monitoring**: Specialized sections for tracking and explaining flagged or blocked transactions across all four security pillars.
+*   **Agent Status Intelligence**: Visual indicators for API health and model readiness.
+
+---
+
+## Technical Architecture
+*   **Framework**: Next.js 15 (App Router)
+*   **Data Logic**: Direct asynchronous integration with SEnTRY Backend service.
+*   **UI/UX**: Custom implementation using Tailwind CSS and Framer Motion for high-performance data visualization.
+*   **Icons**: Standardized security iconography via Lucide React.
+
+---
 
 ## Getting Started
 
-First, run the development server:
-
+### 1. Installation
+Install the necessary dependencies within the Frontend directory:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Deployment
+Start the Next.js development server:
+```bash
+npm run dev
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3. Backend Connectivity
+The frontend expects the SEnTRY Backend service to be accessible at `http://localhost:8000`. Ensure the backend API is active to enable live data streaming and scoring updates.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Design Specifications
+The dashboard utilizes a high-contrast monitor aesthetic (Obsidian/Green/Slate) to ensure data readability and focus. It follows a modular structure where each security pillar occupies a dedicated monitoring zone.
