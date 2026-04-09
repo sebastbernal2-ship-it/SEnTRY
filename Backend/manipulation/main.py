@@ -68,3 +68,36 @@ def list_events(limit: int = 50, db: Session = Depends(get_db)):
         "proposal_size": e.proposal_size,
         "success_flag": e.success_flag
     } for e in events]
+
+from .feature_engine import recompute_features
+
+@app.post("/features/recompute")
+def post_recompute_features(db: Session = Depends(get_db)):
+    """Triggers the rolling window aggregation to compute feature snapshots."""
+    snapshots_created = recompute_features(db)
+    return {"status": "success", "snapshots_created": snapshots_created}
+
+@app.get("/features/{source_key}")
+def get_latest_features(source_key: str, db: Session = Depends(get_db)):
+    """Fetch the latest feature snapshots for a given source key."""
+    source = db.query(models.Source).filter(models.Source.source_key == source_key).first()
+    if not source:
+        raise HTTPException(status_code=404, detail="Source not found")
+        
+    snapshots = db.query(models.SourceFeatureSnapshot).filter(
+        models.SourceFeatureSnapshot.source_id == source.id
+    ).order_by(models.SourceFeatureSnapshot.as_of_time.desc()).limit(4).all()
+    
+    return {
+        "source_key": source_key,
+        "snapshots": [
+            {
+                "window": s.window_name,
+                "as_of_time": s.as_of_time,
+                "interaction_count": s.interaction_count,
+                "success_rate": s.success_rate,
+                "frequency_spike_score": s.frequency_spike_score,
+                "mean_size": s.mean_size
+            } for s in snapshots
+        ]
+    }
