@@ -2,17 +2,12 @@
 "use client";
 import { useEffect, useState } from "react";
 import { AlertTriangle, CheckCircle, XCircle, Clock, RefreshCw } from "lucide-react";
-import { getRandomTransactions, RandomTransaction } from "@/lib/api";
+import { getRandomTransactions, RandomTransaction, getExternalAgents, ExternalAgent } from "@/lib/api";
 
 // ── MOCK DATA for modules 2, 3, 4 ─────────────────────────────────────────────
 // TODO: Replace with real API responses when those modules are built
 
-const externalAgents = [
-  { id: "AGT-A", proposals: 12,  avgSize: "0.3 ETH", successRate: "91%", score: 18, label: "Likely Benign" },
-  { id: "AGT-B", proposals: 87,  avgSize: "4.2 ETH", successRate: "44%", score: 74, label: "Suspicious" },
-  { id: "AGT-C", proposals: 3,   avgSize: "0.1 ETH", successRate: "100%", score: 9,  label: "Likely Benign" },
-  { id: "AGT-D", proposals: 142, avgSize: "8.9 ETH", successRate: "21%", score: 93, label: "Requires Manual Review" },
-];
+// (Mock externalAgents removed in favor of live API integration)
 
 const textSamples = [
   { id: "MSG-01", preview: "Swap 0.5 ETH to USDC at market rate.", score: 5,  label: "Clean" },
@@ -68,12 +63,17 @@ export const Dashboard = () => {
 
   // ── Fetch real scores from API on mount ──────────────────────────────────
   const [transactions, setTransactions] = useState<RandomTransaction[]>([]);
+  const [agents, setAgents] = useState<ExternalAgent[]>([]);
 
   const fetchScores = async () => {
     setLoading(true);
     try {
       const results = await getRandomTransactions();
       setTransactions(results);
+      
+      const agentResults = await getExternalAgents();
+      setAgents(agentResults);
+      
       setApiOnline(true);
     } catch (e) {
       console.error("API not reachable", e);
@@ -93,7 +93,11 @@ export const Dashboard = () => {
     ? Math.round(transactions.reduce((a, b) => a + b.risk_score, 0) / transactions.length)
     : 0;
 
-  const unifiedRiskScore = Math.round((anomalyAvg + 74 + 88 + 62) / 4);
+  const manipulationAvg = agents.length > 0 
+    ? Math.round(agents.reduce((a, b) => a + b.risk_score, 0) / agents.length)
+    : 74;
+
+  const unifiedRiskScore = Math.round((anomalyAvg + manipulationAvg + 88 + 62) / 4);
 
   return (
     <div style={{ position: "relative" }}>
@@ -142,7 +146,7 @@ export const Dashboard = () => {
             <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 24, paddingTop: 24, borderTop: "1px solid #1e293b" }}>
               {[
                 { label: "Anomaly",      value: anomalyAvg },
-                { label: "Manipulation", value: 74 },
+                { label: "Manipulation", value: manipulationAvg },
                 { label: "Text Risk",    value: 88 },
                 { label: "AML",          value: 62 },
               ].map(item => (
@@ -152,7 +156,7 @@ export const Dashboard = () => {
                     <div style={{ position: "absolute", top: 0, left: 0, height: "100%", width: `${item.value}%`, background: riskColor(item.value) }} />
                   </div>
                   <span style={{ fontSize: 12, fontFamily: "monospace", color: riskColor(item.value) }}>
-                    {item.label === "Anomaly" ? (loading ? "..." : anomalyAvg) : item.value}
+                    {(item.label === "Anomaly" || item.label === "Manipulation") ? (loading ? "..." : item.value) : item.value}
                   </span>
                 </div>
               ))}
@@ -202,35 +206,45 @@ export const Dashboard = () => {
         {/* ── MANIPULATION SCORING ── */}
         <section>
           <SectionHeader label="Module 2" title="Behavior-Based Manipulation Scoring" />
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
-            {externalAgents.map(agent => (
-              <div key={agent.id} style={{ ...card, padding: 24, display: "flex", flexDirection: "column", gap: 16 }}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                  <span style={{ fontSize: 12, fontFamily: "monospace", color: "#94a3b8" }}>{agent.id}</span>
-                  <span style={{ fontSize: 10, letterSpacing: "0.1em", padding: "3px 8px", borderRadius: 2, border: `1px solid ${riskBorder(agent.score)}`, background: riskBg(agent.score), color: riskColor(agent.score) }}>
-                    {agent.label}
-                  </span>
-                </div>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 12 }}>
-                  {[["Proposals", agent.proposals], ["Avg Size", agent.avgSize], ["Success", agent.successRate]].map(([k, v]) => (
-                    <div key={k as string} style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-                      <span style={{ fontSize: 10, color: "#475569", letterSpacing: "0.1em", textTransform: "uppercase" }}>{k}</span>
-                      <span style={{ fontSize: 12, color: "#cbd5e1" }}>{v}</span>
+          {loading ? (
+            <div style={{ ...card, padding: 32, textAlign: "center", color: "#475569", fontSize: 12 }}>
+              Loading agents from API...
+            </div>
+          ) : (
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+              {agents.map(agent => (
+                <div key={agent.agent_id} style={{ ...card, padding: 24, display: "flex", flexDirection: "column", gap: 16 }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                    <span style={{ fontSize: 12, fontFamily: "monospace", color: "#94a3b8" }}>{agent.agent_id}</span>
+                    <span style={{ fontSize: 10, letterSpacing: "0.1em", padding: "3px 8px", borderRadius: 2, border: `1px solid ${riskBorder(agent.risk_score)}`, background: riskBg(agent.risk_score), color: riskColor(agent.risk_score) }}>
+                      {agent.label}
+                    </span>
+                  </div>
+                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 12 }}>
+                    {[
+                      ["Proposals", agent.metrics.frequency], 
+                      ["Avg Size", agent.metrics.avg_size.toFixed(2)], 
+                      ["Success", (agent.metrics.success_rate * 100).toFixed(0) + "%"]
+                    ].map(([k, v]) => (
+                      <div key={k as string} style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+                        <span style={{ fontSize: 10, color: "#475569", letterSpacing: "0.1em", textTransform: "uppercase" }}>{k}</span>
+                        <span style={{ fontSize: 12, color: "#cbd5e1" }}>{v}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                    <div style={{ display: "flex", justifyContent: "space-between" }}>
+                      <span style={{ fontSize: 10, color: "#475569", letterSpacing: "0.1em", textTransform: "uppercase" }}>Manipulation Score</span>
+                      <span style={{ fontSize: 12, fontFamily: "monospace", color: riskColor(agent.risk_score) }}>{agent.risk_score}</span>
                     </div>
-                  ))}
-                </div>
-                <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-                  <div style={{ display: "flex", justifyContent: "space-between" }}>
-                    <span style={{ fontSize: 10, color: "#475569", letterSpacing: "0.1em", textTransform: "uppercase" }}>Manipulation Score</span>
-                    <span style={{ fontSize: 12, fontFamily: "monospace", color: riskColor(agent.score) }}>{agent.score}</span>
-                  </div>
-                  <div style={{ height: 1, background: "#1e293b", position: "relative" }}>
-                    <div style={{ position: "absolute", top: 0, left: 0, height: "100%", width: `${agent.score}%`, background: riskColor(agent.score) }} />
+                    <div style={{ height: 1, background: "#1e293b", position: "relative" }}>
+                      <div style={{ position: "absolute", top: 0, left: 0, height: "100%", width: `${agent.risk_score}%`, background: riskColor(agent.risk_score) }} />
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </section>
 
         {/* ── TEXT / PROMPT INJECTION ── */}
