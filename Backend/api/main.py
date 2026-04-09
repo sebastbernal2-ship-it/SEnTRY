@@ -19,6 +19,7 @@ import logging
 logging.basicConfig(filename="api_errors.log", level=logging.ERROR)
 
 from scorer import AnomalyScorer
+from manipulation_scorer import ManipulationScorer
 
 # --- FastAPI app ---
 app = FastAPI(
@@ -38,6 +39,11 @@ app.add_middleware(
 
 # --- Load scorer once at startup ---
 scorer = AnomalyScorer()
+try:
+    manipulation_scorer = ManipulationScorer()
+except Exception as e:
+    logging.error(f"Failed to load ManipulationScorer: {e}")
+    manipulation_scorer = None
 
 # --- Request/Response Models ---
 class Transaction(BaseModel):
@@ -56,6 +62,11 @@ class ScoreResponse(BaseModel):
     reconstruction_error: float
     threshold:            float
     features_used:        dict
+
+class Proposal(BaseModel):
+    agent_id: str
+    size: float
+    success: bool
 
 # --- Routes ---
 
@@ -113,6 +124,27 @@ def get_random_transactions():
         return {"transactions": results, "count": len(results)}
     except Exception as e:
         logging.error(f"ERROR in /api/anomaly/random: {e}", exc_info=True)
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/api/manipulation/propose")
+def log_proposal(proposal: Proposal):
+    if not manipulation_scorer:
+        raise HTTPException(status_code=500, detail="ManipulationScorer not loaded")
+    try:
+        manipulation_scorer.log_proposal(proposal.agent_id, proposal.size, proposal.success)
+        return manipulation_scorer.score_agent(proposal.agent_id)
+    except Exception as e:
+        logging.error(f"ERROR in /api/manipulation/propose: {e}", exc_info=True)
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/manipulation/agents")
+def get_agents():
+    if not manipulation_scorer:
+        raise HTTPException(status_code=500, detail="ManipulationScorer not loaded")
+    try:
+        return {"agents": manipulation_scorer.get_all_agents()}
+    except Exception as e:
+        logging.error(f"ERROR in /api/manipulation/agents: {e}", exc_info=True)
         raise HTTPException(status_code=500, detail=str(e))
 
 if __name__ == "__main__":

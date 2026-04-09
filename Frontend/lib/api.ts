@@ -69,3 +69,22 @@ export const getRandomTransactions = async (): Promise<RandomTransaction[]> => {
   const data = await response.json();
   return data.transactions;
 };
+
+export interface ExternalAgent {
+  agent_id: string;
+  risk_score: number;
+  label: string;
+  metrics: {
+    frequency: number;
+    avg_size: number;
+    success_rate: number;
+    volatility: number;
+  };
+}
+
+export const getExternalAgents = async (): Promise<ExternalAgent[]> => {
+  const response = await fetch(`${API_BASE_URL}/api/manipulation/agents`);
+  if (!response.ok) throw new Error("Failed to fetch manipulation agents");
+  const data = await response.json();
+  return data.agents;
+};
