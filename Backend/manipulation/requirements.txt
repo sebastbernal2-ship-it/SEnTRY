@@ -9,3 +9,5 @@ pandas
 plotly
 scikit-learn
 joblib
+pytest
+httpx
