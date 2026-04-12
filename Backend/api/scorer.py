@@ -80,11 +80,11 @@ class AnomalyScorer:
         risk_score = self._normalize_score(error)
 
         if risk_score <= 30:
-            label = "normal"
+            label = "Likely Benign"
         elif risk_score <= 70:
-            label = "suspicious"
+            label = "Suspicious"
         else:
-            label = "anomalous"
+            label = "Requires Manual Review"
 
         return {
             "risk_score":           risk_score,

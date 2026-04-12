@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.env
+
+# Database
+*.db
+*.sqlite3
+
+# Models & Data (Ignore local test/training artifacts)
+# Keeping Backend/data/ but ignoring history/stray root files
+Backend/data/manipulation_history.csv
+.pytest_cache/
+
+# User-specific
+.gemini/
+api_errors.log
+scratch/
