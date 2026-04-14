@@ -1,0 +1,26 @@
+{
+  "updated_at": "2026-04-13T22:00:00Z",
+  "new_alert_count": 2,
+  "alerts": [
+    {
+      "id": "aml-0xdeadbeef-20260413T215800Z",
+      "module": "money_laundering",
+      "title": "High-risk laundering pattern detected",
+      "description": "Address 0xDEAD...BEEF triggered high fan-out, burst activity, and mixer contact.",
+      "severity": "high",
+      "score": 95,
+      "label": "High Risk",
+      "timestamp": "2026-04-13T21:58:00Z"
+    },
+    {
+      "id": "inj-msg-0002-20260413T215600Z",
+      "module": "prompt_injection",
+      "title": "Manipulative communication detected",
+      "description": "Message contains high-pressure urgency language and suspicious guarantees.",
+      "severity": "high",
+      "score": 88,
+      "label": "Manipulative",
+      "timestamp": "2026-04-13T21:56:00Z"
+    }
+  ]
+}

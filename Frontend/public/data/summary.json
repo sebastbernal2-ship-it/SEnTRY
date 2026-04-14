@@ -1,0 +1,24 @@
+{
+  "updated_at": "2026-04-13T22:00:00Z",
+  "scan_status": "ok",
+  "modules": [
+    {
+      "key": "transaction_anomaly",
+      "title": "Transaction Anomaly Detection",
+      "flagged_count": 2,
+      "total_count": 8
+    },
+    {
+      "key": "prompt_injection",
+      "title": "Prompt Injection Detection",
+      "flagged_count": 2,
+      "total_count": 8
+    },
+    {
+      "key": "money_laundering",
+      "title": "Anti-Money Laundering Detection",
+      "flagged_count": 2,
+      "total_count": 8
+    }
+  ]
+}

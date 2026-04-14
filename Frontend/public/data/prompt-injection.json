@@ -1,0 +1,34 @@
+{
+  "module": "prompt_injection",
+  "updated_at": "2026-04-13T22:00:00Z",
+  "items": [
+    {
+      "id": "msg-0000",
+      "preview": "Swap 0.5 ETH to USDC at market rate.",
+      "risk_score": 5,
+      "label": "Clean",
+      "severity": "low"
+    },
+    {
+      "id": "msg-0001",
+      "preview": "GUARANTEED 900% APY — act NOW before it's gone!",
+      "risk_score": 96,
+      "label": "High Risk",
+      "severity": "high"
+    },
+    {
+      "id": "msg-0002",
+      "preview": "Rebalance portfolio per your defined strategy.",
+      "risk_score": 11,
+      "label": "Clean",
+      "severity": "low"
+    },
+    {
+      "id": "msg-0003",
+      "preview": "Last chance — high-yield opportunity expires in 60 seconds.",
+      "risk_score": 88,
+      "label": "High Risk",
+      "severity": "high"
+    }
+  ]
+}

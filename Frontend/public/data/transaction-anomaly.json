@@ -1,0 +1,48 @@
+{
+  "module": "transaction_anomaly",
+  "updated_at": "2026-04-13T22:00:00Z",
+  "items": [
+    {
+      "id": "tx-0000",
+      "amount": 1.5,
+      "token_type": 0,
+      "hour": 14,
+      "day_of_week": 2,
+      "gas_fee": 45,
+      "is_new_address": 0,
+      "time_since_last_tx": 300,
+      "tx_frequency": 3,
+      "risk_score": 12,
+      "label": "Clean",
+      "severity": "low"
+    },
+    {
+      "id": "tx-0001",
+      "amount": 25.3,
+      "token_type": 1,
+      "hour": 3,
+      "day_of_week": 5,
+      "gas_fee": 120,
+      "is_new_address": 1,
+      "time_since_last_tx": 8000,
+      "tx_frequency": 18,
+      "risk_score": 78,
+      "label": "High Risk",
+      "severity": "high"
+    },
+    {
+      "id": "tx-0002",
+      "amount": 0.8,
+      "token_type": 2,
+      "hour": 10,
+      "day_of_week": 1,
+      "gas_fee": 35,
+      "is_new_address": 0,
+      "time_since_last_tx": 450,
+      "tx_frequency": 2,
+      "risk_score": 8,
+      "label": "Clean",
+      "severity": "low"
+    }
+  ]
+}

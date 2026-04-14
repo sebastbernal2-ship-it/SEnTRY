@@ -1,0 +1,46 @@
+{
+  "module": "money_laundering",
+  "updated_at": "2026-04-13T22:00:00Z",
+  "items": [
+    {
+      "id": "addr-0000",
+      "address": "0xaB3f...221C",
+      "fan_out": "Low",
+      "burst_activity": false,
+      "mixer_contact": false,
+      "risk_score": 8,
+      "label": "Clean",
+      "severity": "low"
+    },
+    {
+      "id": "addr-0001",
+      "address": "0x9f2A...88BD",
+      "fan_out": "High",
+      "burst_activity": true,
+      "mixer_contact": false,
+      "risk_score": 62,
+      "label": "Suspicious",
+      "severity": "medium"
+    },
+    {
+      "id": "addr-0002",
+      "address": "0xDEAD...BEEF",
+      "fan_out": "Very High",
+      "burst_activity": true,
+      "mixer_contact": true,
+      "risk_score": 95,
+      "label": "High Risk",
+      "severity": "high"
+    },
+    {
+      "id": "addr-0003",
+      "address": "0x5544...33CC",
+      "fan_out": "Low",
+      "burst_activity": false,
+      "mixer_contact": false,
+      "risk_score": 14,
+      "label": "Clean",
+      "severity": "low"
+    }
+  ]
+}
