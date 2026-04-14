@@ -1,34 +1,70 @@
 {
-  "module": "prompt_injection",
-  "updated_at": "2026-04-13T22:00:00Z",
   "items": [
     {
       "id": "msg-0000",
-      "preview": "Swap 0.5 ETH to USDC at market rate.",
-      "risk_score": 5,
       "label": "Clean",
-      "severity": "low"
+      "preview": "IMMEDIATE ACTION REQUIRED \u2014 Limited spots available!!!",
+      "risk_score": 0.0,
+      "severity": "low",
+      "text_preview": "IMMEDIATE ACTION REQUIRED \u2014 Limited spots available!!!"
     },
     {
       "id": "msg-0001",
-      "preview": "GUARANTEED 900% APY — act NOW before it's gone!",
-      "risk_score": 96,
-      "label": "High Risk",
-      "severity": "high"
+      "label": "Clean",
+      "preview": "WARNING: Your account at RISK! Click here NOW!!",
+      "risk_score": 10.0,
+      "severity": "low",
+      "text_preview": "WARNING: Your account at RISK! Click here NOW!!"
     },
     {
       "id": "msg-0002",
-      "preview": "Rebalance portfolio per your defined strategy.",
-      "risk_score": 11,
       "label": "Clean",
-      "severity": "low"
+      "preview": "Set new take-profit at $2500 per unit sold.",
+      "risk_score": 0.0,
+      "severity": "low",
+      "text_preview": "Set new take-profit at $2500 per unit sold."
     },
     {
       "id": "msg-0003",
-      "preview": "Last chance — high-yield opportunity expires in 60 seconds.",
-      "risk_score": 88,
-      "label": "High Risk",
-      "severity": "high"
+      "label": "Clean",
+      "preview": "IMMEDIATE ACTION REQUIRED \u2014 Limited spots available!!!",
+      "risk_score": 0.0,
+      "severity": "low",
+      "text_preview": "IMMEDIATE ACTION REQUIRED \u2014 Limited spots available!!!"
+    },
+    {
+      "id": "msg-0004",
+      "label": "Clean",
+      "preview": "WARNING: Your account at RISK! Click here NOW!!",
+      "risk_score": 10.0,
+      "severity": "low",
+      "text_preview": "WARNING: Your account at RISK! Click here NOW!!"
+    },
+    {
+      "id": "msg-0005",
+      "label": "Clean",
+      "preview": "WARNING: Your account at RISK! Click here NOW!!",
+      "risk_score": 10.0,
+      "severity": "low",
+      "text_preview": "WARNING: Your account at RISK! Click here NOW!!"
+    },
+    {
+      "id": "msg-0006",
+      "label": "Clean",
+      "preview": "WARNING: Your account at RISK! Click here NOW!!",
+      "risk_score": 10.0,
+      "severity": "low",
+      "text_preview": "WARNING: Your account at RISK! Click here NOW!!"
+    },
+    {
+      "id": "msg-0007",
+      "label": "Suspicious",
+      "preview": "GUARANTEED 900% APY \u2014 act NOW before it's gone!",
+      "risk_score": 47.0,
+      "severity": "medium",
+      "text_preview": "GUARANTEED 900% APY \u2014 act NOW before it's gone!"
     }
-  ]
+  ],
+  "module": "prompt_injection",
+  "updated_at": "2026-04-14T02:48:32Z"
 }

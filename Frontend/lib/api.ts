@@ -31,11 +31,13 @@ export interface AnomalyData {
 }
 
 export const getTransactionAnomalies = async (): Promise<AnomalyItem[]> => {
+  console.log("[DEBUG] Fetching transaction anomalies from /data/transaction-anomaly.json");
   try {
     if (USE_JSON_DATA) {
       const response = await fetch("/data/transaction-anomaly.json");
       if (!response.ok) throw new Error("Failed to fetch anomalies");
       const data: AnomalyData = await response.json();
+      console.log("[DEBUG] Fetched transaction anomalies:", data.items?.length || 0, "items");
       return data.items || [];
     } else {
       // Fallback to API if available
@@ -66,10 +68,12 @@ export interface TextData {
 }
 
 export const getPromptInjectionData = async (): Promise<TextItem[]> => {
+  console.log("[DEBUG] Fetching prompt injection data from /data/prompt-injection.json");
   try {
     const response = await fetch("/data/prompt-injection.json");
     if (!response.ok) throw new Error("Failed to fetch prompt injection data");
     const data: TextData = await response.json();
+    console.log("[DEBUG] Fetched prompt injection data:", data.items?.length || 0, "items");
     return data.items || [];
   } catch (e) {
     console.error("Error fetching prompt injection data:", e);
@@ -97,10 +101,12 @@ export interface AMLData {
 }
 
 export const getMoneyLaunderingData = async (): Promise<AMLItem[]> => {
+  console.log("[DEBUG] Fetching money laundering data from /data/money-laundering.json");
   try {
     const response = await fetch("/data/money-laundering.json");
     if (!response.ok) throw new Error("Failed to fetch AML data");
     const data: AMLData = await response.json();
+    console.log("[DEBUG] Fetched money laundering data:", data.items?.length || 0, "items");
     return data.items || [];
   } catch (e) {
     console.error("Error fetching AML data:", e);
@@ -124,10 +130,13 @@ export interface Summary {
 }
 
 export const getSummary = async (): Promise<Summary> => {
+  console.log("[DEBUG] Fetching summary from /data/summary.json");
   try {
     const response = await fetch("/data/summary.json");
     if (!response.ok) throw new Error("Failed to fetch summary");
-    return await response.json();
+    const data = await response.json();
+    console.log("[DEBUG] Fetched summary with", data.modules?.length || 0, "modules");
+    return data;
   } catch (e) {
     console.error("Error fetching summary:", e);
     return {
@@ -156,10 +165,12 @@ export interface AlertsData {
 }
 
 export const getLatestAlerts = async (): Promise<Alert[]> => {
+  console.log("[DEBUG] Fetching latest alerts from /data/latest-alerts.json");
   try {
     const response = await fetch("/data/latest-alerts.json");
     if (!response.ok) throw new Error("Failed to fetch alerts");
     const data: AlertsData = await response.json();
+    console.log("[DEBUG] Fetched", data.alerts?.length || 0, "latest alerts");
     return data.alerts || [];
   } catch (e) {
     console.error("Error fetching alerts:", e);
