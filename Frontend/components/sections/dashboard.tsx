@@ -2,26 +2,18 @@
 "use client";
 import { useEffect, useState } from "react";
 import { AlertTriangle, CheckCircle, XCircle, Clock, RefreshCw } from "lucide-react";
-import { getRandomTransactions, RandomTransaction, getExternalAgents, ExternalAgent } from "@/lib/api";
-
-// ── MOCK DATA for modules 2, 3, 4 ─────────────────────────────────────────────
-// TODO: Replace with real API responses when those modules are built
-
-// (Mock externalAgents removed in favor of live API integration)
-
-const textSamples = [
-  { id: "MSG-01", preview: "Swap 0.5 ETH to USDC at market rate.", score: 5,  label: "Clean" },
-  { id: "MSG-02", preview: "GUARANTEED 900% APY — act NOW before it's gone!", score: 96, label: "Manipulative" },
-  { id: "MSG-03", preview: "Rebalance portfolio per your defined strategy.", score: 11, label: "Clean" },
-  { id: "MSG-04", preview: "Last chance — high-yield opportunity expires in 60 seconds.", score: 88, label: "Manipulative" },
-];
-
-const amlAddresses = [
-  { address: "0xaB3f...221C", fanOut: "Low",       burst: "No",  mixer: "No",  score: 8,  label: "Clean" },
-  { address: "0x9f2A...88BD", fanOut: "High",      burst: "Yes", mixer: "No",  score: 62, label: "Suspicious" },
-  { address: "0xDEAD...BEEF", fanOut: "Very High", burst: "Yes", mixer: "Yes", score: 95, label: "High Risk" },
-  { address: "0x5544...33CC", fanOut: "Low",       burst: "No",  mixer: "No",  score: 14, label: "Clean" },
-];
+import {
+  getRandomTransactions,
+  RandomTransaction,
+  getExternalAgents,
+  ExternalAgent,
+  getPromptInjectionData,
+  TextItem,
+  getMoneyLaunderingData,
+  AMLItem,
+  getSummary,
+  Summary,
+} from "@/lib/api";
 
 
 
@@ -61,22 +53,39 @@ export const Dashboard = () => {
   const [loading, setLoading] = useState(true);
   const [apiOnline, setApiOnline] = useState(false);
 
-  // ── Fetch real scores from API on mount ──────────────────────────────────
+  // ── Fetch real data from JSON files ────────────────────────────────────────
   const [transactions, setTransactions] = useState<RandomTransaction[]>([]);
   const [agents, setAgents] = useState<ExternalAgent[]>([]);
+  const [textMessages, setTextMessages] = useState<TextItem[]>([]);
+  const [amlAddresses, setAmlAddresses] = useState<AMLItem[]>([]);
+  const [summary, setSummary] = useState<Summary | null>(null);
 
   const fetchScores = async () => {
     setLoading(true);
     try {
-      const results = await getRandomTransactions();
-      setTransactions(results);
-      
-      const agentResults = await getExternalAgents();
+      // Fetch all data in parallel
+      const [
+        txResults,
+        agentResults,
+        textResults,
+        amlResults,
+        summaryResults,
+      ] = await Promise.all([
+        getRandomTransactions(),
+        getExternalAgents(),
+        getPromptInjectionData(),
+        getMoneyLaunderingData(),
+        getSummary(),
+      ]);
+
+      setTransactions(txResults);
       setAgents(agentResults);
-      
+      setTextMessages(textResults);
+      setAmlAddresses(amlResults);
+      setSummary(summaryResults);
       setApiOnline(true);
     } catch (e) {
-      console.error("API not reachable", e);
+      console.error("Error fetching data", e);
       setApiOnline(false);
     } finally {
       setLoading(false);
@@ -95,9 +104,17 @@ export const Dashboard = () => {
 
   const manipulationAvg = agents.length > 0 
     ? Math.round(agents.reduce((a, b) => a + b.risk_score, 0) / agents.length)
-    : 74;
+    : 0;
 
-  const unifiedRiskScore = Math.round((anomalyAvg + manipulationAvg + 88 + 62) / 4);
+  const textAvg = textMessages.length > 0
+    ? Math.round(textMessages.reduce((a, b) => a + b.risk_score, 0) / textMessages.length)
+    : 0;
+
+  const amlAvg = amlAddresses.length > 0
+    ? Math.round(amlAddresses.reduce((a, b) => a + b.risk_score, 0) / amlAddresses.length)
+    : 0;
+
+  const unifiedRiskScore = Math.round((anomalyAvg + manipulationAvg + textAvg + amlAvg) / 4);
 
   return (
     <div style={{ position: "relative" }}>
@@ -147,8 +164,8 @@ export const Dashboard = () => {
               {[
                 { label: "Anomaly",      value: anomalyAvg },
                 { label: "Manipulation", value: manipulationAvg },
-                { label: "Text Risk",    value: 88 },
-                { label: "AML",          value: 62 },
+                { label: "Text Risk",    value: textAvg },
+                { label: "AML",          value: amlAvg },
               ].map(item => (
                 <div key={item.label} style={{ display: "flex", flexDirection: "column", gap: 8 }}>
                   <span style={{ fontSize: 10, color: "#475569", letterSpacing: "0.15em", textTransform: "uppercase" }}>{item.label}</span>
@@ -156,7 +173,7 @@ export const Dashboard = () => {
                     <div style={{ position: "absolute", top: 0, left: 0, height: "100%", width: `${item.value}%`, background: riskColor(item.value) }} />
                   </div>
                   <span style={{ fontSize: 12, fontFamily: "monospace", color: riskColor(item.value) }}>
-                    {(item.label === "Anomaly" || item.label === "Manipulation") ? (loading ? "..." : item.value) : item.value}
+                    {loading ? "..." : item.value}
                   </span>
                 </div>
               ))}
@@ -250,46 +267,58 @@ export const Dashboard = () => {
         {/* ── TEXT / PROMPT INJECTION ── */}
         <section>
           <SectionHeader label="Module 3" title="Prompt-Injection Detection" />
-          <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-            {textSamples.map(msg => (
-              <div key={msg.id} style={{ ...card, padding: "16px 24px", display: "flex", alignItems: "center", gap: 24 }}>
-                <span style={{ fontSize: 11, fontFamily: "monospace", color: "#334155", width: 64, flexShrink: 0 }}>{msg.id}</span>
-                <p style={{ flex: 1, fontSize: 13, color: "#94a3b8", fontWeight: 300, margin: 0 }}>{msg.preview}</p>
-                <span style={{ fontSize: 12, fontFamily: "monospace", color: riskColor(msg.score), flexShrink: 0 }}>{msg.score}</span>
-                <span style={{ fontSize: 10, letterSpacing: "0.1em", padding: "3px 8px", borderRadius: 2, border: `1px solid ${riskBorder(msg.score)}`, background: riskBg(msg.score), color: riskColor(msg.score), flexShrink: 0 }}>
-                  {msg.label}
-                </span>
-              </div>
-            ))}
-          </div>
+          {loading ? (
+            <div style={{ ...card, padding: 32, textAlign: "center", color: "#475569", fontSize: 12 }}>
+              Loading prompt injection data...
+            </div>
+          ) : (
+            <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+              {textMessages.map(msg => (
+                <div key={msg.id} style={{ ...card, padding: "16px 24px", display: "flex", alignItems: "center", gap: 24 }}>
+                  <span style={{ fontSize: 11, fontFamily: "monospace", color: "#334155", width: 64, flexShrink: 0 }}>{msg.id}</span>
+                  <p style={{ flex: 1, fontSize: 13, color: "#94a3b8", fontWeight: 300, margin: 0 }}>{msg.preview}</p>
+                  <span style={{ fontSize: 12, fontFamily: "monospace", color: riskColor(msg.risk_score), flexShrink: 0 }}>{msg.risk_score}</span>
+                  <span style={{ fontSize: 10, letterSpacing: "0.1em", padding: "3px 8px", borderRadius: 2, border: `1px solid ${riskBorder(msg.risk_score)}`, background: riskBg(msg.risk_score), color: riskColor(msg.risk_score), flexShrink: 0 }}>
+                    {msg.label}
+                  </span>
+                </div>
+              ))}
+            </div>
+          )}
         </section>
 
         {/* ── AML DETECTION ── */}
         <section>
           <SectionHeader label="Module 4" title="Money Laundering Detection" />
-          <div style={card}>
-            <table style={{ width: "100%", borderCollapse: "collapse" }}>
-              <thead>
-                <tr>{["Address", "Fan-Out", "Burst Activity", "Mixer Contact", "AML Score", "Label"].map(h => <th key={h} style={th}>{h}</th>)}</tr>
-              </thead>
-              <tbody>
-                {amlAddresses.map((row, i) => (
-                  <tr key={row.address} style={{ background: i % 2 === 0 ? "transparent" : "rgba(0,0,0,0.2)" }}>
-                    <td style={{ ...td, fontFamily: "monospace", color: "#64748b" }}>{row.address}</td>
-                    <td style={td}>{row.fanOut}</td>
-                    <td style={td}>{row.burst}</td>
-                    <td style={td}>{row.mixer}</td>
-                    <td style={{ ...td, color: riskColor(row.score), fontFamily: "monospace" }}>{row.score}</td>
-                    <td style={td}>
-                      <span style={{ fontSize: 10, letterSpacing: "0.1em", padding: "3px 8px", borderRadius: 2, border: `1px solid ${riskBorder(row.score)}`, background: riskBg(row.score), color: riskColor(row.score) }}>
-                        {row.label}
-                      </span>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          {loading ? (
+            <div style={{ ...card, padding: 32, textAlign: "center", color: "#475569", fontSize: 12 }}>
+              Loading AML data...
+            </div>
+          ) : (
+            <div style={card}>
+              <table style={{ width: "100%", borderCollapse: "collapse" }}>
+                <thead>
+                  <tr>{["Address", "Fan-Out", "Burst Activity", "Mixer Contact", "AML Score", "Label"].map(h => <th key={h} style={th}>{h}</th>)}</tr>
+                </thead>
+                <tbody>
+                  {amlAddresses.map((row, i) => (
+                    <tr key={row.address} style={{ background: i % 2 === 0 ? "transparent" : "rgba(0,0,0,0.2)" }}>
+                      <td style={{ ...td, fontFamily: "monospace", color: "#64748b" }}>{row.address}</td>
+                      <td style={td}>{row.fan_out}</td>
+                      <td style={td}>{row.burst_activity ? "Yes" : "No"}</td>
+                      <td style={td}>{row.mixer_contact ? "Yes" : "No"}</td>
+                      <td style={{ ...td, color: riskColor(row.risk_score), fontFamily: "monospace" }}>{row.risk_score}</td>
+                      <td style={td}>
+                        <span style={{ fontSize: 10, letterSpacing: "0.1em", padding: "3px 8px", borderRadius: 2, border: `1px solid ${riskBorder(row.risk_score)}`, background: riskBg(row.risk_score), color: riskColor(row.risk_score) }}>
+                          {row.label}
+                        </span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
         </section>
 
       </div>
