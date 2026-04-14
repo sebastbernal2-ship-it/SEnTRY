@@ -1,26 +1,86 @@
 {
-  "updated_at": "2026-04-13T22:00:00Z",
-  "new_alert_count": 2,
   "alerts": [
     {
-      "id": "aml-0xdeadbeef-20260413T215800Z",
-      "module": "money_laundering",
-      "title": "High-risk laundering pattern detected",
-      "description": "Address 0xDEAD...BEEF triggered high fan-out, burst activity, and mixer contact.",
-      "severity": "high",
-      "score": 95,
+      "description": "Transaction tx-0000 flagged as anomalous (score: 100.0)",
+      "id": "txm-tx-0000-20260414T024832Z",
       "label": "High Risk",
-      "timestamp": "2026-04-13T21:58:00Z"
+      "module": "transaction_anomaly",
+      "score": 100.0,
+      "severity": "high",
+      "timestamp": "2026-04-14T02:48:32Z",
+      "title": "Anomalous Transaction Behavior"
     },
     {
-      "id": "inj-msg-0002-20260413T215600Z",
-      "module": "prompt_injection",
-      "title": "Manipulative communication detected",
-      "description": "Message contains high-pressure urgency language and suspicious guarantees.",
+      "description": "Transaction tx-0001 flagged as anomalous (score: 100.0)",
+      "id": "txm-tx-0001-20260414T024832Z",
+      "label": "High Risk",
+      "module": "transaction_anomaly",
+      "score": 100.0,
       "severity": "high",
-      "score": 88,
-      "label": "Manipulative",
-      "timestamp": "2026-04-13T21:56:00Z"
+      "timestamp": "2026-04-14T02:48:32Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx-0002 flagged as anomalous (score: 100.0)",
+      "id": "txm-tx-0002-20260414T024832Z",
+      "label": "High Risk",
+      "module": "transaction_anomaly",
+      "score": 100.0,
+      "severity": "high",
+      "timestamp": "2026-04-14T02:48:32Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx-0003 flagged as anomalous (score: 100.0)",
+      "id": "txm-tx-0003-20260414T024832Z",
+      "label": "High Risk",
+      "module": "transaction_anomaly",
+      "score": 100.0,
+      "severity": "high",
+      "timestamp": "2026-04-14T02:48:32Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx-0004 flagged as anomalous (score: 100.0)",
+      "id": "txm-tx-0004-20260414T024832Z",
+      "label": "High Risk",
+      "module": "transaction_anomaly",
+      "score": 100.0,
+      "severity": "high",
+      "timestamp": "2026-04-14T02:48:32Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx-0005 flagged as anomalous (score: 100.0)",
+      "id": "txm-tx-0005-20260414T024832Z",
+      "label": "High Risk",
+      "module": "transaction_anomaly",
+      "score": 100.0,
+      "severity": "high",
+      "timestamp": "2026-04-14T02:48:32Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx-0006 flagged as anomalous (score: 100.0)",
+      "id": "txm-tx-0006-20260414T024832Z",
+      "label": "High Risk",
+      "module": "transaction_anomaly",
+      "score": 100.0,
+      "severity": "high",
+      "timestamp": "2026-04-14T02:48:32Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx-0007 flagged as anomalous (score: 100.0)",
+      "id": "txm-tx-0007-20260414T024832Z",
+      "label": "High Risk",
+      "module": "transaction_anomaly",
+      "score": 100.0,
+      "severity": "high",
+      "timestamp": "2026-04-14T02:48:32Z",
+      "title": "Anomalous Transaction Behavior"
     }
-  ]
+  ],
+  "new_alert_count": 8,
+  "updated_at": "2026-04-14T02:48:32Z"
 }

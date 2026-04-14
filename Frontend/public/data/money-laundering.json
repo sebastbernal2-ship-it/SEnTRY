@@ -1,46 +1,86 @@
 {
-  "module": "money_laundering",
-  "updated_at": "2026-04-13T22:00:00Z",
   "items": [
     {
-      "id": "addr-0000",
       "address": "0xaB3f...221C",
-      "fan_out": "Low",
       "burst_activity": false,
-      "mixer_contact": false,
-      "risk_score": 8,
+      "fan_out": "Low",
+      "id": "addr-0000",
       "label": "Clean",
+      "mixer_contact": false,
+      "risk_score": 2.0,
       "severity": "low"
     },
     {
-      "id": "addr-0001",
       "address": "0x9f2A...88BD",
+      "burst_activity": true,
       "fan_out": "High",
-      "burst_activity": true,
-      "mixer_contact": false,
-      "risk_score": 62,
-      "label": "Suspicious",
-      "severity": "medium"
-    },
-    {
-      "id": "addr-0002",
-      "address": "0xDEAD...BEEF",
-      "fan_out": "Very High",
-      "burst_activity": true,
-      "mixer_contact": true,
-      "risk_score": 95,
-      "label": "High Risk",
-      "severity": "high"
-    },
-    {
-      "id": "addr-0003",
-      "address": "0x5544...33CC",
-      "fan_out": "Low",
-      "burst_activity": false,
-      "mixer_contact": false,
-      "risk_score": 14,
+      "id": "addr-0001",
       "label": "Clean",
+      "mixer_contact": false,
+      "risk_score": 18.75,
+      "severity": "low"
+    },
+    {
+      "address": "0xDEAD...BEEF",
+      "burst_activity": true,
+      "fan_out": "Very High",
+      "id": "addr-0002",
+      "label": "Clean",
+      "mixer_contact": true,
+      "risk_score": 25.75,
+      "severity": "low"
+    },
+    {
+      "address": "0x5544...33CC",
+      "burst_activity": false,
+      "fan_out": "Low",
+      "id": "addr-0003",
+      "label": "Clean",
+      "mixer_contact": false,
+      "risk_score": 2.0,
+      "severity": "low"
+    },
+    {
+      "address": "0xABCD...1234",
+      "burst_activity": false,
+      "fan_out": "Medium",
+      "id": "addr-0004",
+      "label": "Clean",
+      "mixer_contact": false,
+      "risk_score": 6.0,
+      "severity": "low"
+    },
+    {
+      "address": "0x9999...FFFF",
+      "burst_activity": true,
+      "fan_out": "High",
+      "id": "addr-0005",
+      "label": "Clean",
+      "mixer_contact": false,
+      "risk_score": 18.75,
+      "severity": "low"
+    },
+    {
+      "address": "0xCCCC...DDDD",
+      "burst_activity": false,
+      "fan_out": "Low",
+      "id": "addr-0006",
+      "label": "Clean",
+      "mixer_contact": false,
+      "risk_score": 2.0,
+      "severity": "low"
+    },
+    {
+      "address": "0xEEEE...0000",
+      "burst_activity": true,
+      "fan_out": "Very High",
+      "id": "addr-0007",
+      "label": "Clean",
+      "mixer_contact": true,
+      "risk_score": 25.75,
       "severity": "low"
     }
-  ]
+  ],
+  "module": "money_laundering",
+  "updated_at": "2026-04-14T02:48:32Z"
 }

@@ -16,15 +16,15 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Dict, Any, List
 
-# Add scripts to path for imports
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+# Add project root to path (safe fallback)
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-from utils.io import read_json_file, write_json, get_utc_now, ensure_dir
-from utils.alerts import AlertDeduplicator, should_send_notification, format_alert_for_display
-from utils.notifications import send_notifications
-from modules.transaction_anomaly import TransactionAnomalyDetector
-from modules.prompt_injection import PromptInjectionDetector
-from modules.money_laundering import MoneyLaunderingDetector
+from scripts.utils.io import read_json_file, write_json, get_utc_now, ensure_dir
+from scripts.utils.alerts import AlertDeduplicator, should_send_notification, format_alert_for_display
+from scripts.utils.notifications import send_notifications
+from scripts.modules.transaction_anomaly import TransactionAnomalyDetector
+from scripts.modules.prompt_injection import PromptInjectionDetector
+from scripts.modules.money_laundering import MoneyLaunderingDetector
 
 
 # Configure logging

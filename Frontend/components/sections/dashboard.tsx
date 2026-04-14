@@ -3,10 +3,10 @@
 import { useEffect, useState } from "react";
 import { AlertTriangle, CheckCircle, XCircle, Clock, RefreshCw } from "lucide-react";
 import {
-  getRandomTransactions,
-  RandomTransaction,
-  getExternalAgents,
-  ExternalAgent,
+  getTransactionAnomalies,
+  AnomalyItem,
+  getLatestAlerts,
+  Alert,
   getPromptInjectionData,
   TextItem,
   getMoneyLaunderingData,
@@ -54,8 +54,8 @@ export const Dashboard = () => {
   const [apiOnline, setApiOnline] = useState(false);
 
   // ── Fetch real data from JSON files ────────────────────────────────────────
-  const [transactions, setTransactions] = useState<RandomTransaction[]>([]);
-  const [agents, setAgents] = useState<ExternalAgent[]>([]);
+  const [transactions, setTransactions] = useState<AnomalyItem[]>([]);
+  const [alerts, setAlerts] = useState<Alert[]>([]);
   const [textMessages, setTextMessages] = useState<TextItem[]>([]);
   const [amlAddresses, setAmlAddresses] = useState<AMLItem[]>([]);
   const [summary, setSummary] = useState<Summary | null>(null);
@@ -66,20 +66,20 @@ export const Dashboard = () => {
       // Fetch all data in parallel
       const [
         txResults,
-        agentResults,
+        alertResults,
         textResults,
         amlResults,
         summaryResults,
       ] = await Promise.all([
-        getRandomTransactions(),
-        getExternalAgents(),
+        getTransactionAnomalies(),
+        getLatestAlerts(),
         getPromptInjectionData(),
         getMoneyLaunderingData(),
         getSummary(),
       ]);
 
       setTransactions(txResults);
-      setAgents(agentResults);
+      setAlerts(alertResults);
       setTextMessages(textResults);
       setAmlAddresses(amlResults);
       setSummary(summaryResults);
@@ -102,8 +102,8 @@ export const Dashboard = () => {
     ? Math.round(transactions.reduce((a, b) => a + b.risk_score, 0) / transactions.length)
     : 0;
 
-  const manipulationAvg = agents.length > 0 
-    ? Math.round(agents.reduce((a, b) => a + b.risk_score, 0) / agents.length)
+  const manipulationAvg = alerts.length > 0
+    ? Math.round(alerts.reduce((a, b) => a + b.score, 0) / alerts.length)
     : 0;
 
   const textAvg = textMessages.length > 0
@@ -192,24 +192,24 @@ export const Dashboard = () => {
             <div style={card}>
               <table style={{ width: "100%", borderCollapse: "collapse" }}>
                 <thead>
-                  <tr>{["TX ID", "Token", "Amount", "Time", "Destination", "Risk Score", "Label"].map(h => <th key={h} style={th}>{h}</th>)}</tr>
+                  <tr>{["TX ID", "Token Type", "Amount", "Hour", "Gas Fee", "Risk Score", "Severity"].map(h => <th key={h} style={th}>{h}</th>)}</tr>
                 </thead>
                 <tbody>
                   {transactions.map((tx, i) => (
                     <tr key={tx.id} style={{ background: i % 2 === 0 ? "transparent" : "rgba(0,0,0,0.2)" }}>
                       <td style={{ ...td, fontFamily: "monospace", color: "#64748b" }}>{tx.id}</td>
-                      <td style={td}>{tx.token}</td>
+                      <td style={td}>{tx.token_type}</td>
                       <td style={td}>{tx.amount}</td>
                       <td style={{ ...td, display: "flex", alignItems: "center", gap: 4 }}>
                         <Clock size={11} color="#475569" />
-                        {tx.time}
+                        {tx.hour}:00
                       </td>
-                      <td style={{ ...td, fontFamily: "monospace", color: "#64748b" }}>{tx.destination}</td>
+                      <td style={{ ...td, fontFamily: "monospace", color: "#64748b" }}>{tx.gas_fee}</td>
                       <td style={{ ...td, color: riskColor(tx.risk_score), fontFamily: "monospace" }}>{tx.risk_score}</td>
                       <td style={td}>
                         <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-                          <StatusIcon status={tx.label} />
-                          <span style={{ textTransform: "capitalize" }}>{tx.label}</span>
+                          <StatusIcon status={tx.severity} />
+                          <span style={{ textTransform: "capitalize" }}>{tx.severity}</span>
                         </div>
                       </td>
                     </tr>
@@ -220,46 +220,41 @@ export const Dashboard = () => {
           )}
         </section>
 
-        {/* ── MANIPULATION SCORING ── */}
+        {/* ── ALERTS ── */}
         <section>
-          <SectionHeader label="Module 2" title="Behavior-Based Manipulation Scoring" />
+          <SectionHeader label="Module 2" title="Latest Alerts" />
           {loading ? (
             <div style={{ ...card, padding: 32, textAlign: "center", color: "#475569", fontSize: 12 }}>
-              Loading agents from API...
+              Loading alerts...
             </div>
           ) : (
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
-              {agents.map(agent => (
-                <div key={agent.agent_id} style={{ ...card, padding: 24, display: "flex", flexDirection: "column", gap: 16 }}>
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                    <span style={{ fontSize: 12, fontFamily: "monospace", color: "#94a3b8" }}>{agent.agent_id}</span>
-                    <span style={{ fontSize: 10, letterSpacing: "0.1em", padding: "3px 8px", borderRadius: 2, border: `1px solid ${riskBorder(agent.risk_score)}`, background: riskBg(agent.risk_score), color: riskColor(agent.risk_score) }}>
-                      {agent.label}
-                    </span>
-                  </div>
-                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 12 }}>
-                    {[
-                      ["Proposals", agent.metrics.frequency], 
-                      ["Avg Size", agent.metrics.avg_size.toFixed(2)], 
-                      ["Success", (agent.metrics.success_rate * 100).toFixed(0) + "%"]
-                    ].map(([k, v]) => (
-                      <div key={k as string} style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-                        <span style={{ fontSize: 10, color: "#475569", letterSpacing: "0.1em", textTransform: "uppercase" }}>{k}</span>
-                        <span style={{ fontSize: 12, color: "#cbd5e1" }}>{v}</span>
-                      </div>
-                    ))}
-                  </div>
-                  <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-                    <div style={{ display: "flex", justifyContent: "space-between" }}>
-                      <span style={{ fontSize: 10, color: "#475569", letterSpacing: "0.1em", textTransform: "uppercase" }}>Manipulation Score</span>
-                      <span style={{ fontSize: 12, fontFamily: "monospace", color: riskColor(agent.risk_score) }}>{agent.risk_score}</span>
-                    </div>
-                    <div style={{ height: 1, background: "#1e293b", position: "relative" }}>
-                      <div style={{ position: "absolute", top: 0, left: 0, height: "100%", width: `${agent.risk_score}%`, background: riskColor(agent.risk_score) }} />
-                    </div>
-                  </div>
-                </div>
-              ))}
+            <div style={{ ...card, overflow: "hidden" }}>
+              <table style={{ width: "100%", borderCollapse: "collapse" }}>
+                <thead>
+                  <tr>
+                    <th style={th}>Module</th>
+                    <th style={th}>Title</th>
+                    <th style={th}>Description</th>
+                    <th style={th}>Severity</th>
+                    <th style={th}>Score</th>
+                    <th style={th}>Time</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {alerts.slice(0, 10).map(alert => (
+                    <tr key={alert.id}>
+                      <td style={{ ...td, fontFamily: "monospace", color: "#64748b" }}>{alert.module}</td>
+                      <td style={td}>{alert.title}</td>
+                      <td style={td}>{alert.description}</td>
+                      <td style={{ ...td, color: riskColor(alert.score) }}>{alert.severity}</td>
+                      <td style={{ ...td, fontFamily: "monospace", color: riskColor(alert.score) }}>{alert.score}</td>
+                      <td style={{ ...td, fontFamily: "monospace", color: "#64748b" }}>
+                        {new Date(alert.timestamp).toLocaleTimeString()}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           )}
         </section>
