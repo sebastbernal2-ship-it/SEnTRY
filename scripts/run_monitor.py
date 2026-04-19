@@ -176,7 +176,7 @@ def run_monitor(
     Args:
         output_dir: Directory to write JSON files (e.g., Frontend/public/data)
         state_dir: Directory for state files (e.g., state/)
-        use_demo_data: If True, generate demo data. If False, would fetch real data.
+        use_demo_data: If True, generate demo data. If False, fetch real data from APIs.
     
     Returns:
         Summary of run results
@@ -185,6 +185,7 @@ def run_monitor(
     ensure_dir(state_dir)
     
     logger.info("Starting S.E.N.T.R.Y. monitoring pipeline...")
+    logger.info(f"Mode: {'DEMO DATA' if use_demo_data else 'REAL DATA'}")
     
     # Initialize modules
     anomaly_detector = TransactionAnomalyDetector(use_model=True)
@@ -195,18 +196,57 @@ def run_monitor(
     alert_state_file = os.path.join(state_dir, "already_alerted.json")
     deduplicator = AlertDeduplicator(alert_state_file)
     
-    # Generate or fetch data (demo mode for now)
+    # Generate or fetch data
     logger.info("Generating/fetching data...")
     
     if use_demo_data:
+        logger.info("Using demo/synthetic data...")
         anomaly_transactions = anomaly_detector.generate_demo_transactions(8)
         injection_messages = injection_detector.generate_demo_messages(8)
         aml_addresses = aml_detector.generate_demo_addresses(8)
     else:
-        # TODO: In production, fetch real data from APIs/databases
-        anomaly_transactions = []
-        injection_messages = []
-        aml_addresses = []
+        logger.info("Fetching real data from APIs...")
+        # Fetch real transaction data
+        try:
+            from Backend.data.ingest import fetch_eth_transfers, process_transfers, parse_demo_addresses
+            
+            # Get wallet address from environment
+            target_wallet = os.getenv("TARGET_WALLET_ADDRESS")
+            if not target_wallet:
+                logger.error("TARGET_WALLET_ADDRESS environment variable not set. Cannot fetch real data.")
+                logger.info("Falling back to demo data...")
+                anomaly_transactions = anomaly_detector.generate_demo_transactions(8)
+            else:
+                try:
+                    logger.info(f"Fetching transactions for {target_wallet}...")
+                    transfers = fetch_eth_transfers(target_wallet)
+                    processed = process_transfers(transfers)
+                    anomaly_transactions = [
+                        {
+                            "id": f"tx_{i}",
+                            "amount": row["amount"],
+                            "token_type": row["token_type"],
+                            "hour": row["hour"],
+                            "day_of_week": row["day_of_week"],
+                            "gas_fee": row["gas_fee"],
+                            "is_new_address": row["is_new_address"],
+                            "time_since_last_tx": row["time_since_last_tx"],
+                            "tx_frequency": row["tx_frequency"],
+                        }
+                        for i, row in enumerate(processed)
+                    ]
+                    logger.info(f"Fetched {len(anomaly_transactions)} real transactions")
+                except Exception as e:
+                    logger.error(f"Failed to fetch real data: {e}")
+                    logger.info("Falling back to demo data...")
+                    anomaly_transactions = anomaly_detector.generate_demo_transactions(8)
+        except ImportError:
+            logger.error("Could not import ingest module. Falling back to demo data...")
+            anomaly_transactions = anomaly_detector.generate_demo_transactions(8)
+        
+        # For now, always use demo data for injection and AML (no APIs available yet)
+        injection_messages = injection_detector.generate_demo_messages(8)
+        aml_addresses = aml_detector.generate_demo_addresses(8)
     
     # Score all items
     logger.info("Scoring items...")
@@ -326,10 +366,14 @@ def main():
     
     args = parser.parse_args()
     
+    # Check environment variable (takes precedence if set)
+    use_real_data_env = os.getenv("USE_REAL_DATA", "").lower() in ("true", "1", "yes")
+    use_real_data = args.use_real_data or use_real_data_env
+    
     result = run_monitor(
         output_dir=args.output_dir,
         state_dir=args.state_dir,
-        use_demo_data=not args.use_real_data,
+        use_demo_data=not use_real_data,
     )
     
     print(json.dumps(result, indent=2))
