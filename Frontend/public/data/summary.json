@@ -1,7 +1,7 @@
 {
   "modules": [
     {
-      "flagged_count": 8,
+      "flagged_count": 0,
       "key": "transaction_anomaly",
       "title": "Transaction Anomaly Detection",
       "total_count": 8
@@ -20,5 +20,5 @@
     }
   ],
   "scan_status": "ok",
-  "updated_at": "2026-04-14T02:48:32Z"
+  "updated_at": "2026-04-19T23:44:42Z"
 }
