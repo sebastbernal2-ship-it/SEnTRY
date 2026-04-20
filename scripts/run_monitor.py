@@ -319,6 +319,7 @@ def run_monitor(
                     logger.info(f"Fetching transactions for {target_wallet}...")
                     transfers = fetch_eth_transfers(target_wallet)
                     processed = process_transfers(transfers)
+                    processed_rows = processed.to_dict(orient="records")
                     anomaly_transactions = [
                         {
                             "id": f"tx_{i}",
@@ -331,7 +332,7 @@ def run_monitor(
                             "time_since_last_tx": row["time_since_last_tx"],
                             "tx_frequency": row["tx_frequency"],
                         }
-                        for i, row in enumerate(processed)
+                        for i, row in enumerate(processed_rows)
                     ]
                     logger.info(f"Fetched {len(anomaly_transactions)} real transactions")
                 except Exception as e:
