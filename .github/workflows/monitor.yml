@@ -29,7 +29,7 @@ jobs:
           pip install -r scripts/requirements-actions.txt
 
       - name: Restore anomaly model artifacts
-        if: ${{ env.ANOMALY_USE_MODEL == 'true' }}
+        if: ${{ env.ANOMALY_USE_MODEL == 'true' || env.ANOMALY_USE_MODEL == 'True' || env.ANOMALY_USE_MODEL == '1' || env.ANOMALY_USE_MODEL == 'yes' || env.ANOMALY_USE_MODEL == 'YES' }}
         env:
           ANOMALY_MODEL_URL: ${{ secrets.ANOMALY_MODEL_URL }}
           ANOMALY_SCALER_URL: ${{ secrets.ANOMALY_SCALER_URL }}
@@ -79,22 +79,35 @@ jobs:
           sha256sum Backend/data/saved_model.pth Backend/data/scaler.pkl
 
       - name: Validate anomaly artifacts
-        if: ${{ env.ANOMALY_USE_MODEL == 'true' }}
+        if: ${{ env.ANOMALY_USE_MODEL == 'true' || env.ANOMALY_USE_MODEL == 'True' || env.ANOMALY_USE_MODEL == '1' || env.ANOMALY_USE_MODEL == 'yes' || env.ANOMALY_USE_MODEL == 'YES' }}
         run: |
           python - <<'PY'
+          import importlib
           import pickle
           import sys
           import torch
-          import numpy.core as numpy_core
-
-          sys.modules.setdefault("numpy._core", numpy_core)
 
           checkpoint = torch.load("Backend/data/saved_model.pth", map_location="cpu")
           if not isinstance(checkpoint, dict) or "model_state_dict" not in checkpoint:
             raise RuntimeError("Invalid model checkpoint format")
 
-          with open("Backend/data/scaler.pkl", "rb") as f:
-            scaler = pickle.load(f)
+          def load_scaler_with_compat(path: str):
+            try:
+              with open(path, "rb") as f:
+                return pickle.load(f)
+            except ModuleNotFoundError as exc:
+              if exc.name != "numpy._core":
+                raise
+              numpy_core_pkg = importlib.import_module("numpy.core")
+              numpy_core_multiarray = importlib.import_module("numpy.core.multiarray")
+              numpy_core_numeric = importlib.import_module("numpy.core.numeric")
+              sys.modules.setdefault("numpy._core", numpy_core_pkg)
+              sys.modules.setdefault("numpy._core.multiarray", numpy_core_multiarray)
+              sys.modules.setdefault("numpy._core.numeric", numpy_core_numeric)
+              with open(path, "rb") as f:
+                return pickle.load(f)
+
+          scaler = load_scaler_with_compat("Backend/data/scaler.pkl")
 
           if not hasattr(scaler, "transform"):
             raise RuntimeError("Loaded scaler does not expose transform()")

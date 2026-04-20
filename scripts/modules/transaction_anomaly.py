@@ -5,6 +5,7 @@ Uses PyTorch Autoencoder for behavioral pattern detection.
 import os
 import sys
 import pickle
+import importlib
 import numpy as np
 import torch
 import random
@@ -96,17 +97,8 @@ class TransactionAnomalyDetector:
             self.model.load_state_dict(checkpoint['model_state_dict'])
             self.model.eval()
             
-            # Some pickled scaler artifacts reference numpy._core, while
-            # runtime environments expose numpy.core. Add a compatibility alias.
-            try:
-                import numpy.core as numpy_core  # type: ignore
-                sys.modules.setdefault("numpy._core", numpy_core)
-            except Exception:
-                pass
-
-            # Load scaler
-            with open(SCALER_PATH, 'rb') as f:
-                self.scaler = pickle.load(f)
+            # Load scaler with compatibility fallback for older pickle module paths.
+            self.scaler = self._load_scaler_with_compat(SCALER_PATH)
             
             print(f"[Anomaly] Model loaded - threshold: {self.threshold:.6f}")
         except Exception as e:
@@ -154,6 +146,31 @@ class TransactionAnomalyDetector:
             return header.startswith(b"\x80")
         except Exception:
             return False
+
+    @staticmethod
+    def _load_scaler_with_compat(path: str):
+        """Load scaler pickle with compatibility shim for numpy module path changes."""
+        try:
+            with open(path, 'rb') as f:
+                return pickle.load(f)
+        except ModuleNotFoundError as exc:
+            if exc.name != "numpy._core":
+                raise
+
+            print("[Anomaly] Applying numpy._core compatibility shim for scaler load.")
+
+            # Older pickles may reference numpy._core.* while this runtime exposes
+            # numpy.core.*. Register aliases for both package and common submodules.
+            numpy_core_pkg = importlib.import_module("numpy.core")
+            numpy_core_multiarray = importlib.import_module("numpy.core.multiarray")
+            numpy_core_numeric = importlib.import_module("numpy.core.numeric")
+
+            sys.modules.setdefault("numpy._core", numpy_core_pkg)
+            sys.modules.setdefault("numpy._core.multiarray", numpy_core_multiarray)
+            sys.modules.setdefault("numpy._core.numeric", numpy_core_numeric)
+
+            with open(path, 'rb') as f:
+                return pickle.load(f)
 
     def _extract_features(self, transaction: Dict[str, Any]) -> np.ndarray:
         """Extract and order features for model input."""
