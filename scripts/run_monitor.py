@@ -111,7 +111,7 @@ def generate_alerts(
     new_alerts = []
     
     # Check transaction anomalies
-    threshold = 70.0
+    threshold = 60.0
     for item in anomaly_items:
         score = item.get("risk_score", 0)
         if should_send_notification(score, threshold):

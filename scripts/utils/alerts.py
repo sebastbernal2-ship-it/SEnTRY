@@ -84,7 +84,7 @@ class AlertDeduplicator:
             self.save()
 
 
-def should_send_notification(score: float, severity_threshold: float = 70.0) -> bool:
+def should_send_notification(score: float, severity_threshold: float = 60.0) -> bool:
     """
     Determine if a score warrants notification.
     
