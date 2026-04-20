@@ -26,6 +26,29 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r scripts/requirements-actions.txt
 
+      - name: Restore anomaly model artifacts
+        env:
+          ANOMALY_MODEL_URL: ${{ secrets.ANOMALY_MODEL_URL }}
+          ANOMALY_SCALER_URL: ${{ secrets.ANOMALY_SCALER_URL }}
+        run: |
+          mkdir -p Backend/data
+
+          if [ -n "$ANOMALY_MODEL_URL" ]; then
+            echo "Downloading saved_model.pth..."
+            curl -fsSL "$ANOMALY_MODEL_URL" -o Backend/data/saved_model.pth
+          else
+            echo "ANOMALY_MODEL_URL not set; continuing without saved_model.pth"
+          fi
+
+          if [ -n "$ANOMALY_SCALER_URL" ]; then
+            echo "Downloading scaler.pkl..."
+            curl -fsSL "$ANOMALY_SCALER_URL" -o Backend/data/scaler.pkl
+          else
+            echo "ANOMALY_SCALER_URL not set; continuing without scaler.pkl"
+          fi
+
+          ls -lh Backend/data || true
+
       - name: Run monitoring pipeline
         env:
           # Data source configuration
