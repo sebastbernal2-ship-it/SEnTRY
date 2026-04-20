@@ -306,7 +306,7 @@ def run_monitor(
         logger.info("Fetching real data from APIs...")
         # Fetch real transaction data
         try:
-            from Backend.data.ingest import fetch_eth_transfers, process_transfers, parse_demo_addresses
+            from Backend.data.ingest import fetch_eth_transfers, process_transfers
             
             # Get wallet address from environment
             target_wallet = os.getenv("TARGET_WALLET_ADDRESS")
@@ -338,8 +338,8 @@ def run_monitor(
                     logger.error(f"Failed to fetch real data: {e}")
                     logger.info("Falling back to demo data...")
                     anomaly_transactions = anomaly_detector.generate_demo_transactions(8)
-        except ImportError:
-            logger.error("Could not import ingest module. Falling back to demo data...")
+        except ImportError as e:
+            logger.error(f"Could not import ingest module ({e}). Falling back to demo data...")
             anomaly_transactions = anomaly_detector.generate_demo_transactions(8)
         
         # For now, always use demo data for injection and AML (no APIs available yet)
