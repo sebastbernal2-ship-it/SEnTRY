@@ -1,13 +1,13 @@
 {
   "modules": [
     {
-      "flagged_count": 8,
+      "flagged_count": 0,
       "key": "transaction_anomaly",
       "title": "Transaction Anomaly Detection",
       "total_count": 8
     },
     {
-      "flagged_count": 7,
+      "flagged_count": 1,
       "key": "behavior_manipulation",
       "title": "Behavior Manipulation Scoring",
       "total_count": 8
@@ -26,5 +26,5 @@
     }
   ],
   "scan_status": "ok",
-  "updated_at": "2026-04-20T00:04:44Z"
+  "updated_at": "2026-04-20T00:15:03Z"
 }
