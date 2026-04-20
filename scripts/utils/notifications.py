@@ -187,6 +187,59 @@ class WebhookNotificationService:
         self.webhook_url = os.getenv("SENTRY_WEBHOOK_URL")
         self.enabled = bool(self.webhook_url)
 
+    def _is_discord_webhook(self) -> bool:
+        """Return True when webhook URL points to Discord."""
+        return bool(self.webhook_url and "discord.com/api/webhooks" in self.webhook_url)
+
+    def _discord_color(self, severity: str) -> int:
+        """Map severity to Discord embed color."""
+        mapping = {
+            "low": 0x00FF41,
+            "medium": 0xFACC15,
+            "high": 0xF87171,
+        }
+        return mapping.get((severity or "").lower(), 0x94A3B8)
+
+    def _discord_payload(self, alert: Dict[str, Any]) -> Dict[str, Any]:
+        """Build Discord-compatible webhook payload."""
+        severity = (alert.get("severity") or "unknown").upper()
+        score = alert.get("score", 0)
+        module = alert.get("module", "unknown")
+        label = alert.get("label", "Unknown")
+        timestamp = alert.get("timestamp")
+
+        return {
+            "username": "S.E.N.T.R.Y.",
+            "content": f"[{severity}] {alert.get('title', 'Alert')}",
+            "embeds": [
+                {
+                    "title": alert.get("title", "Alert"),
+                    "description": alert.get("description", "No description available."),
+                    "color": self._discord_color(alert.get("severity", "medium")),
+                    "fields": [
+                        {"name": "Module", "value": str(module), "inline": True},
+                        {"name": "Severity", "value": str(severity), "inline": True},
+                        {"name": "Score", "value": f"{score}/100", "inline": True},
+                        {"name": "Label", "value": str(label), "inline": True},
+                    ],
+                    "timestamp": timestamp,
+                }
+            ],
+        }
+
+    def _generic_payload(self, alert: Dict[str, Any]) -> Dict[str, Any]:
+        """Build generic JSON payload for non-Discord webhooks."""
+        return {
+            "alert_id": alert.get("id"),
+            "module": alert.get("module"),
+            "title": alert.get("title"),
+            "description": alert.get("description"),
+            "severity": alert.get("severity"),
+            "score": alert.get("score"),
+            "label": alert.get("label"),
+            "timestamp": alert.get("timestamp"),
+        }
+
     def send_alert_webhook(self, alert: Dict[str, Any]) -> bool:
         """
         Send alert to webhook.
@@ -204,17 +257,11 @@ class WebhookNotificationService:
         try:
             import requests
 
-            # Format as generic webhook payload
-            payload = {
-                "alert_id": alert.get("id"),
-                "module": alert.get("module"),
-                "title": alert.get("title"),
-                "description": alert.get("description"),
-                "severity": alert.get("severity"),
-                "score": alert.get("score"),
-                "label": alert.get("label"),
-                "timestamp": alert.get("timestamp"),
-            }
+            payload = (
+                self._discord_payload(alert)
+                if self._is_discord_webhook()
+                else self._generic_payload(alert)
+            )
 
             response = requests.post(
                 self.webhook_url,
