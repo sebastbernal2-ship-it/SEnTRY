@@ -70,6 +70,20 @@ class TransactionAnomalyDetector:
                 self.use_model = False
                 return
 
+            if not self._is_valid_model_file(MODEL_PATH):
+                print("[Anomaly] Invalid model artifact payload; using heuristic fallback scoring.")
+                self.model = None
+                self.scaler = None
+                self.use_model = False
+                return
+
+            if not self._is_valid_scaler_file(SCALER_PATH):
+                print("[Anomaly] Invalid scaler artifact payload; using heuristic fallback scoring.")
+                self.model = None
+                self.scaler = None
+                self.use_model = False
+                return
+
             print("[Anomaly] Loading PyTorch Autoencoder...")
             
             # Load checkpoint
@@ -100,6 +114,46 @@ class TransactionAnomalyDetector:
             self.model = None
             self.scaler = None
             self.use_model = False
+
+    @staticmethod
+    def _looks_like_text_payload(header: bytes) -> bool:
+        """Detect HTML/LFS/text payloads that indicate a bad artifact download."""
+        lowered = header.lower()
+        return (
+            lowered.startswith(b"<!doctype")
+            or lowered.startswith(b"<html")
+            or b"github" in lowered and b"not found" in lowered
+            or lowered.startswith(b"version https://git-lfs.github.com/spec")
+        )
+
+    @classmethod
+    def _is_valid_model_file(cls, path: str) -> bool:
+        """Validate model file header before attempting torch.load."""
+        try:
+            with open(path, "rb") as f:
+                header = f.read(256)
+            if len(header) == 0:
+                return False
+            if cls._looks_like_text_payload(header):
+                return False
+            # torch.save often creates a zip archive (PK) or pickle stream (0x80)
+            return header.startswith(b"PK") or header.startswith(b"\x80")
+        except Exception:
+            return False
+
+    @classmethod
+    def _is_valid_scaler_file(cls, path: str) -> bool:
+        """Validate scaler pickle header before attempting pickle.load."""
+        try:
+            with open(path, "rb") as f:
+                header = f.read(256)
+            if len(header) == 0:
+                return False
+            if cls._looks_like_text_payload(header):
+                return False
+            return header.startswith(b"\x80")
+        except Exception:
+            return False
 
     def _extract_features(self, transaction: Dict[str, Any]) -> np.ndarray:
         """Extract and order features for model input."""
