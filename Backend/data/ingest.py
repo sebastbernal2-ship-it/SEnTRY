@@ -52,7 +52,16 @@ def fetch_eth_transfers(wallet_address):
         result = response.json()
         if "result" not in result:
             raise Exception(f"Unexpected Alchemy response: {result}")
-        return result["result"].get("transfers", [])
+        # Safely handle result
+        transfers_data = result["result"]
+        if isinstance(transfers_data, str):
+            raise Exception(f"Alchemy returned string instead of object: {transfers_data}")
+        if not isinstance(transfers_data, dict):
+            raise Exception(f"Alchemy result is not a dict: {type(transfers_data)} = {transfers_data}")
+        transfers = transfers_data.get("transfers", [])
+        if not isinstance(transfers, list):
+            raise Exception(f"Transfers field is not a list: {type(transfers)} = {transfers}")
+        return transfers
 
     print(
         f"Fetching history for: {wallet_address} "
@@ -86,7 +95,7 @@ def process_transfers(transfers):
     """
     Transforms raw Alchemy transfers into the 8-feature schema.
     """
-    transfers.sort(key=lambda x: int(x["blockNum"], 16))
+    transfers.sort(key=lambda x: int(x.get("blockNum", "0x0"), 16))
     
     processed_data = []
     seen_destinations = set()
@@ -96,6 +105,17 @@ def process_transfers(transfers):
 
     for i, tx in enumerate(transfers):
         try:
+            # Validate required fields
+            if not isinstance(tx, dict):
+                print(f"  Warning: tx {i} is not a dict: {type(tx)}")
+                continue
+            if "metadata" not in tx or not isinstance(tx["metadata"], dict):
+                print(f"  Warning: tx {i} missing or invalid metadata field")
+                continue
+            if "blockTimestamp" not in tx["metadata"]:
+                print(f"  Warning: tx {i} missing blockTimestamp in metadata")
+                continue
+                
             value = float(tx.get("value", 0) or 0)
             to_addr = (tx.get("to") or "").lower()
             ts_str = tx["metadata"]["blockTimestamp"]
@@ -127,6 +147,8 @@ def process_transfers(transfers):
             
             recent_tx_count = 0
             for j in range(i-1, -1, -1):
+                if "metadata" not in transfers[j] or "blockTimestamp" not in transfers[j]["metadata"]:
+                    continue
                 prev_dt = datetime.fromisoformat(transfers[j]["metadata"]["blockTimestamp"].replace("Z", "+00:00"))
                 if current_ts - prev_dt.timestamp() <= 3600:
                     recent_tx_count += 1
@@ -146,7 +168,8 @@ def process_transfers(transfers):
                 "label":              0
             })
             
-        except Exception:
+        except Exception as e:
+            print(f"  Warning: Failed to process tx {i}: {e}")
             continue
             
     df = pd.DataFrame(processed_data)
