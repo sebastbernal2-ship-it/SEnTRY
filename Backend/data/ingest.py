@@ -18,39 +18,61 @@ ALCHEMY_URL     = f"https://{NETWORK}.g.alchemy.com/v2/{ALCHEMY_API_KEY}"
 
 def fetch_eth_transfers(wallet_address):
     """
-    Fetches native ETH transfers for the given wallet address using Alchemy.
+    Fetch native ETH transfers for the wallet address using Alchemy.
+
+    We query both outgoing (fromAddress) and incoming (toAddress) transfers
+    because some monitored wallets are mostly receivers.
     """
-    payload = {
-        "id": 1,
-        "jsonrpc": "2.0",
-        "method": "alchemy_getAssetTransfers",
-        "params": [
-            {
-                "fromAddress": wallet_address,
-                "category": ["external"],
-                "withMetadata": True,
-                "excludeZeroValue": False,
-                "maxCount": "0x3e8"
-            }
-        ]
-    }
-    
     headers = {
         "accept": "application/json",
         "content-type": "application/json"
     }
 
-    print(f"Fetching history for: {wallet_address}...")
-    response = requests.post(ALCHEMY_URL, json=payload, headers=headers)
-    
-    if response.status_code != 200:
-        raise Exception(f"Alchemy API error: {response.text}")
-    
-    result = response.json()
-    if "result" not in result:
-        raise Exception(f"Unexpected Alchemy response: {result}")
-        
-    return result["result"]["transfers"]
+    def _query(direction_key, direction_value, req_id):
+        payload = {
+            "id": req_id,
+            "jsonrpc": "2.0",
+            "method": "alchemy_getAssetTransfers",
+            "params": [
+                {
+                    direction_key: direction_value,
+                    "category": ["external"],
+                    "withMetadata": True,
+                    "excludeZeroValue": False,
+                    "maxCount": "0x3e8"
+                }
+            ]
+        }
+        response = requests.post(ALCHEMY_URL, json=payload, headers=headers)
+        if response.status_code != 200:
+            raise Exception(f"Alchemy API error: {response.text}")
+        result = response.json()
+        if "result" not in result:
+            raise Exception(f"Unexpected Alchemy response: {result}")
+        return result["result"].get("transfers", [])
+
+    print(f"Fetching history for: {wallet_address} (outgoing + incoming)...")
+    outgoing = _query("fromAddress", wallet_address, 1)
+    incoming = _query("toAddress", wallet_address, 2)
+
+    # Deduplicate by stable transfer identifiers when available.
+    seen = set()
+    combined = []
+    for tx in outgoing + incoming:
+        key = (
+            tx.get("hash"),
+            tx.get("uniqueId"),
+            tx.get("blockNum"),
+            tx.get("from"),
+            tx.get("to"),
+            tx.get("value"),
+        )
+        if key in seen:
+            continue
+        seen.add(key)
+        combined.append(tx)
+
+    return combined
 
 def process_transfers(transfers):
     """
@@ -66,8 +88,8 @@ def process_transfers(transfers):
 
     for i, tx in enumerate(transfers):
         try:
-            value = float(tx["value"])
-            to_addr = tx["to"].lower()
+            value = float(tx.get("value", 0) or 0)
+            to_addr = (tx.get("to") or "").lower()
             ts_str = tx["metadata"]["blockTimestamp"]
             dt = datetime.fromisoformat(ts_str.replace("Z", "+00:00"))
             current_ts = dt.timestamp()
