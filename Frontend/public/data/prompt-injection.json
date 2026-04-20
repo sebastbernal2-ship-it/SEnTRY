@@ -11,21 +11,13 @@
     {
       "id": "msg-0001",
       "label": "Clean",
-      "preview": "Don't miss out \u2014 everyone is making 500% returns TODAY!",
-      "risk_score": 8.0,
+      "preview": "Swap 0.5 ETH to USDC at market rate.",
+      "risk_score": 0.0,
       "severity": "low",
-      "text_preview": "Don't miss out \u2014 everyone is making 500% returns TODAY!"
+      "text_preview": "Swap 0.5 ETH to USDC at market rate."
     },
     {
       "id": "msg-0002",
-      "label": "Suspicious",
-      "preview": "GUARANTEED 900% APY \u2014 act NOW before it's gone!",
-      "risk_score": 47.0,
-      "severity": "medium",
-      "text_preview": "GUARANTEED 900% APY \u2014 act NOW before it's gone!"
-    },
-    {
-      "id": "msg-0003",
       "label": "Clean",
       "preview": "Last chance \u2014 high-yield opportunity expires in 60 seconds.",
       "risk_score": 22.0,
@@ -33,12 +25,20 @@
       "text_preview": "Last chance \u2014 high-yield opportunity expires in 60 seconds."
     },
     {
-      "id": "msg-0004",
+      "id": "msg-0003",
       "label": "Clean",
-      "preview": "IMMEDIATE ACTION REQUIRED \u2014 Limited spots available!!!",
+      "preview": "Set new take-profit at $2500 per unit sold.",
       "risk_score": 0.0,
       "severity": "low",
-      "text_preview": "IMMEDIATE ACTION REQUIRED \u2014 Limited spots available!!!"
+      "text_preview": "Set new take-profit at $2500 per unit sold."
+    },
+    {
+      "id": "msg-0004",
+      "label": "Clean",
+      "preview": "Rebalance portfolio per your defined strategy.",
+      "risk_score": 0.0,
+      "severity": "low",
+      "text_preview": "Rebalance portfolio per your defined strategy."
     },
     {
       "id": "msg-0005",
@@ -50,11 +50,11 @@
     },
     {
       "id": "msg-0006",
-      "label": "Clean",
-      "preview": "Execute swap with 0.2% slippage tolerance.",
-      "risk_score": 0.0,
-      "severity": "low",
-      "text_preview": "Execute swap with 0.2% slippage tolerance."
+      "label": "Suspicious",
+      "preview": "GUARANTEED 900% APY \u2014 act NOW before it's gone!",
+      "risk_score": 47.0,
+      "severity": "medium",
+      "text_preview": "GUARANTEED 900% APY \u2014 act NOW before it's gone!"
     },
     {
       "id": "msg-0007",
@@ -66,5 +66,5 @@
     }
   ],
   "module": "prompt_injection",
-  "updated_at": "2026-04-20T11:50:05Z"
+  "updated_at": "2026-04-20T13:05:12Z"
 }
