@@ -117,8 +117,9 @@ export const Dashboard = () => {
     : 0;
 
   const unifiedRiskScore = Math.round((anomalyAvg + manipulationAvg + textAvg + amlAvg) / 4);
-  const displayedTransactions = [...transactions]
-    .sort((a, b) => b.risk_score - a.risk_score)
+  const displayedTransactions = transactions
+    .slice(-MAX_ANOMALY_ROWS)
+    .reverse()
     .slice(0, MAX_ANOMALY_ROWS);
 
   return (
@@ -191,7 +192,7 @@ export const Dashboard = () => {
           <SectionHeader label="Module 1 — PyTorch Autoencoder" title="Anomaly Detection" />
           {!loading && (
             <p style={{ margin: "0 0 12px", color: "#64748b", fontSize: 11, letterSpacing: "0.08em", textTransform: "uppercase" }}>
-              Showing top {displayedTransactions.length} of {transactions.length} transactions by risk score
+              Showing latest {displayedTransactions.length} of {transactions.length} transactions
             </p>
           )}
           {loading ? (
