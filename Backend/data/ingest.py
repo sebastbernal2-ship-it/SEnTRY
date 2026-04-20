@@ -15,6 +15,9 @@ ALCHEMY_API_KEY = os.getenv("ALCHEMY_API_KEY")
 TARGET_WALLET   = os.getenv("TARGET_WALLET_ADDRESS")
 NETWORK         = os.getenv("ALCHEMY_NETWORK", "eth-mainnet")
 ALCHEMY_URL     = f"https://{NETWORK}.g.alchemy.com/v2/{ALCHEMY_API_KEY}"
+TRANSFER_CATEGORIES = [
+    c.strip() for c in os.getenv("ALCHEMY_TRANSFER_CATEGORIES", "external,erc20,internal").split(",") if c.strip()
+]
 
 def fetch_eth_transfers(wallet_address):
     """
@@ -36,7 +39,7 @@ def fetch_eth_transfers(wallet_address):
             "params": [
                 {
                     direction_key: direction_value,
-                    "category": ["external"],
+                    "category": TRANSFER_CATEGORIES,
                     "withMetadata": True,
                     "excludeZeroValue": False,
                     "maxCount": "0x3e8"
@@ -51,9 +54,14 @@ def fetch_eth_transfers(wallet_address):
             raise Exception(f"Unexpected Alchemy response: {result}")
         return result["result"].get("transfers", [])
 
-    print(f"Fetching history for: {wallet_address} (outgoing + incoming)...")
+    print(
+        f"Fetching history for: {wallet_address} "
+        f"(outgoing + incoming, categories={TRANSFER_CATEGORIES})..."
+    )
     outgoing = _query("fromAddress", wallet_address, 1)
     incoming = _query("toAddress", wallet_address, 2)
+
+    print(f"Raw transfer counts - outgoing: {len(outgoing)}, incoming: {len(incoming)}")
 
     # Deduplicate by stable transfer identifiers when available.
     seen = set()
@@ -95,7 +103,15 @@ def process_transfers(transfers):
             current_ts = dt.timestamp()
             
             amount = value
-            token_type = 0
+            asset = (tx.get("asset") or "ETH").upper()
+            if asset == "ETH":
+                token_type = 0
+            elif asset in ("USDC", "USDT"):
+                token_type = 1
+            elif asset in ("DAI", "WBTC"):
+                token_type = 2
+            else:
+                token_type = 3
             hour = dt.hour
             day_of_week = dt.weekday()
             gas_fee = 0.0005
@@ -130,10 +146,12 @@ def process_transfers(transfers):
                 "label":              0
             })
             
-        except Exception as e:
+        except Exception:
             continue
             
-    return pd.DataFrame(processed_data)
+    df = pd.DataFrame(processed_data)
+    print(f"Processed transactions retained: {len(df)}")
+    return df
 
 def save_real_data(df, path="data/transactions_real.csv"):
     os.makedirs(os.path.dirname(path), exist_ok=True)
