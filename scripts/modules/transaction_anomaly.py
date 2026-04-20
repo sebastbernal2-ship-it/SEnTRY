@@ -82,6 +82,14 @@ class TransactionAnomalyDetector:
             self.model.load_state_dict(checkpoint['model_state_dict'])
             self.model.eval()
             
+            # Some pickled scaler artifacts reference numpy._core, while
+            # runtime environments expose numpy.core. Add a compatibility alias.
+            try:
+                import numpy.core as numpy_core  # type: ignore
+                sys.modules.setdefault("numpy._core", numpy_core)
+            except Exception:
+                pass
+
             # Load scaler
             with open(SCALER_PATH, 'rb') as f:
                 self.scaler = pickle.load(f)
