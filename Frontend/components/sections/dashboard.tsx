@@ -51,7 +51,7 @@ const td: React.CSSProperties = {
 
 const TOP_RISK_ROWS = 10;
 const LATEST_ROWS = 10;
-const ALERT_THRESHOLD = 70;
+const ALERT_THRESHOLD = 60;
 
 export const Dashboard = () => {
   const [loading, setLoading] = useState(true);
