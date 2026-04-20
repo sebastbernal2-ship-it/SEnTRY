@@ -4,13 +4,13 @@
       "flagged_count": 0,
       "key": "transaction_anomaly",
       "title": "Transaction Anomaly Detection",
-      "total_count": 8
+      "total_count": 2000
     },
     {
-      "flagged_count": 1,
+      "flagged_count": 121,
       "key": "behavior_manipulation",
       "title": "Behavior Manipulation Scoring",
-      "total_count": 8
+      "total_count": 2000
     },
     {
       "flagged_count": 0,
@@ -26,5 +26,5 @@
     }
   ],
   "scan_status": "ok",
-  "updated_at": "2026-04-20T03:58:00Z"
+  "updated_at": "2026-04-20T04:02:33Z"
 }
