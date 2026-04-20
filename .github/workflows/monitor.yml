@@ -31,24 +31,74 @@ jobs:
         env:
           ANOMALY_MODEL_URL: ${{ secrets.ANOMALY_MODEL_URL }}
           ANOMALY_SCALER_URL: ${{ secrets.ANOMALY_SCALER_URL }}
+          GH_TOKEN: ${{ github.token }}
         run: |
           mkdir -p Backend/data
 
-          if [ -n "$ANOMALY_MODEL_URL" ]; then
-            echo "Downloading saved_model.pth..."
-            curl -fsSL "$ANOMALY_MODEL_URL" -o Backend/data/saved_model.pth
-          else
-            echo "ANOMALY_MODEL_URL not set; continuing without saved_model.pth"
+          if [ -z "$ANOMALY_MODEL_URL" ] || [ -z "$ANOMALY_SCALER_URL" ]; then
+            echo "ANOMALY_USE_MODEL is true but artifact URLs are missing."
+            exit 1
           fi
 
-          if [ -n "$ANOMALY_SCALER_URL" ]; then
-            echo "Downloading scaler.pkl..."
-            curl -fsSL "$ANOMALY_SCALER_URL" -o Backend/data/scaler.pkl
-          else
-            echo "ANOMALY_SCALER_URL not set; continuing without scaler.pkl"
-          fi
+          download_asset() {
+            local url="$1"
+            local dest="$2"
+            echo "Downloading $dest"
+            curl -fLsS --retry 3 \
+              -H "Authorization: Bearer $GH_TOKEN" \
+              -H "Accept: application/octet-stream" \
+              "$url" -o "$dest"
+          }
+
+          validate_binary_asset() {
+            local path="$1"
+            if [ ! -s "$path" ]; then
+              echo "Artifact $path is missing or empty"
+              return 1
+            fi
+            local header
+            header=$(head -c 256 "$path" | tr '\n' ' ' | tr '\r' ' ')
+            case "$header" in
+              *"<!DOCTYPE"*|*"<html"*|*"Not Found"*|*"git-lfs.github.com/spec"*)
+                echo "Artifact $path looks like HTML/LFS text, not a binary model file"
+                return 1
+                ;;
+            esac
+            return 0
+          }
+
+          download_asset "$ANOMALY_MODEL_URL" "Backend/data/saved_model.pth"
+          download_asset "$ANOMALY_SCALER_URL" "Backend/data/scaler.pkl"
+
+          validate_binary_asset "Backend/data/saved_model.pth"
+          validate_binary_asset "Backend/data/scaler.pkl"
 
           ls -lh Backend/data || true
+          sha256sum Backend/data/saved_model.pth Backend/data/scaler.pkl
+
+          - name: Validate anomaly artifacts
+          if: ${{ secrets.ANOMALY_USE_MODEL == 'true' }}
+          run: |
+            python - <<'PY'
+            import pickle
+            import sys
+            import torch
+            import numpy.core as numpy_core
+
+            sys.modules.setdefault("numpy._core", numpy_core)
+
+            checkpoint = torch.load("Backend/data/saved_model.pth", map_location="cpu")
+            if not isinstance(checkpoint, dict) or "model_state_dict" not in checkpoint:
+              raise RuntimeError("Invalid model checkpoint format")
+
+            with open("Backend/data/scaler.pkl", "rb") as f:
+              scaler = pickle.load(f)
+
+            if not hasattr(scaler, "transform"):
+              raise RuntimeError("Loaded scaler does not expose transform()")
+
+            print("Anomaly artifacts validated successfully")
+            PY
 
       - name: Run monitoring pipeline
         env:
