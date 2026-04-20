@@ -162,7 +162,8 @@ export const Dashboard = () => {
     }));
 
   const dedupedAlertMap = new Map<string, Alert>();
-  [...alerts, ...behaviorAlerts, ...transactionAlerts].forEach((alert) => {
+  const authoritativeAlerts = alerts.length > 0 ? alerts : [...behaviorAlerts, ...transactionAlerts];
+  authoritativeAlerts.forEach((alert) => {
     const key = `${alert.module}:${alert.description}`;
     if (!dedupedAlertMap.has(key)) {
       dedupedAlertMap.set(key, alert);
@@ -314,7 +315,7 @@ export const Dashboard = () => {
           <SectionHeader label="Module 2" title="Alert Feed (All Transactions)" />
           {!loading && (
             <p style={{ margin: "0 0 12px", color: "#64748b", fontSize: 11, letterSpacing: "0.08em", textTransform: "uppercase" }}>
-              Derived from full transaction set (risk score &gt;= {ALERT_THRESHOLD}) + pipeline alerts. Total matched: {combinedAlerts.length}
+              Source: backend latest-alerts feed (same source as webhook summary). Total matched: {combinedAlerts.length}
             </p>
           )}
           {loading ? (
