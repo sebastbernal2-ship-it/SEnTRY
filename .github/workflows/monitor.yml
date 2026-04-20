@@ -27,8 +27,9 @@ jobs:
           pip install -r scripts/requirements-actions.txt
 
       - name: Restore anomaly model artifacts
-        if: ${{ secrets.ANOMALY_USE_MODEL == 'true' }}
+        if: ${{ env.ANOMALY_USE_MODEL == 'true' }}
         env:
+          ANOMALY_USE_MODEL: ${{ secrets.ANOMALY_USE_MODEL || 'false' }}
           ANOMALY_MODEL_URL: ${{ secrets.ANOMALY_MODEL_URL }}
           ANOMALY_SCALER_URL: ${{ secrets.ANOMALY_SCALER_URL }}
           GH_TOKEN: ${{ github.token }}
@@ -76,29 +77,29 @@ jobs:
           ls -lh Backend/data || true
           sha256sum Backend/data/saved_model.pth Backend/data/scaler.pkl
 
-          - name: Validate anomaly artifacts
-          if: ${{ secrets.ANOMALY_USE_MODEL == 'true' }}
-          run: |
-            python - <<'PY'
-            import pickle
-            import sys
-            import torch
-            import numpy.core as numpy_core
+      - name: Validate anomaly artifacts
+        if: ${{ env.ANOMALY_USE_MODEL == 'true' }}
+        run: |
+          python - <<'PY'
+          import pickle
+          import sys
+          import torch
+          import numpy.core as numpy_core
 
-            sys.modules.setdefault("numpy._core", numpy_core)
+          sys.modules.setdefault("numpy._core", numpy_core)
 
-            checkpoint = torch.load("Backend/data/saved_model.pth", map_location="cpu")
-            if not isinstance(checkpoint, dict) or "model_state_dict" not in checkpoint:
-              raise RuntimeError("Invalid model checkpoint format")
+          checkpoint = torch.load("Backend/data/saved_model.pth", map_location="cpu")
+          if not isinstance(checkpoint, dict) or "model_state_dict" not in checkpoint:
+            raise RuntimeError("Invalid model checkpoint format")
 
-            with open("Backend/data/scaler.pkl", "rb") as f:
-              scaler = pickle.load(f)
+          with open("Backend/data/scaler.pkl", "rb") as f:
+            scaler = pickle.load(f)
 
-            if not hasattr(scaler, "transform"):
-              raise RuntimeError("Loaded scaler does not expose transform()")
+          if not hasattr(scaler, "transform"):
+            raise RuntimeError("Loaded scaler does not expose transform()")
 
-            print("Anomaly artifacts validated successfully")
-            PY
+          print("Anomaly artifacts validated successfully")
+          PY
 
       - name: Run monitoring pipeline
         env:
