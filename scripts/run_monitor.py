@@ -53,7 +53,7 @@ def compute_summary(
     Returns:
         Summary dict for frontend
     """
-    def count_flagged(items, threshold=70):
+    def count_flagged(items, threshold=80):
         return sum(1 for item in items if item.get("risk_score", 0) >= threshold)
     
     return {
@@ -111,7 +111,7 @@ def generate_alerts(
     new_alerts = []
     
     # Check transaction anomalies
-    threshold = 60.0
+    threshold = 80.0
     for item in anomaly_items:
         score = item.get("risk_score", 0)
         if should_send_notification(score, threshold):

@@ -51,7 +51,7 @@ const td: React.CSSProperties = {
 
 const TOP_RISK_ROWS = 10;
 const LATEST_ROWS = 10;
-const ALERT_THRESHOLD = 60;
+const ALERT_THRESHOLD = 80;
 
 export const Dashboard = () => {
   const [loading, setLoading] = useState(true);
@@ -190,8 +190,8 @@ export const Dashboard = () => {
             </div>
             <div style={{ display: "flex", gap: 24, fontSize: 11, letterSpacing: "0.1em" }}>
               <span style={{ color: "rgba(0,255,65,0.6)" }}>0–30 Auto-approve</span>
-              <span style={{ color: "rgba(250,204,21,0.6)" }}>30–70 Soft-block</span>
-              <span style={{ color: "rgba(248,113,113,0.6)" }}>70–100 Block + Alert</span>
+              <span style={{ color: "rgba(250,204,21,0.6)" }}>30–80 Soft-block</span>
+              <span style={{ color: "rgba(248,113,113,0.6)" }}>80–100 Block + Alert</span>
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 24, paddingTop: 24, borderTop: "1px solid #1e293b" }}>
               {[
