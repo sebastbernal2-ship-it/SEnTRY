@@ -4,6 +4,7 @@ Provides a clean interface for sending alerts via email and webhooks.
 """
 import os
 import logging
+import time
 from typing import List, Dict, Any, Optional
 
 
@@ -186,6 +187,10 @@ class WebhookNotificationService:
         """Initialize webhook service."""
         self.webhook_url = os.getenv("SENTRY_WEBHOOK_URL")
         self.enabled = bool(self.webhook_url)
+        self.timeout_seconds = float(os.getenv("SENTRY_WEBHOOK_TIMEOUT_SECONDS", "10"))
+        self.max_retries = int(os.getenv("SENTRY_WEBHOOK_MAX_RETRIES", "3"))
+        self.min_interval_seconds = float(os.getenv("SENTRY_WEBHOOK_MIN_INTERVAL_SECONDS", "0.35"))
+        self.base_retry_seconds = float(os.getenv("SENTRY_WEBHOOK_BASE_RETRY_SECONDS", "1.5"))
 
     def _is_discord_webhook(self) -> bool:
         """Return True when webhook URL points to Discord."""
@@ -240,6 +245,27 @@ class WebhookNotificationService:
             "timestamp": alert.get("timestamp"),
         }
 
+    @staticmethod
+    def _parse_retry_after_seconds(response: Any) -> Optional[float]:
+        """Extract Retry-After seconds from headers or JSON body when present."""
+        retry_after = response.headers.get("Retry-After")
+        if retry_after:
+            try:
+                return float(retry_after)
+            except ValueError:
+                pass
+
+        try:
+            payload = response.json()
+            value = payload.get("retry_after")
+            if value is None:
+                return None
+            # Discord may provide milliseconds in some responses.
+            value = float(value)
+            return value / 1000.0 if value > 100 else value
+        except Exception:
+            return None
+
     def send_alert_webhook(self, alert: Dict[str, Any]) -> bool:
         """
         Send alert to webhook.
@@ -263,18 +289,53 @@ class WebhookNotificationService:
                 else self._generic_payload(alert)
             )
 
-            response = requests.post(
-                self.webhook_url,
-                json=payload,
-                timeout=10,
-            )
-            response.raise_for_status()
+            for attempt in range(self.max_retries + 1):
+                response = requests.post(
+                    self.webhook_url,
+                    json=payload,
+                    timeout=self.timeout_seconds,
+                )
 
-            logger.info(f"Webhook alert sent to {self.webhook_url}")
-            return True
+                if response.status_code < 400:
+                    logger.info(f"Webhook alert sent to {self.webhook_url}")
+                    return True
+
+                if response.status_code == 429 and attempt < self.max_retries:
+                    retry_after = self._parse_retry_after_seconds(response)
+                    sleep_for = retry_after if retry_after is not None else self.base_retry_seconds * (2 ** attempt)
+                    sleep_for = max(0.25, sleep_for)
+                    logger.warning(
+                        f"Webhook rate-limited (429). Retrying in {sleep_for:.2f}s "
+                        f"(attempt {attempt + 1}/{self.max_retries})"
+                    )
+                    time.sleep(sleep_for)
+                    continue
+
+                if 500 <= response.status_code < 600 and attempt < self.max_retries:
+                    sleep_for = self.base_retry_seconds * (2 ** attempt)
+                    logger.warning(
+                        f"Webhook server error ({response.status_code}). Retrying in {sleep_for:.2f}s "
+                        f"(attempt {attempt + 1}/{self.max_retries})"
+                    )
+                    time.sleep(sleep_for)
+                    continue
+
+                response.raise_for_status()
+
+            return False
         except Exception as e:
             logger.error(f"Webhook send failed: {e}")
             return False
+
+    def send_batch_alerts(self, alerts: List[Dict[str, Any]]) -> int:
+        """Send multiple webhook alerts with pacing to reduce rate-limit failures."""
+        sent = 0
+        for index, alert in enumerate(alerts):
+            if self.send_alert_webhook(alert):
+                sent += 1
+            if index < len(alerts) - 1 and self.min_interval_seconds > 0:
+                time.sleep(self.min_interval_seconds)
+        return sent
 
 
 def send_notifications(
@@ -305,9 +366,14 @@ def send_notifications(
     if webhook_enabled:
         try:
             webhook_service = WebhookNotificationService()
-            for alert in alerts:
-                if webhook_service.send_alert_webhook(alert):
-                    result["webhook"] += 1
+            max_webhook_alerts = int(os.getenv("SENTRY_MAX_WEBHOOK_ALERTS", "50"))
+            alerts_for_webhook = alerts[:max_webhook_alerts] if max_webhook_alerts >= 0 else alerts
+            dropped_count = max(0, len(alerts) - len(alerts_for_webhook))
+            if dropped_count > 0:
+                logger.warning(
+                    f"Skipping {dropped_count} webhook alerts due to SENTRY_MAX_WEBHOOK_ALERTS={max_webhook_alerts}"
+                )
+            result["webhook"] = webhook_service.send_batch_alerts(alerts_for_webhook)
         except Exception as e:
             logger.error(f"Webhook service error: {e}")
 
