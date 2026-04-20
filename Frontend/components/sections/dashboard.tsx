@@ -49,6 +49,8 @@ const td: React.CSSProperties = {
   padding: "10px 16px", fontSize: 12, color: "#94a3b8", borderBottom: "1px solid rgba(30,41,59,0.4)",
 };
 
+const MAX_ANOMALY_ROWS = 20;
+
 export const Dashboard = () => {
   const [loading, setLoading] = useState(true);
   const [apiOnline, setApiOnline] = useState(false);
@@ -115,6 +117,9 @@ export const Dashboard = () => {
     : 0;
 
   const unifiedRiskScore = Math.round((anomalyAvg + manipulationAvg + textAvg + amlAvg) / 4);
+  const displayedTransactions = [...transactions]
+    .sort((a, b) => b.risk_score - a.risk_score)
+    .slice(0, MAX_ANOMALY_ROWS);
 
   return (
     <div style={{ position: "relative" }}>
@@ -184,6 +189,11 @@ export const Dashboard = () => {
         {/* ── ANOMALY DETECTION — REAL API DATA ── */}
         <section>
           <SectionHeader label="Module 1 — PyTorch Autoencoder" title="Anomaly Detection" />
+          {!loading && (
+            <p style={{ margin: "0 0 12px", color: "#64748b", fontSize: 11, letterSpacing: "0.08em", textTransform: "uppercase" }}>
+              Showing top {displayedTransactions.length} of {transactions.length} transactions by risk score
+            </p>
+          )}
           {loading ? (
             <div style={{ ...card, padding: 32, textAlign: "center", color: "#475569", fontSize: 12 }}>
               Loading scores from API...
@@ -195,7 +205,7 @@ export const Dashboard = () => {
                   <tr>{["TX ID", "Token Type", "Amount", "Hour", "Gas Fee", "Risk Score", "Severity"].map(h => <th key={h} style={th}>{h}</th>)}</tr>
                 </thead>
                 <tbody>
-                  {transactions.map((tx, i) => (
+                  {displayedTransactions.map((tx, i) => (
                     <tr key={tx.id} style={{ background: i % 2 === 0 ? "transparent" : "rgba(0,0,0,0.2)" }}>
                       <td style={{ ...td, fontFamily: "monospace", color: "#64748b" }}>{tx.id}</td>
                       <td style={td}>{tx.token_type}</td>
