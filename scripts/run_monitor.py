@@ -37,6 +37,7 @@ logger = logging.getLogger(__name__)
 
 def compute_summary(
     anomaly_items: List[Dict[str, Any]],
+    manipulation_items: List[Dict[str, Any]],
     injection_items: List[Dict[str, Any]],
     aml_items: List[Dict[str, Any]],
 ) -> Dict[str, Any]:
@@ -45,6 +46,7 @@ def compute_summary(
     
     Args:
         anomaly_items: Transaction anomaly results
+        manipulation_items: Behavior manipulation results
         injection_items: Prompt injection results
         aml_items: Money laundering results
     
@@ -65,6 +67,12 @@ def compute_summary(
                 "total_count": len(anomaly_items),
             },
             {
+                "key": "behavior_manipulation",
+                "title": "Behavior Manipulation Scoring",
+                "flagged_count": count_flagged(manipulation_items),
+                "total_count": len(manipulation_items),
+            },
+            {
                 "key": "prompt_injection",
                 "title": "Prompt Injection Detection",
                 "flagged_count": count_flagged(injection_items),
@@ -83,6 +91,7 @@ def compute_summary(
 def generate_alerts(
     deduplicator: AlertDeduplicator,
     anomaly_items: List[Dict[str, Any]],
+    manipulation_items: List[Dict[str, Any]],
     injection_items: List[Dict[str, Any]],
     aml_items: List[Dict[str, Any]],
 ) -> List[Dict[str, Any]]:
@@ -92,6 +101,7 @@ def generate_alerts(
     Args:
         deduplicator: Alert deduplication manager
         anomaly_items: Transaction anomaly results
+        manipulation_items: Behavior manipulation results
         injection_items: Prompt injection results
         aml_items: Money laundering results
     
@@ -121,6 +131,32 @@ def generate_alerts(
                 )
                 new_alerts.append(alert)
     
+    # Check prompt injection/manipulation
+    for item in manipulation_items:
+        score = item.get("risk_score", 0)
+        if should_send_notification(score, threshold):
+            entity_id = item.get("id", "unknown")
+            severity = item.get("severity", "high")
+
+            if deduplicator.is_new_alert("behavior_manipulation", entity_id, severity):
+                title = item.get("title", "Behavior Manipulation Risk Detected")
+                reasons = item.get("reason_codes", [])
+                description = f"Source {item.get('source_key', entity_id)} shows manipulative behavior (score: {score})"
+                if reasons:
+                    description = f"{description}. Factors: {', '.join(reasons)}"
+
+                alert = format_alert_for_display(
+                    alert_id=f"bhv-{entity_id}-{get_utc_now().replace(':', '').replace('-', '')}",
+                    module="behavior_manipulation",
+                    title=title,
+                    description=description,
+                    severity=severity,
+                    score=score,
+                    label=item.get("label", "Unknown"),
+                    timestamp=get_utc_now(),
+                )
+                new_alerts.append(alert)
+
     # Check prompt injection/manipulation
     for item in injection_items:
         score = item.get("risk_score", 0)
@@ -163,6 +199,68 @@ def generate_alerts(
                 new_alerts.append(alert)
     
     return new_alerts
+
+
+def compute_behavior_manipulation_scores(
+    anomaly_items: List[Dict[str, Any]],
+) -> List[Dict[str, Any]]:
+    """
+    Compute a lightweight Module 2 behavior risk from transaction behavior patterns.
+
+    This keeps Module 2 in the pipeline without requiring the standalone manipulation
+    API server and database to be running in GitHub Actions.
+    """
+    behavior_items: List[Dict[str, Any]] = []
+
+    for tx in anomaly_items:
+        tx_freq = float(tx.get("tx_frequency", 0) or 0)
+        amount = float(tx.get("amount", 0) or 0)
+        is_new_address = float(tx.get("is_new_address", 0) or 0)
+        time_since_last = float(tx.get("time_since_last_tx", 0) or 0)
+        anomaly_score = float(tx.get("risk_score", 0) or 0)
+
+        # Heuristic behavior score on a 0-100 scale.
+        score = (
+            min(65.0, anomaly_score * 0.6) +
+            min(20.0, tx_freq * 1.5) +
+            min(10.0, amount / 10.0) +
+            (10.0 if is_new_address >= 1 else 0.0) +
+            (10.0 if 0 < time_since_last < 60 else 0.0)
+        )
+        score = round(min(100.0, score), 2)
+
+        if score >= 70:
+            label = "High Risk"
+            severity = "high"
+        elif score >= 35:
+            label = "Suspicious"
+            severity = "medium"
+        else:
+            label = "Clean"
+            severity = "low"
+
+        reasons: List[str] = []
+        if tx_freq >= 8:
+            reasons.append("proposal frequency spike")
+        if amount >= 25:
+            reasons.append("unusually large proposal size")
+        if is_new_address >= 1:
+            reasons.append("new destination behavior")
+        if 0 < time_since_last < 60:
+            reasons.append("bursty repeated behavior")
+
+        behavior_items.append({
+            "id": f"src-{tx.get('id', 'unknown')}",
+            "source_key": tx.get("id", "unknown"),
+            "title": "Behavior Manipulation Risk Detected",
+            "risk_score": score,
+            "label": label,
+            "severity": severity,
+            "reason_codes": reasons,
+            "linked_transaction_id": tx.get("id"),
+        })
+
+    return behavior_items
 
 
 def run_monitor(
@@ -267,13 +365,16 @@ def run_monitor(
         score = aml_detector.score_address(addr)
         item = {**addr, **score}
         aml_scores.append(item)
+
+    # Compute behavior manipulation risk from transaction behavior.
+    manipulation_scores = compute_behavior_manipulation_scores(anomaly_scores)
     
     # Compute summary
-    summary = compute_summary(anomaly_scores, injection_scores, aml_scores)
+    summary = compute_summary(anomaly_scores, manipulation_scores, injection_scores, aml_scores)
     
     # Generate alerts
     logger.info("Generating alerts...")
-    new_alerts = generate_alerts(deduplicator, anomaly_scores, injection_scores, aml_scores)
+    new_alerts = generate_alerts(deduplicator, anomaly_scores, manipulation_scores, injection_scores, aml_scores)
     
     # Prepare output files
     logger.info(f"Writing output to {output_dir}...")
@@ -313,6 +414,15 @@ def run_monitor(
             "items": injection_scores,
         }
     )
+
+    write_json(
+        os.path.join(output_dir, "behavior-manipulation.json"),
+        {
+            "module": "behavior_manipulation",
+            "updated_at": get_utc_now(),
+            "items": manipulation_scores,
+        }
+    )
     
     write_json(
         os.path.join(output_dir, "money-laundering.json"),
@@ -337,6 +447,7 @@ def run_monitor(
         "status": "success",
         "new_alerts": len(new_alerts),
         "anomalies_scored": len(anomaly_scores),
+        "manipulation_scored": len(manipulation_scores),
         "messages_scored": len(injection_scores),
         "addresses_scored": len(aml_scores),
         "output_dir": output_dir,
