@@ -1,5 +1,3436 @@
 {
-  "alerts": [],
-  "new_alert_count": 0,
-  "updated_at": "2026-04-20T17:19:51Z"
+  "alerts": [
+    {
+      "description": "Transaction tx_64 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_64-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_67 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_67-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_68 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_68-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_79 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_79-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_83 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_83-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_103 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_103-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_113 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_113-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_131 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_131-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_142 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_142-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_158 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_158-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_178 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_178-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_182 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_182-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_191 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_191-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_192 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_192-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_212 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_212-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_248 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_248-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_285 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_285-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_315 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_315-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_320 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_320-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_331 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_331-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_363 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_363-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_366 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_366-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_379 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_379-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_394 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_394-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_422 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_422-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_430 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_430-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_436 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_436-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_446 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_446-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_460 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_460-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_470 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_470-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_474 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_474-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_496 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_496-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_503 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_503-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_508 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_508-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_513 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_513-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_569 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_569-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_597 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_597-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_625 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_625-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_626 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_626-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_639 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_639-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_644 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_644-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_645 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_645-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_661 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_661-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_683 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_683-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_716 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_716-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_738 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_738-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_753 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_753-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_790 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_790-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_845 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_845-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_865 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_865-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_869 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_869-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_871 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_871-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_883 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_883-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_956 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_956-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_983 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_983-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1061 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1061-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1081 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1081-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1113 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1113-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1121 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1121-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1163 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1163-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1173 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1173-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1180 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1180-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1221 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1221-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1242 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1242-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1260 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1260-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1264 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1264-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1360 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1360-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1361 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1361-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1385 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1385-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1399 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1399-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1408 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1408-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1409 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1409-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1459 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1459-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1529 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1529-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1536 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1536-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1542 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1542-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1557 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1557-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1568 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1568-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1581 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1581-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1605 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1605-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1626 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1626-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1631 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1631-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1633 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1633-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1651 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1651-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1654 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1654-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1669 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1669-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1673 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1673-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1674 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1674-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1694 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1694-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1699 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1699-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1729 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1729-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1734 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1734-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1736 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1736-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1739 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1739-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1742 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1742-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1751 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1751-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1756 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1756-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1758 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1758-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1774 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1774-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1777 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1777-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1786 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1786-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1800 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1800-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1804 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1804-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1806 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1806-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1808 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1808-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1827 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1827-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1830 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1830-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1837 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1837-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1853 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1853-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1865 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1865-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1867 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1867-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1902 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1902-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1905 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1905-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1907 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1907-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1919 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1919-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1938 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1938-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1960 flagged as anomalous (score: 60.0)",
+      "id": "txm-tx_1960-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "transaction_anomaly",
+      "score": 60.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Source tx_86 shows manipulative behavior (score: 64.03). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_86-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.03,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_92 shows manipulative behavior (score: 64.02). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_92-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.02,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_95 shows manipulative behavior (score: 64.41). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_95-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.41,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_112 shows manipulative behavior (score: 64.1). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_112-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.1,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_126 shows manipulative behavior (score: 64.09). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_126-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.09,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_132 shows manipulative behavior (score: 60.58). Factors: proposal frequency spike, new destination behavior",
+      "id": "bhv-src-tx_132-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 60.58,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_145 shows manipulative behavior (score: 64.31). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_145-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.31,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_149 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_149-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_150 shows manipulative behavior (score: 60.82). Factors: proposal frequency spike, new destination behavior",
+      "id": "bhv-src-tx_150-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 60.82,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_164 shows manipulative behavior (score: 64.02). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_164-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.02,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_168 shows manipulative behavior (score: 64.31). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_168-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.31,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_169 shows manipulative behavior (score: 60.5). Factors: proposal frequency spike, new destination behavior",
+      "id": "bhv-src-tx_169-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 60.5,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_174 shows manipulative behavior (score: 64.1). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_174-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.1,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_186 shows manipulative behavior (score: 60.52). Factors: proposal frequency spike, new destination behavior",
+      "id": "bhv-src-tx_186-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 60.52,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_220 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_220-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_221 shows manipulative behavior (score: 61.0). Factors: proposal frequency spike, new destination behavior",
+      "id": "bhv-src-tx_221-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 61.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_237 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_237-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_240 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_240-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_244 shows manipulative behavior (score: 64.15). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_244-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.15,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_256 shows manipulative behavior (score: 64.18). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_256-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.18,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_260 shows manipulative behavior (score: 64.13). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_260-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.13,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_268 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_268-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_282 shows manipulative behavior (score: 64.2). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_282-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.2,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_294 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_294-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_305 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_305-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_311 shows manipulative behavior (score: 64.1). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_311-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.1,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_314 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_314-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_315 shows manipulative behavior (score: 67.22). Factors: proposal frequency spike, new destination behavior",
+      "id": "bhv-src-tx_315-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.22,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_323 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_323-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_340 shows manipulative behavior (score: 64.41). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_340-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.41,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_345 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_345-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_351 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_351-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_356 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_356-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_379 shows manipulative behavior (score: 68.67). Factors: proposal frequency spike, unusually large proposal size, new destination behavior",
+      "id": "bhv-src-tx_379-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 68.67,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_389 shows manipulative behavior (score: 64.21). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_389-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.21,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_392 shows manipulative behavior (score: 64.2). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_392-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.2,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_405 shows manipulative behavior (score: 64.01). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_405-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.01,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_414 shows manipulative behavior (score: 64.1). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_414-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.1,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_422 shows manipulative behavior (score: 68.24). Factors: proposal frequency spike, new destination behavior",
+      "id": "bhv-src-tx_422-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 68.24,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_426 shows manipulative behavior (score: 64.11). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_426-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.11,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_435 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_435-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_436 shows manipulative behavior (score: 67.08). Factors: proposal frequency spike, new destination behavior",
+      "id": "bhv-src-tx_436-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.08,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_473 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_473-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_490 shows manipulative behavior (score: 64.0). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_490-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_502 shows manipulative behavior (score: 64.5). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_502-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.5,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_535 shows manipulative behavior (score: 64.04). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_535-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.04,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_552 shows manipulative behavior (score: 64.1). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_552-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.1,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_566 shows manipulative behavior (score: 64.36). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_566-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.36,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_573 shows manipulative behavior (score: 64.1). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_573-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.1,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_576 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_576-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_594 shows manipulative behavior (score: 64.0). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_594-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_606 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_606-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_610 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_610-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_616 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_616-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_624 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_624-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_668 shows manipulative behavior (score: 61.26). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_668-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 61.26,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_678 shows manipulative behavior (score: 64.3). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_678-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.3,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_691 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_691-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_694 shows manipulative behavior (score: 64.09). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_694-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.09,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_726 shows manipulative behavior (score: 64.08). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_726-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.08,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_735 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_735-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_763 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_763-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_781 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_781-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_788 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_788-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_814 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_814-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_820 shows manipulative behavior (score: 64.2). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_820-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.2,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_823 shows manipulative behavior (score: 64.01). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_823-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.01,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_832 shows manipulative behavior (score: 64.03). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_832-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.03,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_837 shows manipulative behavior (score: 64.03). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_837-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.03,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_853 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_853-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_856 shows manipulative behavior (score: 64.36). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_856-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.36,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_861 shows manipulative behavior (score: 64.2). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_861-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.2,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_887 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_887-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_902 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_902-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_914 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_914-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_917 shows manipulative behavior (score: 64.1). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_917-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.1,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_930 shows manipulative behavior (score: 64.01). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_930-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.01,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_938 shows manipulative behavior (score: 62.23). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_938-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 62.23,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_948 shows manipulative behavior (score: 64.28). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_948-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.28,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_961 shows manipulative behavior (score: 64.1). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_961-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.1,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_979 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_979-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1000 shows manipulative behavior (score: 64.46). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1000-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.46,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1007 shows manipulative behavior (score: 64.01). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1007-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.01,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1019 shows manipulative behavior (score: 64.39). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1019-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.39,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1044 shows manipulative behavior (score: 64.02). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1044-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.02,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1045 shows manipulative behavior (score: 60.59). Factors: proposal frequency spike, new destination behavior",
+      "id": "bhv-src-tx_1045-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 60.59,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1055 shows manipulative behavior (score: 64.01). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1055-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.01,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1073 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_1073-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1077 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_1077-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1094 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_1094-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1097 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_1097-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1105 shows manipulative behavior (score: 64.42). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1105-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.42,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1138 shows manipulative behavior (score: 64.02). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1138-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.02,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1149 shows manipulative behavior (score: 64.07). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1149-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.07,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1152 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_1152-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1156 shows manipulative behavior (score: 64.03). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1156-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.03,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1169 shows manipulative behavior (score: 64.21). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1169-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.21,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1187 shows manipulative behavior (score: 64.11). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1187-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.11,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1207 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_1207-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1218 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_1218-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1224 shows manipulative behavior (score: 64.15). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1224-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.15,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1227 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_1227-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1235 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_1235-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1252 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_1252-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1260 shows manipulative behavior (score: 67.96). Factors: proposal frequency spike, new destination behavior",
+      "id": "bhv-src-tx_1260-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.96,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1275 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_1275-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1286 shows manipulative behavior (score: 64.08). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1286-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.08,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1293 shows manipulative behavior (score: 64.01). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1293-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.01,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1300 shows manipulative behavior (score: 64.16). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1300-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.16,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1318 shows manipulative behavior (score: 60.7). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_1318-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 60.7,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1333 shows manipulative behavior (score: 64.13). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1333-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.13,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1339 shows manipulative behavior (score: 60.91). Factors: proposal frequency spike, new destination behavior",
+      "id": "bhv-src-tx_1339-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 60.91,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1369 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_1369-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1381 shows manipulative behavior (score: 64.16). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1381-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.16,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1393 shows manipulative behavior (score: 64.01). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1393-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.01,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1409 shows manipulative behavior (score: 67.87). Factors: proposal frequency spike, new destination behavior",
+      "id": "bhv-src-tx_1409-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.87,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1434 shows manipulative behavior (score: 64.38). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1434-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.38,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1455 shows manipulative behavior (score: 64.29). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1455-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.29,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1468 shows manipulative behavior (score: 60.63). Factors: proposal frequency spike, new destination behavior",
+      "id": "bhv-src-tx_1468-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 60.63,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1488 shows manipulative behavior (score: 64.1). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1488-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.1,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1500 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_1500-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1506 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_1506-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1507 shows manipulative behavior (score: 60.6). Factors: proposal frequency spike, new destination behavior",
+      "id": "bhv-src-tx_1507-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 60.6,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1514 shows manipulative behavior (score: 64.03). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1514-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.03,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1523 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_1523-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1525 shows manipulative behavior (score: 64.49). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1525-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.49,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1530 shows manipulative behavior (score: 60.97). Factors: proposal frequency spike, new destination behavior",
+      "id": "bhv-src-tx_1530-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 60.97,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1533 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_1533-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1536 shows manipulative behavior (score: 69.48). Factors: proposal frequency spike, unusually large proposal size, new destination behavior",
+      "id": "bhv-src-tx_1536-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 69.48,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1537 shows manipulative behavior (score: 64.19). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1537-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.19,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1544 shows manipulative behavior (score: 64.24). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1544-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.24,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1548 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_1548-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1549 shows manipulative behavior (score: 64.3). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1549-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.3,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1553 shows manipulative behavior (score: 64.15). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1553-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.15,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1574 shows manipulative behavior (score: 64.35). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1574-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.35,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1577 shows manipulative behavior (score: 64.09). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1577-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.09,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1586 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_1586-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1593 shows manipulative behavior (score: 64.03). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1593-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.03,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1597 shows manipulative behavior (score: 64.1). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1597-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.1,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1598 shows manipulative behavior (score: 60.59). Factors: proposal frequency spike, new destination behavior",
+      "id": "bhv-src-tx_1598-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 60.59,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1603 shows manipulative behavior (score: 64.4). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1603-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.4,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1610 shows manipulative behavior (score: 64.3). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1610-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.3,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1611 shows manipulative behavior (score: 64.03). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1611-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.03,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1613 shows manipulative behavior (score: 64.3). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1613-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.3,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1614 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_1614-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1620 shows manipulative behavior (score: 64.07). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1620-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.07,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1622 shows manipulative behavior (score: 64.18). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1622-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.18,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1623 shows manipulative behavior (score: 60.73). Factors: proposal frequency spike, new destination behavior",
+      "id": "bhv-src-tx_1623-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 60.73,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1633 shows manipulative behavior (score: 67.42). Factors: proposal frequency spike, new destination behavior",
+      "id": "bhv-src-tx_1633-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.42,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1635 shows manipulative behavior (score: 64.25). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1635-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.25,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1636 shows manipulative behavior (score: 64.37). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1636-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.37,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1637 shows manipulative behavior (score: 64.15). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1637-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.15,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1644 shows manipulative behavior (score: 64.01). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1644-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.01,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1647 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_1647-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1649 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_1649-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1652 shows manipulative behavior (score: 64.01). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1652-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.01,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1659 shows manipulative behavior (score: 64.24). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1659-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.24,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1662 shows manipulative behavior (score: 64.21). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1662-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.21,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1663 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_1663-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1671 shows manipulative behavior (score: 60.56). Factors: proposal frequency spike, new destination behavior",
+      "id": "bhv-src-tx_1671-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 60.56,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1682 shows manipulative behavior (score: 60.62). Factors: proposal frequency spike, new destination behavior",
+      "id": "bhv-src-tx_1682-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 60.62,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1685 shows manipulative behavior (score: 64.03). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1685-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.03,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1690 shows manipulative behavior (score: 64.03). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1690-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.03,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1695 shows manipulative behavior (score: 64.02). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1695-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.02,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1708 shows manipulative behavior (score: 64.24). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1708-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.24,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1710 shows manipulative behavior (score: 60.64). Factors: proposal frequency spike, new destination behavior",
+      "id": "bhv-src-tx_1710-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 60.64,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1712 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_1712-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1723 shows manipulative behavior (score: 64.2). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1723-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.2,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1730 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_1730-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1743 shows manipulative behavior (score: 64.05). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1743-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.05,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1747 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_1747-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1748 shows manipulative behavior (score: 64.32). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1748-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.32,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1750 shows manipulative behavior (score: 64.22). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1750-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.22,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1753 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_1753-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1754 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_1754-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1755 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_1755-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1758 shows manipulative behavior (score: 67.57). Factors: proposal frequency spike, new destination behavior",
+      "id": "bhv-src-tx_1758-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.57,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1759 shows manipulative behavior (score: 64.04). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1759-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.04,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1763 shows manipulative behavior (score: 64.42). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1763-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.42,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1765 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_1765-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1771 shows manipulative behavior (score: 64.03). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1771-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.03,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1775 shows manipulative behavior (score: 64.32). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1775-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.32,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1784 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_1784-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1797 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_1797-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1803 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_1803-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1805 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_1805-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1807 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_1807-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1809 shows manipulative behavior (score: 64.24). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1809-20260420T172437Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.24,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:37Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1815 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_1815-20260420T172438Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:38Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1816 shows manipulative behavior (score: 64.28). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1816-20260420T172438Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.28,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:38Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1817 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_1817-20260420T172438Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:38Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1823 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_1823-20260420T172438Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:38Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1827 shows manipulative behavior (score: 67.09). Factors: proposal frequency spike, new destination behavior",
+      "id": "bhv-src-tx_1827-20260420T172438Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.09,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:38Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1832 shows manipulative behavior (score: 64.04). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1832-20260420T172438Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.04,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:38Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1834 shows manipulative behavior (score: 64.03). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1834-20260420T172438Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.03,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:38Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1844 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_1844-20260420T172438Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:38Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1845 shows manipulative behavior (score: 64.04). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1845-20260420T172438Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.04,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:38Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1847 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_1847-20260420T172438Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:38Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1851 shows manipulative behavior (score: 64.1). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1851-20260420T172438Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.1,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:38Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1855 shows manipulative behavior (score: 64.15). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1855-20260420T172438Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.15,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:38Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1861 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_1861-20260420T172438Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:38Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1875 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_1875-20260420T172438Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:38Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1879 shows manipulative behavior (score: 64.12). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1879-20260420T172438Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.12,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:38Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1883 shows manipulative behavior (score: 64.5). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1883-20260420T172438Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.5,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:38Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1885 shows manipulative behavior (score: 64.22). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1885-20260420T172438Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.22,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:38Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1894 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_1894-20260420T172438Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:38Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1895 shows manipulative behavior (score: 64.02). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1895-20260420T172438Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.02,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:38Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1899 shows manipulative behavior (score: 64.02). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1899-20260420T172438Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.02,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:38Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1908 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_1908-20260420T172438Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:38Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1922 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_1922-20260420T172438Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:38Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1924 shows manipulative behavior (score: 60.56). Factors: proposal frequency spike, new destination behavior",
+      "id": "bhv-src-tx_1924-20260420T172438Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 60.56,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:38Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1926 shows manipulative behavior (score: 60.2). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_1926-20260420T172438Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 60.2,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:38Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1929 shows manipulative behavior (score: 64.18). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1929-20260420T172438Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.18,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:38Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1931 shows manipulative behavior (score: 64.0). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1931-20260420T172438Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:38Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1936 shows manipulative behavior (score: 64.03). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1936-20260420T172438Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.03,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:38Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1938 shows manipulative behavior (score: 67.02). Factors: proposal frequency spike, new destination behavior",
+      "id": "bhv-src-tx_1938-20260420T172438Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.02,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:38Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1939 shows manipulative behavior (score: 64.02). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1939-20260420T172438Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.02,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:38Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1963 shows manipulative behavior (score: 64.05). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1963-20260420T172438Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.05,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:38Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1967 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_1967-20260420T172438Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:38Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1972 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_1972-20260420T172438Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:38Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1975 shows manipulative behavior (score: 64.3). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1975-20260420T172438Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.3,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:38Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1977 shows manipulative behavior (score: 64.03). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1977-20260420T172438Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.03,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:38Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1989 shows manipulative behavior (score: 64.29). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
+      "id": "bhv-src-tx_1989-20260420T172438Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 64.29,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:38Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1991 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_1991-20260420T172438Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:38Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1995 shows manipulative behavior (score: 67.0). Factors: proposal frequency spike, unusually large proposal size, bursty repeated behavior",
+      "id": "bhv-src-tx_1995-20260420T172438Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 67.0,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:38Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Source tx_1998 shows manipulative behavior (score: 60.58). Factors: proposal frequency spike, new destination behavior",
+      "id": "bhv-src-tx_1998-20260420T172438Z",
+      "label": "Suspicious",
+      "module": "behavior_manipulation",
+      "score": 60.58,
+      "severity": "medium",
+      "timestamp": "2026-04-20T17:24:38Z",
+      "title": "Behavior Manipulation Risk Detected"
+    }
+  ],
+  "new_alert_count": 343,
+  "updated_at": "2026-04-20T17:24:38Z"
 }
