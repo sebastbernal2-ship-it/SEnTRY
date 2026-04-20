@@ -355,9 +355,9 @@ def run_monitor(
     
     # Score all items
     logger.info("Scoring items...")
+    anomaly_results = anomaly_detector.score_batch(anomaly_transactions)
     anomaly_scores = []
-    for tx in anomaly_transactions:
-        score = anomaly_detector.score_transaction(tx)
+    for tx, score in zip(anomaly_transactions, anomaly_results):
         item = {**tx, **score}
         anomaly_scores.append(item)
     

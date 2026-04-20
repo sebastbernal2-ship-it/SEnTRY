@@ -197,9 +197,33 @@ class TransactionAnomalyDetector:
 
     def _normalize_score(self, error: float) -> float:
         """Convert reconstruction error to 0-100 risk score."""
-        upper_bound = self.threshold * 10
-        score = (error / upper_bound) * 100
+        threshold = max(float(self.threshold), 1e-9)
+        ratio = max(float(error), 0.0) / threshold
+        # Smooth non-linear mapping to reduce saturation on out-of-distribution inputs.
+        score = 100.0 * (1.0 - np.exp(-ratio / 3.0))
         return float(min(max(score, 0.0), 100.0))
+
+    def _normalize_scores_batch(self, errors: np.ndarray) -> np.ndarray:
+        """Convert reconstruction errors to calibrated 0-100 scores for a batch."""
+        if errors.size == 0:
+            return np.array([], dtype=float)
+
+        threshold = max(float(self.threshold), 1e-9)
+        ratios = np.maximum(errors, 0.0) / threshold
+
+        if errors.size == 1:
+            return np.array([self._normalize_score(float(errors[0]))], dtype=float)
+
+        order = np.argsort(errors)
+        ranks = np.empty_like(order, dtype=float)
+        ranks[order] = np.arange(errors.size, dtype=float)
+        percentile_component = (ranks / max(errors.size - 1, 1)) * 60.0
+
+        # Add anomaly boost relative to model threshold, capped to keep spread meaningful.
+        threshold_boost = np.clip((ratios - 1.0) * 25.0, 0.0, 40.0)
+
+        scores = np.clip(percentile_component + threshold_boost, 0.0, 100.0)
+        return scores.astype(float)
 
     def _fallback_score(self, transaction: Dict[str, Any]) -> float:
         """
@@ -265,7 +289,37 @@ class TransactionAnomalyDetector:
 
     def score_batch(self, transactions: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         """Score multiple transactions."""
-        return [self.score_transaction(tx) for tx in transactions]
+        if not transactions:
+            return []
+
+        if not (self.use_model and self.model is not None and self.scaler is not None):
+            return [self.score_transaction(tx) for tx in transactions]
+
+        try:
+            features = np.vstack([self._extract_features(tx) for tx in transactions])
+            features_scaled = self.scaler.transform(features)
+
+            with torch.no_grad():
+                tensor = torch.FloatTensor(features_scaled)
+                outputs = self.model(tensor)
+                errors = torch.mean((outputs - tensor) ** 2, dim=1).cpu().numpy()
+
+            risk_scores = self._normalize_scores_batch(errors)
+
+            results = []
+            for tx, risk_score in zip(transactions, risk_scores):
+                label = score_to_label(risk_score)
+                severity = score_to_severity(risk_score)
+                results.append({
+                    "risk_score": round(float(risk_score), 2),
+                    "label": label,
+                    "severity": severity,
+                    "features_used": list(tx.keys()),
+                })
+            return results
+        except Exception as e:
+            print(f"[Anomaly] Batch model scoring failed: {e}. Falling back to per-transaction scoring.")
+            return [self.score_transaction(tx) for tx in transactions]
 
     def generate_demo_transactions(self, count: int = 10) -> List[Dict[str, Any]]:
         """

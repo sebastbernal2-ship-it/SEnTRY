@@ -245,6 +245,94 @@ class WebhookNotificationService:
             "timestamp": alert.get("timestamp"),
         }
 
+    def _summary_stats(self, alerts: List[Dict[str, Any]]) -> Dict[str, Any]:
+        """Build aggregate stats for a summary notification."""
+        severity_counts = {"high": 0, "medium": 0, "low": 0, "unknown": 0}
+        module_counts: Dict[str, int] = {}
+
+        for alert in alerts:
+            severity = str(alert.get("severity", "unknown")).lower()
+            if severity not in severity_counts:
+                severity = "unknown"
+            severity_counts[severity] += 1
+
+            module = str(alert.get("module", "unknown"))
+            module_counts[module] = module_counts.get(module, 0) + 1
+
+        top_alerts = sorted(
+            alerts,
+            key=lambda item: float(item.get("score", 0) or 0),
+            reverse=True,
+        )[:5]
+
+        return {
+            "severity_counts": severity_counts,
+            "module_counts": module_counts,
+            "top_alerts": top_alerts,
+        }
+
+    def _discord_summary_payload(self, alerts: List[Dict[str, Any]]) -> Dict[str, Any]:
+        """Build a single Discord summary message for a batch of alerts."""
+        stats = self._summary_stats(alerts)
+        sev = stats["severity_counts"]
+        modules = stats["module_counts"]
+        top_alerts = stats["top_alerts"]
+
+        module_summary = "\n".join(
+            f"- {name}: {count}" for name, count in sorted(modules.items(), key=lambda kv: kv[1], reverse=True)
+        ) or "- none"
+
+        top_summary = "\n".join(
+            f"- {alert.get('module', 'unknown')} | {float(alert.get('score', 0) or 0):.2f} | {alert.get('title', 'Alert')}"
+            for alert in top_alerts
+        ) or "- none"
+
+        highest = max((float(alert.get("score", 0) or 0) for alert in alerts), default=0.0)
+        color = self._discord_color("high" if highest >= 80 else "medium" if highest >= 40 else "low")
+
+        return {
+            "username": "S.E.N.T.R.Y.",
+            "content": f"[SUMMARY] {len(alerts)} alerts detected in this run",
+            "embeds": [
+                {
+                    "title": "S.E.N.T.R.Y. Alert Summary",
+                    "description": "Single-run digest of newly generated alerts.",
+                    "color": color,
+                    "fields": [
+                        {
+                            "name": "Severity Totals",
+                            "value": f"High: {sev['high']} | Medium: {sev['medium']} | Low: {sev['low']} | Unknown: {sev['unknown']}",
+                            "inline": False,
+                        },
+                        {"name": "Modules", "value": module_summary[:1024], "inline": False},
+                        {"name": "Top Alerts (by score)", "value": top_summary[:1024], "inline": False},
+                    ],
+                    "timestamp": alerts[0].get("timestamp") if alerts else None,
+                }
+            ],
+        }
+
+    def _generic_summary_payload(self, alerts: List[Dict[str, Any]]) -> Dict[str, Any]:
+        """Build a single generic JSON summary payload for non-Discord webhooks."""
+        stats = self._summary_stats(alerts)
+        return {
+            "event": "sentry_alert_summary",
+            "alert_count": len(alerts),
+            "severity_counts": stats["severity_counts"],
+            "module_counts": stats["module_counts"],
+            "top_alerts": [
+                {
+                    "id": alert.get("id"),
+                    "module": alert.get("module"),
+                    "title": alert.get("title"),
+                    "severity": alert.get("severity"),
+                    "score": alert.get("score"),
+                    "timestamp": alert.get("timestamp"),
+                }
+                for alert in stats["top_alerts"]
+            ],
+        }
+
     @staticmethod
     def _parse_retry_after_seconds(response: Any) -> Optional[float]:
         """Extract Retry-After seconds from headers or JSON body when present."""
@@ -337,6 +425,62 @@ class WebhookNotificationService:
                 time.sleep(self.min_interval_seconds)
         return sent
 
+    def send_summary_webhook(self, alerts: List[Dict[str, Any]]) -> bool:
+        """Send a single summary webhook message for all alerts in this run."""
+        if not self.enabled:
+            logger.debug("Webhook notifications disabled")
+            return False
+        if not alerts:
+            logger.debug("No alerts to summarize")
+            return False
+
+        try:
+            import requests
+
+            payload = (
+                self._discord_summary_payload(alerts)
+                if self._is_discord_webhook()
+                else self._generic_summary_payload(alerts)
+            )
+
+            for attempt in range(self.max_retries + 1):
+                response = requests.post(
+                    self.webhook_url,
+                    json=payload,
+                    timeout=self.timeout_seconds,
+                )
+
+                if response.status_code < 400:
+                    logger.info(f"Webhook summary sent to {self.webhook_url}")
+                    return True
+
+                if response.status_code == 429 and attempt < self.max_retries:
+                    retry_after = self._parse_retry_after_seconds(response)
+                    sleep_for = retry_after if retry_after is not None else self.base_retry_seconds * (2 ** attempt)
+                    sleep_for = max(0.25, sleep_for)
+                    logger.warning(
+                        f"Webhook summary rate-limited (429). Retrying in {sleep_for:.2f}s "
+                        f"(attempt {attempt + 1}/{self.max_retries})"
+                    )
+                    time.sleep(sleep_for)
+                    continue
+
+                if 500 <= response.status_code < 600 and attempt < self.max_retries:
+                    sleep_for = self.base_retry_seconds * (2 ** attempt)
+                    logger.warning(
+                        f"Webhook summary server error ({response.status_code}). Retrying in {sleep_for:.2f}s "
+                        f"(attempt {attempt + 1}/{self.max_retries})"
+                    )
+                    time.sleep(sleep_for)
+                    continue
+
+                response.raise_for_status()
+
+            return False
+        except Exception as e:
+            logger.error(f"Webhook summary send failed: {e}")
+            return False
+
 
 def send_notifications(
     alerts: List[Dict[str, Any]],
@@ -373,7 +517,7 @@ def send_notifications(
                 logger.warning(
                     f"Skipping {dropped_count} webhook alerts due to SENTRY_MAX_WEBHOOK_ALERTS={max_webhook_alerts}"
                 )
-            result["webhook"] = webhook_service.send_batch_alerts(alerts_for_webhook)
+            result["webhook"] = 1 if webhook_service.send_summary_webhook(alerts_for_webhook) else 0
         except Exception as e:
             logger.error(f"Webhook service error: {e}")
 
