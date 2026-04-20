@@ -27,6 +27,7 @@ jobs:
           pip install -r scripts/requirements-actions.txt
 
       - name: Restore anomaly model artifacts
+        if: ${{ secrets.ANOMALY_USE_MODEL == 'true' }}
         env:
           ANOMALY_MODEL_URL: ${{ secrets.ANOMALY_MODEL_URL }}
           ANOMALY_SCALER_URL: ${{ secrets.ANOMALY_SCALER_URL }}
@@ -53,6 +54,7 @@ jobs:
         env:
           # Data source configuration
           USE_REAL_DATA: ${{ secrets.USE_REAL_DATA || 'false' }}
+          ANOMALY_USE_MODEL: ${{ secrets.ANOMALY_USE_MODEL || 'false' }}
           
           # Real data APIs
           ALCHEMY_API_KEY: ${{ secrets.ALCHEMY_API_KEY }}

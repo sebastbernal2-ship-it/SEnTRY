@@ -284,9 +284,15 @@ def run_monitor(
     
     logger.info("Starting S.E.N.T.R.Y. monitoring pipeline...")
     logger.info(f"Mode: {'DEMO DATA' if use_demo_data else 'REAL DATA'}")
+
+    # In CI, keep anomaly model loading opt-in to avoid native crashes from
+    # incompatible artifacts/libraries. Locally, default to enabled.
+    default_anomaly_model = "false" if os.getenv("GITHUB_ACTIONS", "").lower() == "true" else "true"
+    anomaly_use_model = os.getenv("ANOMALY_USE_MODEL", default_anomaly_model).lower() in ("true", "1", "yes")
+    logger.info(f"Anomaly model enabled: {anomaly_use_model}")
     
     # Initialize modules
-    anomaly_detector = TransactionAnomalyDetector(use_model=True)
+    anomaly_detector = TransactionAnomalyDetector(use_model=anomaly_use_model)
     injection_detector = PromptInjectionDetector()
     aml_detector = MoneyLaunderingDetector()
     
