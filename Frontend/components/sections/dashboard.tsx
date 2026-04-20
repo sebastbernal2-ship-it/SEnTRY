@@ -49,7 +49,9 @@ const td: React.CSSProperties = {
   padding: "10px 16px", fontSize: 12, color: "#94a3b8", borderBottom: "1px solid rgba(30,41,59,0.4)",
 };
 
-const MAX_ANOMALY_ROWS = 20;
+const TOP_RISK_ROWS = 10;
+const LATEST_ROWS = 10;
+const ALERT_THRESHOLD = 70;
 
 export const Dashboard = () => {
   const [loading, setLoading] = useState(true);
@@ -117,10 +119,35 @@ export const Dashboard = () => {
     : 0;
 
   const unifiedRiskScore = Math.round((anomalyAvg + manipulationAvg + textAvg + amlAvg) / 4);
-  const displayedTransactions = transactions
-    .slice(-MAX_ANOMALY_ROWS)
+  const topRiskTransactions = [...transactions]
+    .sort((a, b) => b.risk_score - a.risk_score)
+    .slice(0, TOP_RISK_ROWS);
+  const latestTransactions = transactions
+    .slice(-LATEST_ROWS)
     .reverse()
-    .slice(0, MAX_ANOMALY_ROWS);
+    .slice(0, LATEST_ROWS);
+
+  const transactionAlerts: Alert[] = transactions
+    .filter((tx) => tx.risk_score >= ALERT_THRESHOLD)
+    .map((tx) => ({
+      id: `tx-alert-${tx.id}`,
+      module: "transaction_anomaly",
+      title: "Anomalous Transaction Behavior",
+      description: `Transaction ${tx.id} flagged as anomalous (score: ${tx.risk_score})`,
+      severity: tx.severity,
+      score: tx.risk_score,
+      label: tx.label,
+      timestamp: summary?.updated_at || new Date().toISOString(),
+    }));
+
+  const dedupedAlertMap = new Map<string, Alert>();
+  [...alerts, ...transactionAlerts].forEach((alert) => {
+    const key = `${alert.module}:${alert.description}`;
+    if (!dedupedAlertMap.has(key)) {
+      dedupedAlertMap.set(key, alert);
+    }
+  });
+  const combinedAlerts = [...dedupedAlertMap.values()].sort((a, b) => b.score - a.score);
 
   return (
     <div style={{ position: "relative" }}>
@@ -192,7 +219,7 @@ export const Dashboard = () => {
           <SectionHeader label="Module 1 — PyTorch Autoencoder" title="Anomaly Detection" />
           {!loading && (
             <p style={{ margin: "0 0 12px", color: "#64748b", fontSize: 11, letterSpacing: "0.08em", textTransform: "uppercase" }}>
-              Showing latest {displayedTransactions.length} of {transactions.length} transactions
+              Showing top {topRiskTransactions.length} highest risk and latest {latestTransactions.length} transactions
             </p>
           )}
           {loading ? (
@@ -200,40 +227,73 @@ export const Dashboard = () => {
               Loading scores from API...
             </div>
           ) : (
-            <div style={card}>
-              <table style={{ width: "100%", borderCollapse: "collapse" }}>
-                <thead>
-                  <tr>{["TX ID", "Token Type", "Amount", "Hour", "Gas Fee", "Risk Score", "Severity"].map(h => <th key={h} style={th}>{h}</th>)}</tr>
-                </thead>
-                <tbody>
-                  {displayedTransactions.map((tx, i) => (
-                    <tr key={tx.id} style={{ background: i % 2 === 0 ? "transparent" : "rgba(0,0,0,0.2)" }}>
-                      <td style={{ ...td, fontFamily: "monospace", color: "#64748b" }}>{tx.id}</td>
-                      <td style={td}>{tx.token_type}</td>
-                      <td style={td}>{tx.amount}</td>
-                      <td style={{ ...td, display: "flex", alignItems: "center", gap: 4 }}>
-                        <Clock size={11} color="#475569" />
-                        {tx.hour}:00
-                      </td>
-                      <td style={{ ...td, fontFamily: "monospace", color: "#64748b" }}>{tx.gas_fee}</td>
-                      <td style={{ ...td, color: riskColor(tx.risk_score), fontFamily: "monospace" }}>{tx.risk_score}</td>
-                      <td style={td}>
-                        <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-                          <StatusIcon status={tx.severity} />
-                          <span style={{ textTransform: "capitalize" }}>{tx.severity}</span>
-                        </div>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(420px, 1fr))", gap: 16 }}>
+              <div style={card}>
+                <div style={{ padding: "10px 16px", borderBottom: "1px solid #1e293b", color: "#f87171", fontSize: 10, letterSpacing: "0.15em", textTransform: "uppercase" }}>
+                  Top 10 Highest Risk
+                </div>
+                <table style={{ width: "100%", borderCollapse: "collapse" }}>
+                  <thead>
+                    <tr>{["TX ID", "Amount", "Hour", "Risk Score", "Severity"].map(h => <th key={h} style={th}>{h}</th>)}</tr>
+                  </thead>
+                  <tbody>
+                    {topRiskTransactions.map((tx, i) => (
+                      <tr key={`risk-${tx.id}`} style={{ background: i % 2 === 0 ? "transparent" : "rgba(0,0,0,0.2)" }}>
+                        <td style={{ ...td, fontFamily: "monospace", color: "#64748b" }}>{tx.id}</td>
+                        <td style={td}>{tx.amount}</td>
+                        <td style={{ ...td, display: "flex", alignItems: "center", gap: 4 }}>
+                          <Clock size={11} color="#475569" />
+                          {tx.hour}:00
+                        </td>
+                        <td style={{ ...td, color: riskColor(tx.risk_score), fontFamily: "monospace" }}>{tx.risk_score}</td>
+                        <td style={td}>
+                          <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                            <StatusIcon status={tx.severity} />
+                            <span style={{ textTransform: "capitalize" }}>{tx.severity}</span>
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+
+              <div style={card}>
+                <div style={{ padding: "10px 16px", borderBottom: "1px solid #1e293b", color: "#00FF41", fontSize: 10, letterSpacing: "0.15em", textTransform: "uppercase" }}>
+                  Latest 10 Transactions
+                </div>
+                <table style={{ width: "100%", borderCollapse: "collapse" }}>
+                  <thead>
+                    <tr>{["TX ID", "Amount", "Hour", "Risk Score", "Severity"].map(h => <th key={h} style={th}>{h}</th>)}</tr>
+                  </thead>
+                  <tbody>
+                    {latestTransactions.map((tx, i) => (
+                      <tr key={`latest-${tx.id}`} style={{ background: i % 2 === 0 ? "transparent" : "rgba(0,0,0,0.2)" }}>
+                        <td style={{ ...td, fontFamily: "monospace", color: "#64748b" }}>{tx.id}</td>
+                        <td style={td}>{tx.amount}</td>
+                        <td style={{ ...td, display: "flex", alignItems: "center", gap: 4 }}>
+                          <Clock size={11} color="#475569" />
+                          {tx.hour}:00
+                        </td>
+                        <td style={{ ...td, color: riskColor(tx.risk_score), fontFamily: "monospace" }}>{tx.risk_score}</td>
+                        <td style={td}>
+                          <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                            <StatusIcon status={tx.severity} />
+                            <span style={{ textTransform: "capitalize" }}>{tx.severity}</span>
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
           )}
         </section>
 
         {/* ── ALERTS ── */}
         <section>
-          <SectionHeader label="Module 2" title="Latest Alerts" />
+          <SectionHeader label="Module 2" title="Alert Feed (All Transactions)" />
           {loading ? (
             <div style={{ ...card, padding: 32, textAlign: "center", color: "#475569", fontSize: 12 }}>
               Loading alerts...
@@ -252,7 +312,7 @@ export const Dashboard = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {alerts.slice(0, 10).map(alert => (
+                  {combinedAlerts.slice(0, 10).map(alert => (
                     <tr key={alert.id}>
                       <td style={{ ...td, fontFamily: "monospace", color: "#64748b" }}>{alert.module}</td>
                       <td style={td}>{alert.title}</td>
@@ -264,6 +324,11 @@ export const Dashboard = () => {
                       </td>
                     </tr>
                   ))}
+                  {combinedAlerts.length === 0 && (
+                    <tr>
+                      <td style={td} colSpan={6}>No alerts in current dataset.</td>
+                    </tr>
+                  )}
                 </tbody>
               </table>
             </div>
