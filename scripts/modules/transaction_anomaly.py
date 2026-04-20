@@ -217,10 +217,12 @@ class TransactionAnomalyDetector:
         order = np.argsort(errors)
         ranks = np.empty_like(order, dtype=float)
         ranks[order] = np.arange(errors.size, dtype=float)
-        percentile_component = (ranks / max(errors.size - 1, 1)) * 60.0
+        percentile_component = (ranks / max(errors.size - 1, 1)) * 70.0
 
-        # Add anomaly boost relative to model threshold, capped to keep spread meaningful.
-        threshold_boost = np.clip((ratios - 1.0) * 25.0, 0.0, 40.0)
+        # Add a gentler anomaly boost relative to model threshold. Using a
+        # log curve prevents most real-wallet transactions from saturating.
+        threshold_excess = np.maximum(ratios - 1.0, 0.0)
+        threshold_boost = np.clip(np.log1p(threshold_excess) * 12.0, 0.0, 25.0)
 
         scores = np.clip(percentile_component + threshold_boost, 0.0, 100.0)
         return scores.astype(float)
@@ -271,6 +273,9 @@ class TransactionAnomalyDetector:
             # Use model
             features = self._extract_features(transaction)
             features_scaled = self.scaler.transform(features)
+            # Real-wallet values can exceed training ranges; clip to scaler
+            # support to reduce out-of-distribution score inflation.
+            features_scaled = np.clip(features_scaled, 0.0, 1.0)
             error = self._reconstruction_error(features_scaled)
             risk_score = self._normalize_score(error)
         else:
@@ -298,6 +303,7 @@ class TransactionAnomalyDetector:
         try:
             features = np.vstack([self._extract_features(tx) for tx in transactions])
             features_scaled = self.scaler.transform(features)
+            features_scaled = np.clip(features_scaled, 0.0, 1.0)
 
             with torch.no_grad():
                 tensor = torch.FloatTensor(features_scaled)

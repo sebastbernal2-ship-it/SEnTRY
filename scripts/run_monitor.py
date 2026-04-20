@@ -12,6 +12,7 @@ import os
 import json
 import argparse
 import logging
+import numpy as np
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Dict, Any, List
@@ -360,6 +361,17 @@ def run_monitor(
     for tx, score in zip(anomaly_transactions, anomaly_results):
         item = {**tx, **score}
         anomaly_scores.append(item)
+
+    if anomaly_scores:
+        anomaly_risks = np.array([float(item.get("risk_score", 0) or 0) for item in anomaly_scores], dtype=float)
+        logger.info(
+            "Anomaly score distribution: min=%.2f p50=%.2f p90=%.2f p95=%.2f max=%.2f",
+            float(np.min(anomaly_risks)),
+            float(np.percentile(anomaly_risks, 50)),
+            float(np.percentile(anomaly_risks, 90)),
+            float(np.percentile(anomaly_risks, 95)),
+            float(np.max(anomaly_risks)),
+        )
     
     injection_scores = []
     for msg in injection_messages:
