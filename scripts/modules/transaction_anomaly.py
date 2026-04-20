@@ -63,6 +63,13 @@ class TransactionAnomalyDetector:
     def _load_model(self) -> None:
         """Load PyTorch model and scaler."""
         try:
+            if not os.path.exists(MODEL_PATH) or not os.path.exists(SCALER_PATH):
+                print("[Anomaly] Model artifacts not found; using heuristic fallback scoring.")
+                self.model = None
+                self.scaler = None
+                self.use_model = False
+                return
+
             print("[Anomaly] Loading PyTorch Autoencoder...")
             
             # Load checkpoint
