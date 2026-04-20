@@ -7,6 +7,8 @@ import {
   AnomalyItem,
   getLatestAlerts,
   Alert,
+  getBehaviorManipulationData,
+  BehaviorManipulationItem,
   getPromptInjectionData,
   TextItem,
   getMoneyLaunderingData,
@@ -60,6 +62,7 @@ export const Dashboard = () => {
   // ── Fetch real data from JSON files ────────────────────────────────────────
   const [transactions, setTransactions] = useState<AnomalyItem[]>([]);
   const [alerts, setAlerts] = useState<Alert[]>([]);
+  const [behaviorItems, setBehaviorItems] = useState<BehaviorManipulationItem[]>([]);
   const [textMessages, setTextMessages] = useState<TextItem[]>([]);
   const [amlAddresses, setAmlAddresses] = useState<AMLItem[]>([]);
   const [summary, setSummary] = useState<Summary | null>(null);
@@ -71,12 +74,14 @@ export const Dashboard = () => {
       const [
         txResults,
         alertResults,
+        behaviorResults,
         textResults,
         amlResults,
         summaryResults,
       ] = await Promise.all([
         getTransactionAnomalies(),
         getLatestAlerts(),
+        getBehaviorManipulationData(),
         getPromptInjectionData(),
         getMoneyLaunderingData(),
         getSummary(),
@@ -84,6 +89,7 @@ export const Dashboard = () => {
 
       setTransactions(txResults);
       setAlerts(alertResults);
+      setBehaviorItems(behaviorResults);
       setTextMessages(textResults);
       setAmlAddresses(amlResults);
       setSummary(summaryResults);
@@ -140,8 +146,23 @@ export const Dashboard = () => {
       timestamp: summary?.updated_at || new Date().toISOString(),
     }));
 
+  const behaviorAlerts: Alert[] = behaviorItems
+    .filter((item) => item.risk_score >= ALERT_THRESHOLD)
+    .map((item) => ({
+      id: `bhv-alert-${item.id}`,
+      module: "behavior_manipulation",
+      title: item.title || "Behavior Manipulation Risk Detected",
+      description: item.reason_codes?.length
+        ? `Source ${item.source_key} flagged (score: ${item.risk_score}). Factors: ${item.reason_codes.join(", ")}`
+        : `Source ${item.source_key} flagged as manipulative (score: ${item.risk_score})`,
+      severity: item.severity,
+      score: item.risk_score,
+      label: item.label,
+      timestamp: summary?.updated_at || new Date().toISOString(),
+    }));
+
   const dedupedAlertMap = new Map<string, Alert>();
-  [...alerts, ...transactionAlerts].forEach((alert) => {
+  [...alerts, ...behaviorAlerts, ...transactionAlerts].forEach((alert) => {
     const key = `${alert.module}:${alert.description}`;
     if (!dedupedAlertMap.has(key)) {
       dedupedAlertMap.set(key, alert);

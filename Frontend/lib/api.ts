@@ -51,6 +51,39 @@ export const getTransactionAnomalies = async (): Promise<AnomalyItem[]> => {
   }
 };
 
+// ─── Behavior Manipulation Detection ───────────────────────────────────────
+
+export interface BehaviorManipulationItem {
+  id: string;
+  source_key: string;
+  title: string;
+  risk_score: number;
+  label: string;
+  severity: string;
+  reason_codes?: string[];
+  linked_transaction_id?: string;
+}
+
+export interface BehaviorManipulationData {
+  module: string;
+  updated_at: string;
+  items: BehaviorManipulationItem[];
+}
+
+export const getBehaviorManipulationData = async (): Promise<BehaviorManipulationItem[]> => {
+  console.log("[DEBUG] Fetching behavior manipulation data from /data/behavior-manipulation.json");
+  try {
+    const response = await fetch("/data/behavior-manipulation.json");
+    if (!response.ok) throw new Error("Failed to fetch behavior manipulation data");
+    const data: BehaviorManipulationData = await response.json();
+    console.log("[DEBUG] Fetched behavior manipulation data:", data.items?.length || 0, "items");
+    return data.items || [];
+  } catch (e) {
+    console.error("Error fetching behavior manipulation data:", e);
+    return [];
+  }
+};
+
 // ─── Prompt Injection Detection ──────────────────────────────────────────────
 
 export interface TextItem {
