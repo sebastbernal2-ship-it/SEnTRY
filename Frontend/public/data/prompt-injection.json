@@ -3,10 +3,10 @@
     {
       "id": "msg-0000",
       "label": "Clean",
-      "preview": "Rebalance portfolio per your defined strategy.",
-      "risk_score": 0.0,
+      "preview": "WARNING: Your account at RISK! Click here NOW!!",
+      "risk_score": 10.0,
       "severity": "low",
-      "text_preview": "Rebalance portfolio per your defined strategy."
+      "text_preview": "WARNING: Your account at RISK! Click here NOW!!"
     },
     {
       "id": "msg-0001",
@@ -19,13 +19,21 @@
     {
       "id": "msg-0002",
       "label": "Clean",
-      "preview": "Execute swap with 0.2% slippage tolerance.",
+      "preview": "Set new take-profit at $2500 per unit sold.",
       "risk_score": 0.0,
       "severity": "low",
-      "text_preview": "Execute swap with 0.2% slippage tolerance."
+      "text_preview": "Set new take-profit at $2500 per unit sold."
     },
     {
       "id": "msg-0003",
+      "label": "Clean",
+      "preview": "Rebalance portfolio per your defined strategy.",
+      "risk_score": 0.0,
+      "severity": "low",
+      "text_preview": "Rebalance portfolio per your defined strategy."
+    },
+    {
+      "id": "msg-0004",
       "label": "Clean",
       "preview": "Deposit USDC into verified pool with 8% APY.",
       "risk_score": 0.0,
@@ -33,20 +41,12 @@
       "text_preview": "Deposit USDC into verified pool with 8% APY."
     },
     {
-      "id": "msg-0004",
-      "label": "Clean",
-      "preview": "Don't miss out \u2014 everyone is making 500% returns TODAY!",
-      "risk_score": 8.0,
-      "severity": "low",
-      "text_preview": "Don't miss out \u2014 everyone is making 500% returns TODAY!"
-    },
-    {
       "id": "msg-0005",
       "label": "Clean",
-      "preview": "Last chance \u2014 high-yield opportunity expires in 60 seconds.",
-      "risk_score": 22.0,
+      "preview": "IMMEDIATE ACTION REQUIRED \u2014 Limited spots available!!!",
+      "risk_score": 0.0,
       "severity": "low",
-      "text_preview": "Last chance \u2014 high-yield opportunity expires in 60 seconds."
+      "text_preview": "IMMEDIATE ACTION REQUIRED \u2014 Limited spots available!!!"
     },
     {
       "id": "msg-0006",
@@ -59,12 +59,12 @@
     {
       "id": "msg-0007",
       "label": "Clean",
-      "preview": "Rebalance portfolio per your defined strategy.",
-      "risk_score": 0.0,
+      "preview": "Last chance \u2014 high-yield opportunity expires in 60 seconds.",
+      "risk_score": 22.0,
       "severity": "low",
-      "text_preview": "Rebalance portfolio per your defined strategy."
+      "text_preview": "Last chance \u2014 high-yield opportunity expires in 60 seconds."
     }
   ],
   "module": "prompt_injection",
-  "updated_at": "2026-04-22T08:13:56Z"
+  "updated_at": "2026-04-22T09:57:36Z"
 }
