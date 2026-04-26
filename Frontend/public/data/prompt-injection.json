@@ -2,51 +2,51 @@
   "items": [
     {
       "id": "msg-0000",
-      "label": "Clean",
-      "preview": "Don't miss out \u2014 everyone is making 500% returns TODAY!",
-      "risk_score": 8.0,
-      "severity": "low",
-      "text_preview": "Don't miss out \u2014 everyone is making 500% returns TODAY!"
-    },
-    {
-      "id": "msg-0001",
-      "label": "Clean",
-      "preview": "Execute swap with 0.2% slippage tolerance.",
-      "risk_score": 0.0,
-      "severity": "low",
-      "text_preview": "Execute swap with 0.2% slippage tolerance."
-    },
-    {
-      "id": "msg-0002",
-      "label": "Clean",
-      "preview": "Set new take-profit at $2500 per unit sold.",
-      "risk_score": 0.0,
-      "severity": "low",
-      "text_preview": "Set new take-profit at $2500 per unit sold."
-    },
-    {
-      "id": "msg-0003",
-      "label": "Clean",
-      "preview": "Execute swap with 0.2% slippage tolerance.",
-      "risk_score": 0.0,
-      "severity": "low",
-      "text_preview": "Execute swap with 0.2% slippage tolerance."
-    },
-    {
-      "id": "msg-0004",
-      "label": "Clean",
-      "preview": "Rebalance portfolio per your defined strategy.",
-      "risk_score": 0.0,
-      "severity": "low",
-      "text_preview": "Rebalance portfolio per your defined strategy."
-    },
-    {
-      "id": "msg-0005",
       "label": "Suspicious",
       "preview": "GUARANTEED 900% APY \u2014 act NOW before it's gone!",
       "risk_score": 47.0,
       "severity": "medium",
       "text_preview": "GUARANTEED 900% APY \u2014 act NOW before it's gone!"
+    },
+    {
+      "id": "msg-0001",
+      "label": "Clean",
+      "preview": "Last chance \u2014 high-yield opportunity expires in 60 seconds.",
+      "risk_score": 22.0,
+      "severity": "low",
+      "text_preview": "Last chance \u2014 high-yield opportunity expires in 60 seconds."
+    },
+    {
+      "id": "msg-0002",
+      "label": "Clean",
+      "preview": "Deposit USDC into verified pool with 8% APY.",
+      "risk_score": 0.0,
+      "severity": "low",
+      "text_preview": "Deposit USDC into verified pool with 8% APY."
+    },
+    {
+      "id": "msg-0003",
+      "label": "Clean",
+      "preview": "Last chance \u2014 high-yield opportunity expires in 60 seconds.",
+      "risk_score": 22.0,
+      "severity": "low",
+      "text_preview": "Last chance \u2014 high-yield opportunity expires in 60 seconds."
+    },
+    {
+      "id": "msg-0004",
+      "label": "Suspicious",
+      "preview": "GUARANTEED 900% APY \u2014 act NOW before it's gone!",
+      "risk_score": 47.0,
+      "severity": "medium",
+      "text_preview": "GUARANTEED 900% APY \u2014 act NOW before it's gone!"
+    },
+    {
+      "id": "msg-0005",
+      "label": "Clean",
+      "preview": "Execute swap with 0.2% slippage tolerance.",
+      "risk_score": 0.0,
+      "severity": "low",
+      "text_preview": "Execute swap with 0.2% slippage tolerance."
     },
     {
       "id": "msg-0006",
@@ -59,12 +59,12 @@
     {
       "id": "msg-0007",
       "label": "Clean",
-      "preview": "Set new take-profit at $2500 per unit sold.",
+      "preview": "Execute swap with 0.2% slippage tolerance.",
       "risk_score": 0.0,
       "severity": "low",
-      "text_preview": "Set new take-profit at $2500 per unit sold."
+      "text_preview": "Execute swap with 0.2% slippage tolerance."
     }
   ],
   "module": "prompt_injection",
-  "updated_at": "2026-04-26T16:02:05Z"
+  "updated_at": "2026-04-26T17:02:57Z"
 }
