@@ -3,26 +3,26 @@
     {
       "id": "msg-0000",
       "label": "Clean",
-      "preview": "Execute swap with 0.2% slippage tolerance.",
-      "risk_score": 0.0,
-      "severity": "low",
-      "text_preview": "Execute swap with 0.2% slippage tolerance."
-    },
-    {
-      "id": "msg-0001",
-      "label": "Clean",
       "preview": "Don't miss out \u2014 everyone is making 500% returns TODAY!",
       "risk_score": 8.0,
       "severity": "low",
       "text_preview": "Don't miss out \u2014 everyone is making 500% returns TODAY!"
     },
     {
-      "id": "msg-0002",
+      "id": "msg-0001",
       "label": "Clean",
-      "preview": "WARNING: Your account at RISK! Click here NOW!!",
-      "risk_score": 10.0,
+      "preview": "Swap 0.5 ETH to USDC at market rate.",
+      "risk_score": 0.0,
       "severity": "low",
-      "text_preview": "WARNING: Your account at RISK! Click here NOW!!"
+      "text_preview": "Swap 0.5 ETH to USDC at market rate."
+    },
+    {
+      "id": "msg-0002",
+      "label": "Suspicious",
+      "preview": "GUARANTEED 900% APY \u2014 act NOW before it's gone!",
+      "risk_score": 47.0,
+      "severity": "medium",
+      "text_preview": "GUARANTEED 900% APY \u2014 act NOW before it's gone!"
     },
     {
       "id": "msg-0003",
@@ -34,19 +34,19 @@
     },
     {
       "id": "msg-0004",
-      "label": "Suspicious",
-      "preview": "GUARANTEED 900% APY \u2014 act NOW before it's gone!",
-      "risk_score": 47.0,
-      "severity": "medium",
-      "text_preview": "GUARANTEED 900% APY \u2014 act NOW before it's gone!"
+      "label": "Clean",
+      "preview": "Swap 0.5 ETH to USDC at market rate.",
+      "risk_score": 0.0,
+      "severity": "low",
+      "text_preview": "Swap 0.5 ETH to USDC at market rate."
     },
     {
       "id": "msg-0005",
       "label": "Clean",
-      "preview": "WARNING: Your account at RISK! Click here NOW!!",
-      "risk_score": 10.0,
+      "preview": "Deposit USDC into verified pool with 8% APY.",
+      "risk_score": 0.0,
       "severity": "low",
-      "text_preview": "WARNING: Your account at RISK! Click here NOW!!"
+      "text_preview": "Deposit USDC into verified pool with 8% APY."
     },
     {
       "id": "msg-0006",
@@ -59,12 +59,12 @@
     {
       "id": "msg-0007",
       "label": "Clean",
-      "preview": "WARNING: Your account at RISK! Click here NOW!!",
-      "risk_score": 10.0,
+      "preview": "Set new take-profit at $2500 per unit sold.",
+      "risk_score": 0.0,
       "severity": "low",
-      "text_preview": "WARNING: Your account at RISK! Click here NOW!!"
+      "text_preview": "Set new take-profit at $2500 per unit sold."
     }
   ],
   "module": "prompt_injection",
-  "updated_at": "2026-04-27T06:38:12Z"
+  "updated_at": "2026-04-27T09:09:54Z"
 }
