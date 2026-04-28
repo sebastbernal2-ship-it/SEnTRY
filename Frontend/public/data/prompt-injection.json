@@ -11,10 +11,10 @@
     {
       "id": "msg-0001",
       "label": "Clean",
-      "preview": "Execute swap with 0.2% slippage tolerance.",
+      "preview": "Rebalance portfolio per your defined strategy.",
       "risk_score": 0.0,
       "severity": "low",
-      "text_preview": "Execute swap with 0.2% slippage tolerance."
+      "text_preview": "Rebalance portfolio per your defined strategy."
     },
     {
       "id": "msg-0002",
@@ -27,13 +27,21 @@
     {
       "id": "msg-0003",
       "label": "Clean",
-      "preview": "Execute swap with 0.2% slippage tolerance.",
+      "preview": "Rebalance portfolio per your defined strategy.",
       "risk_score": 0.0,
       "severity": "low",
-      "text_preview": "Execute swap with 0.2% slippage tolerance."
+      "text_preview": "Rebalance portfolio per your defined strategy."
     },
     {
       "id": "msg-0004",
+      "label": "Clean",
+      "preview": "Set new take-profit at $2500 per unit sold.",
+      "risk_score": 0.0,
+      "severity": "low",
+      "text_preview": "Set new take-profit at $2500 per unit sold."
+    },
+    {
+      "id": "msg-0005",
       "label": "Clean",
       "preview": "Swap 0.5 ETH to USDC at market rate.",
       "risk_score": 0.0,
@@ -41,30 +49,22 @@
       "text_preview": "Swap 0.5 ETH to USDC at market rate."
     },
     {
-      "id": "msg-0005",
-      "label": "Suspicious",
-      "preview": "GUARANTEED 900% APY \u2014 act NOW before it's gone!",
-      "risk_score": 47.0,
-      "severity": "medium",
-      "text_preview": "GUARANTEED 900% APY \u2014 act NOW before it's gone!"
-    },
-    {
       "id": "msg-0006",
-      "label": "Suspicious",
-      "preview": "GUARANTEED 900% APY \u2014 act NOW before it's gone!",
-      "risk_score": 47.0,
-      "severity": "medium",
-      "text_preview": "GUARANTEED 900% APY \u2014 act NOW before it's gone!"
+      "label": "Clean",
+      "preview": "WARNING: Your account at RISK! Click here NOW!!",
+      "risk_score": 10.0,
+      "severity": "low",
+      "text_preview": "WARNING: Your account at RISK! Click here NOW!!"
     },
     {
       "id": "msg-0007",
       "label": "Clean",
-      "preview": "Execute swap with 0.2% slippage tolerance.",
+      "preview": "Deposit USDC into verified pool with 8% APY.",
       "risk_score": 0.0,
       "severity": "low",
-      "text_preview": "Execute swap with 0.2% slippage tolerance."
+      "text_preview": "Deposit USDC into verified pool with 8% APY."
     }
   ],
   "module": "prompt_injection",
-  "updated_at": "2026-04-28T06:46:03Z"
+  "updated_at": "2026-04-28T09:13:42Z"
 }
