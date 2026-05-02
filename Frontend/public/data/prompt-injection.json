@@ -11,21 +11,13 @@
     {
       "id": "msg-0001",
       "label": "Clean",
-      "preview": "WARNING: Your account at RISK! Click here NOW!!",
-      "risk_score": 10.0,
+      "preview": "Execute swap with 0.2% slippage tolerance.",
+      "risk_score": 0.0,
       "severity": "low",
-      "text_preview": "WARNING: Your account at RISK! Click here NOW!!"
+      "text_preview": "Execute swap with 0.2% slippage tolerance."
     },
     {
       "id": "msg-0002",
-      "label": "Clean",
-      "preview": "Swap 0.5 ETH to USDC at market rate.",
-      "risk_score": 0.0,
-      "severity": "low",
-      "text_preview": "Swap 0.5 ETH to USDC at market rate."
-    },
-    {
-      "id": "msg-0003",
       "label": "Clean",
       "preview": "Set new take-profit at $2500 per unit sold.",
       "risk_score": 0.0,
@@ -33,12 +25,20 @@
       "text_preview": "Set new take-profit at $2500 per unit sold."
     },
     {
-      "id": "msg-0004",
+      "id": "msg-0003",
       "label": "Clean",
-      "preview": "Deposit USDC into verified pool with 8% APY.",
+      "preview": "Swap 0.5 ETH to USDC at market rate.",
       "risk_score": 0.0,
       "severity": "low",
-      "text_preview": "Deposit USDC into verified pool with 8% APY."
+      "text_preview": "Swap 0.5 ETH to USDC at market rate."
+    },
+    {
+      "id": "msg-0004",
+      "label": "Clean",
+      "preview": "Set new take-profit at $2500 per unit sold.",
+      "risk_score": 0.0,
+      "severity": "low",
+      "text_preview": "Set new take-profit at $2500 per unit sold."
     },
     {
       "id": "msg-0005",
@@ -51,20 +51,20 @@
     {
       "id": "msg-0006",
       "label": "Clean",
-      "preview": "Deposit USDC into verified pool with 8% APY.",
-      "risk_score": 0.0,
+      "preview": "Last chance \u2014 high-yield opportunity expires in 60 seconds.",
+      "risk_score": 22.0,
       "severity": "low",
-      "text_preview": "Deposit USDC into verified pool with 8% APY."
+      "text_preview": "Last chance \u2014 high-yield opportunity expires in 60 seconds."
     },
     {
       "id": "msg-0007",
-      "label": "Clean",
-      "preview": "Set new take-profit at $2500 per unit sold.",
-      "risk_score": 0.0,
-      "severity": "low",
-      "text_preview": "Set new take-profit at $2500 per unit sold."
+      "label": "Suspicious",
+      "preview": "GUARANTEED 900% APY \u2014 act NOW before it's gone!",
+      "risk_score": 47.0,
+      "severity": "medium",
+      "text_preview": "GUARANTEED 900% APY \u2014 act NOW before it's gone!"
     }
   ],
   "module": "prompt_injection",
-  "updated_at": "2026-05-02T12:04:21Z"
+  "updated_at": "2026-05-02T13:48:11Z"
 }
