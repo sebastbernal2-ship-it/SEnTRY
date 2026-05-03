@@ -2,46 +2,30 @@
   "items": [
     {
       "id": "msg-0000",
-      "label": "Suspicious",
-      "preview": "GUARANTEED 900% APY \u2014 act NOW before it's gone!",
-      "risk_score": 47.0,
-      "severity": "medium",
-      "text_preview": "GUARANTEED 900% APY \u2014 act NOW before it's gone!"
+      "label": "Clean",
+      "preview": "Rebalance portfolio per your defined strategy.",
+      "risk_score": 0.0,
+      "severity": "low",
+      "text_preview": "Rebalance portfolio per your defined strategy."
     },
     {
       "id": "msg-0001",
-      "label": "Suspicious",
-      "preview": "GUARANTEED 900% APY \u2014 act NOW before it's gone!",
-      "risk_score": 47.0,
-      "severity": "medium",
-      "text_preview": "GUARANTEED 900% APY \u2014 act NOW before it's gone!"
+      "label": "Clean",
+      "preview": "Deposit USDC into verified pool with 8% APY.",
+      "risk_score": 0.0,
+      "severity": "low",
+      "text_preview": "Deposit USDC into verified pool with 8% APY."
     },
     {
       "id": "msg-0002",
       "label": "Clean",
-      "preview": "Rebalance portfolio per your defined strategy.",
-      "risk_score": 0.0,
+      "preview": "Don't miss out \u2014 everyone is making 500% returns TODAY!",
+      "risk_score": 8.0,
       "severity": "low",
-      "text_preview": "Rebalance portfolio per your defined strategy."
+      "text_preview": "Don't miss out \u2014 everyone is making 500% returns TODAY!"
     },
     {
       "id": "msg-0003",
-      "label": "Clean",
-      "preview": "Rebalance portfolio per your defined strategy.",
-      "risk_score": 0.0,
-      "severity": "low",
-      "text_preview": "Rebalance portfolio per your defined strategy."
-    },
-    {
-      "id": "msg-0004",
-      "label": "Clean",
-      "preview": "Execute swap with 0.2% slippage tolerance.",
-      "risk_score": 0.0,
-      "severity": "low",
-      "text_preview": "Execute swap with 0.2% slippage tolerance."
-    },
-    {
-      "id": "msg-0005",
       "label": "Clean",
       "preview": "Set new take-profit at $2500 per unit sold.",
       "risk_score": 0.0,
@@ -49,7 +33,7 @@
       "text_preview": "Set new take-profit at $2500 per unit sold."
     },
     {
-      "id": "msg-0006",
+      "id": "msg-0004",
       "label": "Clean",
       "preview": "WARNING: Your account at RISK! Click here NOW!!",
       "risk_score": 10.0,
@@ -57,14 +41,30 @@
       "text_preview": "WARNING: Your account at RISK! Click here NOW!!"
     },
     {
-      "id": "msg-0007",
+      "id": "msg-0005",
       "label": "Clean",
       "preview": "Rebalance portfolio per your defined strategy.",
       "risk_score": 0.0,
       "severity": "low",
       "text_preview": "Rebalance portfolio per your defined strategy."
+    },
+    {
+      "id": "msg-0006",
+      "label": "Clean",
+      "preview": "Deposit USDC into verified pool with 8% APY.",
+      "risk_score": 0.0,
+      "severity": "low",
+      "text_preview": "Deposit USDC into verified pool with 8% APY."
+    },
+    {
+      "id": "msg-0007",
+      "label": "Clean",
+      "preview": "Don't miss out \u2014 everyone is making 500% returns TODAY!",
+      "risk_score": 8.0,
+      "severity": "low",
+      "text_preview": "Don't miss out \u2014 everyone is making 500% returns TODAY!"
     }
   ],
   "module": "prompt_injection",
-  "updated_at": "2026-05-03T04:07:30Z"
+  "updated_at": "2026-05-03T06:41:43Z"
 }
