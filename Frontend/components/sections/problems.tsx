@@ -25,6 +25,16 @@ const problems = [
 ];
 
 import { ManipulationAnimation } from "@/components/animations/ManipulationAnimation";
+import { AnomalyAnimation } from "@/components/animations/AnomalyAnimation";
+import { BehaviorAnimation } from "@/components/animations/BehaviorAnimation";
+import { AMLAnimation } from "@/components/animations/AMLAnimation";
+
+const ANIMATIONS: Record<string, React.ComponentType> = {
+  "01": AnomalyAnimation,
+  "02": BehaviorAnimation,
+  "03": ManipulationAnimation,
+  "04": AMLAnimation,
+};
 
 export const Problems = () => {
   return (
@@ -43,50 +53,61 @@ export const Problems = () => {
 
         {/* Cards */}
         <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-          {problems.map((p) => (
-            <div key={p.number} style={{
-              border: "1px solid #1e293b",
-              background: "rgba(0,0,0,0.6)",
-              borderRadius: 2,
-              padding: 40,
-              display: "flex",
-              gap: 40,
-            }}>
-              <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 16 }}>
-                <span style={{ fontSize: 11, color: "#334155", fontFamily: "monospace", letterSpacing: "0.1em" }}>
-                  {p.number}
-                </span>
-                <h3 style={{ fontSize: 14, fontWeight: 300, letterSpacing: "0.1em", color: "#fff", margin: 0 }}>
-                  {p.title}
-                </h3>
-                <p style={{ fontSize: 13, color: "#94a3b8", lineHeight: 1.8, fontWeight: 300, margin: 0 }}>
-                  {p.statement}
-                </p>
-              </div>
-
-              {/* TODO: Replace other placeholders with their animations */}
-              <div style={{
-                width: 380,
-                flexShrink: 0,
-                border: "1px solid #1e293b",
-                borderRadius: 2,
-                background: "rgba(0,0,0,0.4)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                overflow: "hidden",
-                minHeight: 220,
-              }}>
-                {p.number === "03" ? (
-                  <ManipulationAnimation />
-                ) : (
-                  <span style={{ fontSize: 10, color: "#334155", letterSpacing: "0.15em", textTransform: "uppercase" }}>
-                    Animation
+          {problems.map((p) => {
+            const Animation = ANIMATIONS[p.number];
+            return (
+              <div
+                key={p.number}
+                data-testid={`problem-card-${p.number}`}
+                style={{
+                  border: "1px solid #1e293b",
+                  background: "rgba(0,0,0,0.6)",
+                  borderRadius: 2,
+                  padding: 40,
+                  display: "flex",
+                  gap: 40,
+                  flexWrap: "wrap",
+                }}
+              >
+                <div style={{ flex: "1 1 360px", minWidth: 280, display: "flex", flexDirection: "column", gap: 16 }}>
+                  <span style={{ fontSize: 11, color: "#334155", fontFamily: "monospace", letterSpacing: "0.1em" }}>
+                    {p.number}
                   </span>
-                )}
+                  <h3 style={{ fontSize: 14, fontWeight: 300, letterSpacing: "0.1em", color: "#fff", margin: 0 }}>
+                    {p.title}
+                  </h3>
+                  <p style={{ fontSize: 13, color: "#94a3b8", lineHeight: 1.8, fontWeight: 300, margin: 0 }}>
+                    {p.statement}
+                  </p>
+                </div>
+
+                <div
+                  data-testid={`problem-animation-${p.number}`}
+                  style={{
+                    width: 380,
+                    flex: "0 1 380px",
+                    flexShrink: 0,
+                    border: "1px solid #1e293b",
+                    borderRadius: 2,
+                    background: "rgba(0,0,0,0.4)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    overflow: "hidden",
+                    minHeight: 220,
+                  }}
+                >
+                  {Animation ? (
+                    <Animation />
+                  ) : (
+                    <span style={{ fontSize: 10, color: "#334155", letterSpacing: "0.15em", textTransform: "uppercase" }}>
+                      Animation
+                    </span>
+                  )}
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </div>

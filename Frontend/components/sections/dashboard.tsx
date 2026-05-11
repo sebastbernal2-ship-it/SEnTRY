@@ -112,8 +112,8 @@ export const Dashboard = () => {
     ? Math.round(transactions.reduce((a, b) => a + b.risk_score, 0) / transactions.length)
     : 0;
 
-  const manipulationAvg = alerts.length > 0
-    ? Math.round(alerts.reduce((a, b) => a + b.score, 0) / alerts.length)
+  const manipulationAvg = behaviorItems.length > 0
+    ? Math.round(behaviorItems.reduce((a, b) => a + b.risk_score, 0) / behaviorItems.length)
     : 0;
 
   const textAvg = textMessages.length > 0
@@ -176,29 +176,46 @@ export const Dashboard = () => {
       <div style={{ minHeight: "100vh", padding: "80px 32px 120px", maxWidth: 1100, margin: "0 auto", display: "flex", flexDirection: "column", gap: 64 }}>
 
         {/* Page header */}
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap", gap: 16 }}>
           <div>
             <p style={{ fontSize: 11, color: "#475569", letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: 12 }}>Live Monitoring</p>
             <h2 style={{ fontSize: 28, fontWeight: 100, letterSpacing: "0.2em", color: "#fff", textTransform: "uppercase", margin: 0 }}>Dashboard</h2>
             <div style={{ width: 48, height: 1, background: "rgba(0,255,65,0.4)", marginTop: 16 }} />
           </div>
-          {/* API status indicator */}
-          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-            <div style={{ width: 6, height: 6, borderRadius: "50%", background: apiOnline ? "#00FF41" : "#f87171" }} />
-            <span style={{ fontSize: 10, color: apiOnline ? "#00FF41" : "#f87171", letterSpacing: "0.15em", textTransform: "uppercase" }}>
-              {apiOnline ? "API Online" : "API Offline"}
-            </span>
-            <button
-              onClick={fetchScores}
-              style={{ background: "transparent", border: "none", cursor: "pointer", padding: 4, color: "#475569" }}
-            >
-              <RefreshCw size={12} color="#475569" />
-            </button>
+          {/* API status + last updated */}
+          <div data-testid="dashboard-status" style={{ display: "flex", alignItems: "center", gap: 12 }}>
+            {summary?.updated_at && (
+              <span style={{ fontSize: 10, color: "#475569", letterSpacing: "0.1em", textTransform: "uppercase", fontFamily: "monospace" }}>
+                Updated {new Date(summary.updated_at).toLocaleString()}
+              </span>
+            )}
+            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+              <div style={{ width: 6, height: 6, borderRadius: "50%", background: apiOnline ? "#00FF41" : "#f87171" }} />
+              <span style={{ fontSize: 10, color: apiOnline ? "#00FF41" : "#f87171", letterSpacing: "0.15em", textTransform: "uppercase" }}>
+                {apiOnline ? "Live Data" : "Data Offline"}
+              </span>
+              <button
+                onClick={fetchScores}
+                aria-label="Refresh dashboard"
+                data-testid="dashboard-refresh"
+                disabled={loading}
+                style={{
+                  background: "transparent",
+                  border: "none",
+                  cursor: loading ? "wait" : "pointer",
+                  padding: 4,
+                  color: "#475569",
+                  opacity: loading ? 0.5 : 1,
+                }}
+              >
+                <RefreshCw size={12} color="#475569" />
+              </button>
+            </div>
           </div>
         </div>
 
         {/* ── UNIFIED RISK SCORE ── */}
-        <section>
+        <section data-testid="unified-risk-section">
           <SectionHeader label="Module 0" title="Unified Risk Score" />
           <div style={{ ...card, padding: 32, display: "flex", flexDirection: "column", gap: 24 }}>
             <div style={{ display: "flex", alignItems: "flex-end", gap: 8 }}>
@@ -237,7 +254,7 @@ export const Dashboard = () => {
         </section>
 
         {/* ── MODULE 1A: TOP RISK TRANSACTIONS ── */}
-        <section>
+        <section data-testid="top-risk-section">
           <SectionHeader label="Module 1A — PyTorch Autoencoder" title="Top 10 Highest Risk Transactions" />
           {loading ? (
             <div style={{ ...card, padding: 32, textAlign: "center", color: "#475569", fontSize: 12 }}>
@@ -274,7 +291,7 @@ export const Dashboard = () => {
         </section>
 
         {/* ── MODULE 1B: LATEST TRANSACTIONS ── */}
-        <section>
+        <section data-testid="latest-transactions-section">
           <SectionHeader label="Module 1B — PyTorch Autoencoder" title="Latest 10 Transactions" />
           {loading ? (
             <div style={{ ...card, padding: 32, textAlign: "center", color: "#475569", fontSize: 12 }}>
@@ -311,7 +328,7 @@ export const Dashboard = () => {
         </section>
 
         {/* ── ALERTS ── */}
-        <section>
+        <section data-testid="alerts-section">
           <SectionHeader label="Module 2" title="Alert Feed (All Transactions)" />
           {!loading && (
             <p style={{ margin: "0 0 12px", color: "#64748b", fontSize: 11, letterSpacing: "0.08em", textTransform: "uppercase" }}>
@@ -359,19 +376,81 @@ export const Dashboard = () => {
           )}
         </section>
 
+        {/* ── MODULE 2B: BEHAVIOR MANIPULATION DETAIL ── */}
+        <section data-testid="behavior-manipulation-section">
+          <SectionHeader label="Module 2B" title="Behavior Manipulation Scoring" />
+          {loading ? (
+            <div style={{ ...card, padding: 32, textAlign: "center", color: "#475569", fontSize: 12 }}>
+              Loading behavior data...
+            </div>
+          ) : behaviorItems.length === 0 ? (
+            <div style={{ ...card, padding: 32, textAlign: "center", color: "#475569", fontSize: 12 }}>
+              No behavior signals scored yet.
+            </div>
+          ) : (
+            <div style={card}>
+              <table style={{ width: "100%", borderCollapse: "collapse" }}>
+                <thead>
+                  <tr>{["Source", "Risk", "Severity", "Reason Codes", "Label"].map(h => <th key={h} style={th}>{h}</th>)}</tr>
+                </thead>
+                <tbody>
+                  {[...behaviorItems]
+                    .sort((a, b) => b.risk_score - a.risk_score)
+                    .slice(0, 10)
+                    .map((item, i) => (
+                      <tr key={item.id} style={{ background: i % 2 === 0 ? "transparent" : "rgba(0,0,0,0.2)" }}>
+                        <td style={{ ...td, fontFamily: "monospace", color: "#64748b" }}>{item.source_key}</td>
+                        <td style={{ ...td, color: riskColor(item.risk_score), fontFamily: "monospace" }}>{item.risk_score}</td>
+                        <td style={td}>
+                          <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                            <StatusIcon status={item.severity === "low" ? "normal" : item.severity === "medium" ? "flagged" : "blocked"} />
+                            <span style={{ textTransform: "capitalize" }}>{item.severity}</span>
+                          </div>
+                        </td>
+                        <td style={{ ...td, color: "#94a3b8", fontSize: 11 }}>
+                          {item.reason_codes && item.reason_codes.length > 0 ? item.reason_codes.join(", ") : "—"}
+                        </td>
+                        <td style={td}>
+                          <span style={{ fontSize: 10, letterSpacing: "0.1em", padding: "3px 8px", borderRadius: 2, border: `1px solid ${riskBorder(item.risk_score)}`, background: riskBg(item.risk_score), color: riskColor(item.risk_score) }}>
+                            {item.label}
+                          </span>
+                        </td>
+                      </tr>
+                    ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </section>
+
         {/* ── TEXT / PROMPT INJECTION ── */}
-        <section>
+        <section data-testid="prompt-injection-section">
           <SectionHeader label="Module 3" title="Prompt-Injection Detection" />
           {loading ? (
             <div style={{ ...card, padding: 32, textAlign: "center", color: "#475569", fontSize: 12 }}>
               Loading prompt injection data...
             </div>
+          ) : textMessages.length === 0 ? (
+            <div style={{ ...card, padding: 32, textAlign: "center", color: "#475569", fontSize: 12 }}>
+              No messages scored yet.
+            </div>
           ) : (
             <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
               {textMessages.map(msg => (
-                <div key={msg.id} style={{ ...card, padding: "16px 24px", display: "flex", alignItems: "center", gap: 24 }}>
+                <div key={msg.id} style={{ ...card, padding: "16px 24px", display: "flex", alignItems: "center", gap: 24, flexWrap: "wrap" }}>
                   <span style={{ fontSize: 11, fontFamily: "monospace", color: "#334155", width: 64, flexShrink: 0 }}>{msg.id}</span>
-                  <p style={{ flex: 1, fontSize: 13, color: "#94a3b8", fontWeight: 300, margin: 0 }}>{msg.preview}</p>
+                  <div style={{ flex: 1, minWidth: 200, display: "flex", flexDirection: "column", gap: 4 }}>
+                    <p style={{ fontSize: 13, color: "#94a3b8", fontWeight: 300, margin: 0 }}>{msg.preview}</p>
+                    {Array.isArray(msg.triggered_patterns) && msg.triggered_patterns.length > 0 && (
+                      <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+                        {msg.triggered_patterns.map(p => (
+                          <span key={p} style={{ fontSize: 9, color: "#94a3b8", fontFamily: "monospace", letterSpacing: "0.05em", padding: "2px 6px", border: "1px solid #1e293b", borderRadius: 2 }}>
+                            {p}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                   <span style={{ fontSize: 12, fontFamily: "monospace", color: riskColor(msg.risk_score), flexShrink: 0 }}>{msg.risk_score}</span>
                   <span style={{ fontSize: 10, letterSpacing: "0.1em", padding: "3px 8px", borderRadius: 2, border: `1px solid ${riskBorder(msg.risk_score)}`, background: riskBg(msg.risk_score), color: riskColor(msg.risk_score), flexShrink: 0 }}>
                     {msg.label}
@@ -383,17 +462,21 @@ export const Dashboard = () => {
         </section>
 
         {/* ── AML DETECTION ── */}
-        <section>
+        <section data-testid="aml-section">
           <SectionHeader label="Module 4" title="Money Laundering Detection" />
           {loading ? (
             <div style={{ ...card, padding: 32, textAlign: "center", color: "#475569", fontSize: 12 }}>
               Loading AML data...
             </div>
+          ) : amlAddresses.length === 0 ? (
+            <div style={{ ...card, padding: 32, textAlign: "center", color: "#475569", fontSize: 12 }}>
+              No counterparty addresses scored yet.
+            </div>
           ) : (
             <div style={card}>
               <table style={{ width: "100%", borderCollapse: "collapse" }}>
                 <thead>
-                  <tr>{["Address", "Fan-Out", "Burst Activity", "Mixer Contact", "AML Score", "Label"].map(h => <th key={h} style={th}>{h}</th>)}</tr>
+                  <tr>{["Address", "Fan-Out", "Burst Activity", "Mixer Contact", "AML Score", "Label", "Reason"].map(h => <th key={h} style={th}>{h}</th>)}</tr>
                 </thead>
                 <tbody>
                   {amlAddresses.map((row, i) => (
@@ -407,6 +490,9 @@ export const Dashboard = () => {
                         <span style={{ fontSize: 10, letterSpacing: "0.1em", padding: "3px 8px", borderRadius: 2, border: `1px solid ${riskBorder(row.risk_score)}`, background: riskBg(row.risk_score), color: riskColor(row.risk_score) }}>
                           {row.label}
                         </span>
+                      </td>
+                      <td style={{ ...td, fontSize: 11, color: "#94a3b8" }}>
+                        {row.reason_codes && row.reason_codes.length > 0 ? row.reason_codes.join(", ") : "—"}
                       </td>
                     </tr>
                   ))}

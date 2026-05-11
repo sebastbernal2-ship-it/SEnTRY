@@ -92,6 +92,7 @@ export interface TextItem {
   risk_score: number;
   label: string;
   severity: string;
+  triggered_patterns?: string[];
 }
 
 export interface TextData {
@@ -125,6 +126,7 @@ export interface AMLItem {
   risk_score: number;
   label: string;
   severity: string;
+  reason_codes?: string[];
 }
 
 export interface AMLData {
@@ -239,7 +241,7 @@ export interface ExternalAgent {
 export const getRandomTransactions = async (): Promise<RandomTransaction[]> => {
   try {
     const items = await getTransactionAnomalies();
-    return items.map((item, idx) => ({
+    return items.map((item) => ({
       id: item.id,
       token: ["ETH", "USDC", "DAI"][item.token_type % 3],
       amount: item.amount,
@@ -257,7 +259,7 @@ export const getRandomTransactions = async (): Promise<RandomTransaction[]> => {
 export const getExternalAgents = async (): Promise<ExternalAgent[]> => {
   try {
     const items = await getPromptInjectionData();
-    return items.map((item, idx) => ({
+    return items.map((item, idx: number) => ({
       agent_id: `agent-${idx}`,
       risk_score: item.risk_score,
       label: item.label,

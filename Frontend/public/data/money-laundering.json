@@ -7,7 +7,8 @@
       "id": "addr-0000",
       "label": "Clean",
       "mixer_contact": false,
-      "risk_score": 2.0,
+      "reason_codes": [],
+      "risk_score": 5.0,
       "severity": "low"
     },
     {
@@ -15,20 +16,29 @@
       "burst_activity": true,
       "fan_out": "High",
       "id": "addr-0001",
-      "label": "Clean",
+      "label": "Suspicious",
       "mixer_contact": false,
-      "risk_score": 18.75,
-      "severity": "low"
+      "reason_codes": [
+        "burst transaction activity",
+        "high counterparty fan-out"
+      ],
+      "risk_score": 70.0,
+      "severity": "medium"
     },
     {
       "address": "0xDEAD...BEEF",
       "burst_activity": true,
       "fan_out": "Very High",
       "id": "addr-0002",
-      "label": "Clean",
+      "label": "High Risk",
       "mixer_contact": true,
-      "risk_score": 25.75,
-      "severity": "low"
+      "reason_codes": [
+        "direct mixer contact",
+        "burst transaction activity",
+        "very high counterparty fan-out"
+      ],
+      "risk_score": 100.0,
+      "severity": "high"
     },
     {
       "address": "0x5544...33CC",
@@ -37,7 +47,8 @@
       "id": "addr-0003",
       "label": "Clean",
       "mixer_contact": false,
-      "risk_score": 2.0,
+      "reason_codes": [],
+      "risk_score": 5.0,
       "severity": "low"
     },
     {
@@ -47,7 +58,8 @@
       "id": "addr-0004",
       "label": "Clean",
       "mixer_contact": false,
-      "risk_score": 6.0,
+      "reason_codes": [],
+      "risk_score": 20.0,
       "severity": "low"
     },
     {
@@ -55,10 +67,14 @@
       "burst_activity": true,
       "fan_out": "High",
       "id": "addr-0005",
-      "label": "Clean",
+      "label": "Suspicious",
       "mixer_contact": false,
-      "risk_score": 18.75,
-      "severity": "low"
+      "reason_codes": [
+        "burst transaction activity",
+        "high counterparty fan-out"
+      ],
+      "risk_score": 70.0,
+      "severity": "medium"
     },
     {
       "address": "0xCCCC...DDDD",
@@ -67,7 +83,8 @@
       "id": "addr-0006",
       "label": "Clean",
       "mixer_contact": false,
-      "risk_score": 2.0,
+      "reason_codes": [],
+      "risk_score": 5.0,
       "severity": "low"
     },
     {
@@ -75,12 +92,17 @@
       "burst_activity": true,
       "fan_out": "Very High",
       "id": "addr-0007",
-      "label": "Clean",
+      "label": "High Risk",
       "mixer_contact": true,
-      "risk_score": 25.75,
-      "severity": "low"
+      "reason_codes": [
+        "direct mixer contact",
+        "burst transaction activity",
+        "very high counterparty fan-out"
+      ],
+      "risk_score": 100.0,
+      "severity": "high"
     }
   ],
   "module": "money_laundering",
-  "updated_at": "2026-05-11T01:31:26Z"
+  "updated_at": "2026-05-11T02:02:10Z"
 }

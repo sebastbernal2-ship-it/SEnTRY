@@ -135,6 +135,8 @@ export const MatrixCodeRain = ({
     canvas.height = container.clientHeight;
   }, []);
 
+  const animateRef = useRef<((time: number) => void) | null>(null);
+
   const animate = useCallback((time: number) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -149,8 +151,13 @@ export const MatrixCodeRain = ({
       resizeCanvas();
     }
     updateStrands(ctx, canvas.width, canvas.height, deltaTime);
-    animationFrameId.current = requestAnimationFrame(animate);
+    const next = animateRef.current;
+    if (next) animationFrameId.current = requestAnimationFrame(next);
   }, [resizeCanvas, updateStrands]);
+
+  useEffect(() => {
+    animateRef.current = animate;
+  }, [animate]);
 
   useEffect(() => {
     resizeCanvas();

@@ -144,6 +144,9 @@ export const Nav = ({ activeSection, onNavigate }: NavProps) => {
             <motion.button
               key={item.id}
               variants={itemVariants}
+              data-testid={`nav-${item.id}`}
+              aria-label={`Go to ${item.label}`}
+              aria-current={activeSection === item.id ? "page" : undefined}
               onClick={() => {
                 onNavigate(item.id);
                 setExpanded(false);

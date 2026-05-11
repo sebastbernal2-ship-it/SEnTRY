@@ -33,82 +33,71 @@ class MoneyLaunderingDetector:
         return any(mixer in address.lower() for mixer in mixers)
 
     def _score_fan_out(self, fan_out: str) -> float:
-        """
-        Score based on fan-out pattern (number of recipients).
-        High fan-out can indicate distribution/mixing behavior.
-        
-        Args:
-            fan_out: "Low", "Medium", "High", "Very High"
-        
-        Returns:
-            Partial score (0-30)
-        """
+        """Score based on fan-out (number of distinct recipients)."""
         fan_out_scores = {
             "Low": 5,
-            "Medium": 15,
-            "High": 25,
-            "Very High": 30,
+            "Medium": 20,
+            "High": 35,
+            "Very High": 45,
         }
         return float(fan_out_scores.get(fan_out, 10))
 
     def _score_burst_activity(self, burst_activity: bool) -> float:
-        """
-        Score based on burst activity patterns.
-        Sudden spikes can indicate rapid distribution.
-        
-        Args:
-            burst_activity: True if burst detected
-        
-        Returns:
-            Partial score (0-25)
-        """
+        """Score based on burst activity patterns (sudden volume spikes)."""
         return 25.0 if burst_activity else 0.0
 
     def _score_mixer_contact(self, mixer_contact: bool) -> float:
+        """Score based on direct contact with mixing services.
+
+        Mixer contact is the strongest single AML signal, so it dominates the
+        composite score.
         """
-        Score based on direct contact with mixing services.
-        
-        Args:
-            mixer_contact: True if contacted mixer
-        
-        Returns:
-            Partial score (0-20)
-        """
-        return 20.0 if mixer_contact else 0.0
+        return 45.0 if mixer_contact else 0.0
 
     def score_address(self, address_data: Dict[str, Any]) -> Dict[str, Any]:
-        """
-        Score an address for AML risk.
-        
-        Args:
-            address_data: Dict with 'address', 'fan_out', 'burst_activity', 'mixer_contact', etc.
-        
-        Returns:
-            Scoring result with score, label, etc.
-        """
+        """Score an address for AML risk and return a structured breakdown."""
         address = address_data.get("address", "")
         fan_out = address_data.get("fan_out", "Low")
         burst_activity = address_data.get("burst_activity", False)
         mixer_contact = address_data.get("mixer_contact", False)
-        
-        # Compute component scores
+
+        # Additive composite — every signal contributes independently, with
+        # mixer contact alone enough to push an address into "Suspicious."
         fan_out_score = self._score_fan_out(fan_out)
         burst_score = self._score_burst_activity(burst_activity)
         mixer_score = self._score_mixer_contact(mixer_contact)
-        
-        # Combine scores (weighted average)
-        risk_score = (fan_out_score * 0.4 + burst_score * 0.35 + mixer_score * 0.25)
-        
-        # Bonus risk if known mixer
+
+        risk_score = fan_out_score + burst_score + mixer_score
+
+        # Compounding penalty: multiple signals together signal active laundering.
+        active_signals = sum([
+            1 if mixer_contact else 0,
+            1 if burst_activity else 0,
+            1 if fan_out in ("High", "Very High") else 0,
+        ])
+        if active_signals >= 2:
+            risk_score += 10
+        if active_signals >= 3:
+            risk_score += 10
+
         if self._is_known_mixer(address):
-            risk_score += 15
-        
-        # Clamp to 0-100
+            risk_score += 25
+
         risk_score = float(min(max(risk_score, 0.0), 100.0))
-        
+
+        reason_codes: List[str] = []
+        if mixer_contact:
+            reason_codes.append("direct mixer contact")
+        if burst_activity:
+            reason_codes.append("burst transaction activity")
+        if fan_out in ("High", "Very High"):
+            reason_codes.append(f"{fan_out.lower()} counterparty fan-out")
+        if self._is_known_mixer(address):
+            reason_codes.append("address matches known mixer pattern")
+
         label = score_to_label(risk_score)
         severity = score_to_severity(risk_score)
-        
+
         return {
             "risk_score": round(risk_score, 2),
             "label": label,
@@ -117,6 +106,7 @@ class MoneyLaunderingDetector:
             "fan_out": fan_out,
             "burst_activity": burst_activity,
             "mixer_contact": mixer_contact,
+            "reason_codes": reason_codes,
         }
 
     def score_batch(self, addresses: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
