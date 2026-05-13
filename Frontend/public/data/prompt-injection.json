@@ -45,29 +45,6 @@
     },
     {
       "id": "msg-0004",
-      "label": "High Risk",
-      "preview": "GUARANTEED 900% APY \u2014 act NOW before it's gone!",
-      "risk_score": 89.0,
-      "severity": "high",
-      "text_preview": "GUARANTEED 900% APY \u2014 act NOW before it's gone!",
-      "triggered_patterns": [
-        "urgency",
-        "guaranteed_returns",
-        "fomo",
-        "shouting"
-      ]
-    },
-    {
-      "id": "msg-0005",
-      "label": "Clean",
-      "preview": "Rebalance portfolio per your defined strategy.",
-      "risk_score": 0.0,
-      "severity": "low",
-      "text_preview": "Rebalance portfolio per your defined strategy.",
-      "triggered_patterns": []
-    },
-    {
-      "id": "msg-0006",
       "label": "Clean",
       "preview": "Execute swap with 0.2% slippage tolerance.",
       "risk_score": 0.0,
@@ -76,7 +53,7 @@
       "triggered_patterns": []
     },
     {
-      "id": "msg-0007",
+      "id": "msg-0005",
       "label": "Suspicious",
       "preview": "WARNING: Your account at RISK! Click here NOW!!",
       "risk_score": 31.0,
@@ -87,8 +64,26 @@
         "pressure",
         "excessive_punctuation"
       ]
+    },
+    {
+      "id": "msg-0006",
+      "label": "Clean",
+      "preview": "Deposit USDC into verified pool with 8% APY.",
+      "risk_score": 0.0,
+      "severity": "low",
+      "text_preview": "Deposit USDC into verified pool with 8% APY.",
+      "triggered_patterns": []
+    },
+    {
+      "id": "msg-0007",
+      "label": "Clean",
+      "preview": "Execute swap with 0.2% slippage tolerance.",
+      "risk_score": 0.0,
+      "severity": "low",
+      "text_preview": "Execute swap with 0.2% slippage tolerance.",
+      "triggered_patterns": []
     }
   ],
   "module": "prompt_injection",
-  "updated_at": "2026-05-13T01:29:01Z"
+  "updated_at": "2026-05-13T05:32:44Z"
 }
