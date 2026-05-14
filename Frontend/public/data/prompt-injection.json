@@ -45,30 +45,6 @@
     },
     {
       "id": "msg-0004",
-      "label": "Suspicious",
-      "preview": "IMMEDIATE ACTION REQUIRED \u2014 Limited spots available!!!",
-      "risk_score": 59.0,
-      "severity": "medium",
-      "text_preview": "IMMEDIATE ACTION REQUIRED \u2014 Limited spots available!!!",
-      "triggered_patterns": [
-        "urgency",
-        "fomo",
-        "pressure",
-        "shouting",
-        "excessive_punctuation"
-      ]
-    },
-    {
-      "id": "msg-0005",
-      "label": "Clean",
-      "preview": "Swap 0.5 ETH to USDC at market rate.",
-      "risk_score": 0.0,
-      "severity": "low",
-      "text_preview": "Swap 0.5 ETH to USDC at market rate.",
-      "triggered_patterns": []
-    },
-    {
-      "id": "msg-0006",
       "label": "Clean",
       "preview": "Don't miss out \u2014 everyone is making 500% returns TODAY!",
       "risk_score": 28.0,
@@ -80,15 +56,44 @@
       ]
     },
     {
+      "id": "msg-0005",
+      "label": "Clean",
+      "preview": "Last chance \u2014 high-yield opportunity expires in 60 seconds.",
+      "risk_score": 30.0,
+      "severity": "low",
+      "text_preview": "Last chance \u2014 high-yield opportunity expires in 60 seconds.",
+      "triggered_patterns": [
+        "urgency",
+        "fomo"
+      ]
+    },
+    {
+      "id": "msg-0006",
+      "label": "High Risk",
+      "preview": "GUARANTEED 900% APY \u2014 act NOW before it's gone!",
+      "risk_score": 89.0,
+      "severity": "high",
+      "text_preview": "GUARANTEED 900% APY \u2014 act NOW before it's gone!",
+      "triggered_patterns": [
+        "urgency",
+        "guaranteed_returns",
+        "fomo",
+        "shouting"
+      ]
+    },
+    {
       "id": "msg-0007",
       "label": "Clean",
-      "preview": "Swap 0.5 ETH to USDC at market rate.",
-      "risk_score": 0.0,
+      "preview": "Last chance \u2014 high-yield opportunity expires in 60 seconds.",
+      "risk_score": 30.0,
       "severity": "low",
-      "text_preview": "Swap 0.5 ETH to USDC at market rate.",
-      "triggered_patterns": []
+      "text_preview": "Last chance \u2014 high-yield opportunity expires in 60 seconds.",
+      "triggered_patterns": [
+        "urgency",
+        "fomo"
+      ]
     }
   ],
   "module": "prompt_injection",
-  "updated_at": "2026-05-14T00:10:53Z"
+  "updated_at": "2026-05-14T04:15:03Z"
 }
