@@ -45,15 +45,37 @@
     },
     {
       "id": "msg-0004",
-      "label": "Clean",
-      "preview": "Rebalance portfolio per your defined strategy.",
-      "risk_score": 0.0,
-      "severity": "low",
-      "text_preview": "Rebalance portfolio per your defined strategy.",
-      "triggered_patterns": []
+      "label": "Suspicious",
+      "preview": "WARNING: Your account at RISK! Click here NOW!!",
+      "risk_score": 31.0,
+      "severity": "medium",
+      "text_preview": "WARNING: Your account at RISK! Click here NOW!!",
+      "triggered_patterns": [
+        "urgency",
+        "pressure",
+        "excessive_punctuation"
+      ]
     },
     {
       "id": "msg-0005",
+      "label": "Clean",
+      "preview": "Deposit USDC into verified pool with 8% APY.",
+      "risk_score": 0.0,
+      "severity": "low",
+      "text_preview": "Deposit USDC into verified pool with 8% APY.",
+      "triggered_patterns": []
+    },
+    {
+      "id": "msg-0006",
+      "label": "Clean",
+      "preview": "Execute swap with 0.2% slippage tolerance.",
+      "risk_score": 0.0,
+      "severity": "low",
+      "text_preview": "Execute swap with 0.2% slippage tolerance.",
+      "triggered_patterns": []
+    },
+    {
+      "id": "msg-0007",
       "label": "High Risk",
       "preview": "GUARANTEED 900% APY \u2014 act NOW before it's gone!",
       "risk_score": 89.0,
@@ -65,32 +87,8 @@
         "fomo",
         "shouting"
       ]
-    },
-    {
-      "id": "msg-0006",
-      "label": "Clean",
-      "preview": "Rebalance portfolio per your defined strategy.",
-      "risk_score": 0.0,
-      "severity": "low",
-      "text_preview": "Rebalance portfolio per your defined strategy.",
-      "triggered_patterns": []
-    },
-    {
-      "id": "msg-0007",
-      "label": "Suspicious",
-      "preview": "IMMEDIATE ACTION REQUIRED \u2014 Limited spots available!!!",
-      "risk_score": 59.0,
-      "severity": "medium",
-      "text_preview": "IMMEDIATE ACTION REQUIRED \u2014 Limited spots available!!!",
-      "triggered_patterns": [
-        "urgency",
-        "fomo",
-        "pressure",
-        "shouting",
-        "excessive_punctuation"
-      ]
     }
   ],
   "module": "prompt_injection",
-  "updated_at": "2026-05-15T22:38:14Z"
+  "updated_at": "2026-05-15T23:39:19Z"
 }
