@@ -1,5 +1,46 @@
 {
-  "alerts": [],
-  "new_alert_count": 0,
-  "updated_at": "2026-05-15T05:43:01Z"
+  "alerts": [
+    {
+      "description": "Message contains manipulative patterns (score: 89.0)",
+      "id": "inj-msg-0000-20260515T083328Z",
+      "label": "High Risk",
+      "module": "prompt_injection",
+      "score": 89.0,
+      "severity": "high",
+      "timestamp": "2026-05-15T08:33:28Z",
+      "title": "Manipulative Communication Detected"
+    },
+    {
+      "description": "Message contains manipulative patterns (score: 98.0)",
+      "id": "inj-msg-0005-20260515T083328Z",
+      "label": "High Risk",
+      "module": "prompt_injection",
+      "score": 98.0,
+      "severity": "high",
+      "timestamp": "2026-05-15T08:33:28Z",
+      "title": "Manipulative Communication Detected"
+    },
+    {
+      "description": "Address 0xDEAD...BEEF shows risky AML patterns (score: 100.0)",
+      "id": "aml-addr-0002-20260515T083328Z",
+      "label": "High Risk",
+      "module": "money_laundering",
+      "score": 100.0,
+      "severity": "high",
+      "timestamp": "2026-05-15T08:33:28Z",
+      "title": "High-Risk Address Detected"
+    },
+    {
+      "description": "Address 0xEEEE...0000 shows risky AML patterns (score: 100.0)",
+      "id": "aml-addr-0007-20260515T083328Z",
+      "label": "High Risk",
+      "module": "money_laundering",
+      "score": 100.0,
+      "severity": "high",
+      "timestamp": "2026-05-15T08:33:28Z",
+      "title": "High-Risk Address Detected"
+    }
+  ],
+  "new_alert_count": 4,
+  "updated_at": "2026-05-15T08:33:28Z"
 }
