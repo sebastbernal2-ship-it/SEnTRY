@@ -46,6 +46,15 @@
     {
       "id": "msg-0004",
       "label": "Clean",
+      "preview": "Execute swap with 0.2% slippage tolerance.",
+      "risk_score": 0.0,
+      "severity": "low",
+      "text_preview": "Execute swap with 0.2% slippage tolerance.",
+      "triggered_patterns": []
+    },
+    {
+      "id": "msg-0005",
+      "label": "Clean",
       "preview": "Set new take-profit at $2500 per unit sold.",
       "risk_score": 0.0,
       "severity": "low",
@@ -53,16 +62,20 @@
       "triggered_patterns": []
     },
     {
-      "id": "msg-0005",
-      "label": "Clean",
-      "preview": "Rebalance portfolio per your defined strategy.",
-      "risk_score": 0.0,
-      "severity": "low",
-      "text_preview": "Rebalance portfolio per your defined strategy.",
-      "triggered_patterns": []
+      "id": "msg-0006",
+      "label": "Suspicious",
+      "preview": "WARNING: Your account at RISK! Click here NOW!!",
+      "risk_score": 31.0,
+      "severity": "medium",
+      "text_preview": "WARNING: Your account at RISK! Click here NOW!!",
+      "triggered_patterns": [
+        "urgency",
+        "pressure",
+        "excessive_punctuation"
+      ]
     },
     {
-      "id": "msg-0006",
+      "id": "msg-0007",
       "label": "High Risk",
       "preview": "GUARANTEED 900% APY \u2014 act NOW before it's gone!",
       "risk_score": 89.0,
@@ -74,17 +87,8 @@
         "fomo",
         "shouting"
       ]
-    },
-    {
-      "id": "msg-0007",
-      "label": "Clean",
-      "preview": "Swap 0.5 ETH to USDC at market rate.",
-      "risk_score": 0.0,
-      "severity": "low",
-      "text_preview": "Swap 0.5 ETH to USDC at market rate.",
-      "triggered_patterns": []
     }
   ],
   "module": "prompt_injection",
-  "updated_at": "2026-05-17T07:26:38Z"
+  "updated_at": "2026-05-17T09:21:43Z"
 }
