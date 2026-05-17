@@ -45,33 +45,21 @@
     },
     {
       "id": "msg-0004",
-      "label": "Clean",
-      "preview": "Set new take-profit at $2500 per unit sold.",
-      "risk_score": 0.0,
-      "severity": "low",
-      "text_preview": "Set new take-profit at $2500 per unit sold.",
-      "triggered_patterns": []
+      "label": "Suspicious",
+      "preview": "IMMEDIATE ACTION REQUIRED \u2014 Limited spots available!!!",
+      "risk_score": 59.0,
+      "severity": "medium",
+      "text_preview": "IMMEDIATE ACTION REQUIRED \u2014 Limited spots available!!!",
+      "triggered_patterns": [
+        "urgency",
+        "fomo",
+        "pressure",
+        "shouting",
+        "excessive_punctuation"
+      ]
     },
     {
       "id": "msg-0005",
-      "label": "Clean",
-      "preview": "Set new take-profit at $2500 per unit sold.",
-      "risk_score": 0.0,
-      "severity": "low",
-      "text_preview": "Set new take-profit at $2500 per unit sold.",
-      "triggered_patterns": []
-    },
-    {
-      "id": "msg-0006",
-      "label": "Clean",
-      "preview": "Rebalance portfolio per your defined strategy.",
-      "risk_score": 0.0,
-      "severity": "low",
-      "text_preview": "Rebalance portfolio per your defined strategy.",
-      "triggered_patterns": []
-    },
-    {
-      "id": "msg-0007",
       "label": "Suspicious",
       "preview": "WARNING: Your account at RISK! Click here NOW!!",
       "risk_score": 31.0,
@@ -82,8 +70,29 @@
         "pressure",
         "excessive_punctuation"
       ]
+    },
+    {
+      "id": "msg-0006",
+      "label": "Clean",
+      "preview": "Don't miss out \u2014 everyone is making 500% returns TODAY!",
+      "risk_score": 28.0,
+      "severity": "low",
+      "text_preview": "Don't miss out \u2014 everyone is making 500% returns TODAY!",
+      "triggered_patterns": [
+        "fomo",
+        "pressure"
+      ]
+    },
+    {
+      "id": "msg-0007",
+      "label": "Clean",
+      "preview": "Set new take-profit at $2500 per unit sold.",
+      "risk_score": 0.0,
+      "severity": "low",
+      "text_preview": "Set new take-profit at $2500 per unit sold.",
+      "triggered_patterns": []
     }
   ],
   "module": "prompt_injection",
-  "updated_at": "2026-05-16T23:01:44Z"
+  "updated_at": "2026-05-17T00:08:20Z"
 }
