@@ -46,40 +46,50 @@
     {
       "id": "msg-0004",
       "label": "Clean",
-      "preview": "Swap 0.5 ETH to USDC at market rate.",
+      "preview": "Deposit USDC into verified pool with 8% APY.",
       "risk_score": 0.0,
       "severity": "low",
-      "text_preview": "Swap 0.5 ETH to USDC at market rate.",
+      "text_preview": "Deposit USDC into verified pool with 8% APY.",
       "triggered_patterns": []
     },
     {
       "id": "msg-0005",
       "label": "Clean",
-      "preview": "Swap 0.5 ETH to USDC at market rate.",
+      "preview": "Rebalance portfolio per your defined strategy.",
       "risk_score": 0.0,
       "severity": "low",
-      "text_preview": "Swap 0.5 ETH to USDC at market rate.",
+      "text_preview": "Rebalance portfolio per your defined strategy.",
       "triggered_patterns": []
     },
     {
       "id": "msg-0006",
-      "label": "Clean",
-      "preview": "Swap 0.5 ETH to USDC at market rate.",
-      "risk_score": 0.0,
-      "severity": "low",
-      "text_preview": "Swap 0.5 ETH to USDC at market rate.",
-      "triggered_patterns": []
+      "label": "High Risk",
+      "preview": "GUARANTEED 900% APY \u2014 act NOW before it's gone!",
+      "risk_score": 89.0,
+      "severity": "high",
+      "text_preview": "GUARANTEED 900% APY \u2014 act NOW before it's gone!",
+      "triggered_patterns": [
+        "urgency",
+        "guaranteed_returns",
+        "fomo",
+        "shouting"
+      ]
     },
     {
       "id": "msg-0007",
-      "label": "Clean",
-      "preview": "Swap 0.5 ETH to USDC at market rate.",
-      "risk_score": 0.0,
-      "severity": "low",
-      "text_preview": "Swap 0.5 ETH to USDC at market rate.",
-      "triggered_patterns": []
+      "label": "High Risk",
+      "preview": "GUARANTEED 900% APY \u2014 act NOW before it's gone!",
+      "risk_score": 89.0,
+      "severity": "high",
+      "text_preview": "GUARANTEED 900% APY \u2014 act NOW before it's gone!",
+      "triggered_patterns": [
+        "urgency",
+        "guaranteed_returns",
+        "fomo",
+        "shouting"
+      ]
     }
   ],
   "module": "prompt_injection",
-  "updated_at": "2026-05-21T22:02:58Z"
+  "updated_at": "2026-05-21T23:17:32Z"
 }
