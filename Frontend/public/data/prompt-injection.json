@@ -55,11 +55,14 @@
     {
       "id": "msg-0005",
       "label": "Clean",
-      "preview": "Deposit USDC into verified pool with 8% APY.",
-      "risk_score": 0.0,
+      "preview": "Last chance \u2014 high-yield opportunity expires in 60 seconds.",
+      "risk_score": 30.0,
       "severity": "low",
-      "text_preview": "Deposit USDC into verified pool with 8% APY.",
-      "triggered_patterns": []
+      "text_preview": "Last chance \u2014 high-yield opportunity expires in 60 seconds.",
+      "triggered_patterns": [
+        "urgency",
+        "fomo"
+      ]
     },
     {
       "id": "msg-0006",
@@ -90,5 +93,5 @@
     }
   ],
   "module": "prompt_injection",
-  "updated_at": "2026-05-23T18:14:35Z"
+  "updated_at": "2026-05-23T19:41:47Z"
 }
