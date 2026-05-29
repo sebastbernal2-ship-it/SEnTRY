@@ -60,18 +60,6 @@
     {
       "id": "msg-0005",
       "label": "Clean",
-      "preview": "Last chance \u2014 high-yield opportunity expires in 60 seconds.",
-      "risk_score": 30.0,
-      "severity": "low",
-      "text_preview": "Last chance \u2014 high-yield opportunity expires in 60 seconds.",
-      "triggered_patterns": [
-        "urgency",
-        "fomo"
-      ]
-    },
-    {
-      "id": "msg-0006",
-      "label": "Clean",
       "preview": "Set new take-profit at $2500 per unit sold.",
       "risk_score": 0.0,
       "severity": "low",
@@ -79,7 +67,7 @@
       "triggered_patterns": []
     },
     {
-      "id": "msg-0007",
+      "id": "msg-0006",
       "label": "Suspicious",
       "preview": "IMMEDIATE ACTION REQUIRED \u2014 Limited spots available!!!",
       "risk_score": 59.0,
@@ -92,8 +80,17 @@
         "shouting",
         "excessive_punctuation"
       ]
+    },
+    {
+      "id": "msg-0007",
+      "label": "Clean",
+      "preview": "Execute swap with 0.2% slippage tolerance.",
+      "risk_score": 0.0,
+      "severity": "low",
+      "text_preview": "Execute swap with 0.2% slippage tolerance.",
+      "triggered_patterns": []
     }
   ],
   "module": "prompt_injection",
-  "updated_at": "2026-05-29T18:42:04Z"
+  "updated_at": "2026-05-29T21:04:56Z"
 }
