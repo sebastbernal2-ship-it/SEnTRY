@@ -45,6 +45,15 @@
     },
     {
       "id": "msg-0004",
+      "label": "Clean",
+      "preview": "Rebalance portfolio per your defined strategy.",
+      "risk_score": 0.0,
+      "severity": "low",
+      "text_preview": "Rebalance portfolio per your defined strategy.",
+      "triggered_patterns": []
+    },
+    {
+      "id": "msg-0005",
       "label": "Suspicious",
       "preview": "IMMEDIATE ACTION REQUIRED \u2014 Limited spots available!!!",
       "risk_score": 59.0,
@@ -59,7 +68,7 @@
       ]
     },
     {
-      "id": "msg-0005",
+      "id": "msg-0006",
       "label": "Clean",
       "preview": "Deposit USDC into verified pool with 8% APY.",
       "risk_score": 0.0,
@@ -68,7 +77,7 @@
       "triggered_patterns": []
     },
     {
-      "id": "msg-0006",
+      "id": "msg-0007",
       "label": "Clean",
       "preview": "Don't miss out \u2014 everyone is making 500% returns TODAY!",
       "risk_score": 28.0,
@@ -78,17 +87,8 @@
         "fomo",
         "pressure"
       ]
-    },
-    {
-      "id": "msg-0007",
-      "label": "Clean",
-      "preview": "Swap 0.5 ETH to USDC at market rate.",
-      "risk_score": 0.0,
-      "severity": "low",
-      "text_preview": "Swap 0.5 ETH to USDC at market rate.",
-      "triggered_patterns": []
     }
   ],
   "module": "prompt_injection",
-  "updated_at": "2026-06-13T20:40:49Z"
+  "updated_at": "2026-06-13T21:53:36Z"
 }
