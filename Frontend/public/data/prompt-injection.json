@@ -46,36 +46,36 @@
     {
       "id": "msg-0004",
       "label": "Clean",
-      "preview": "Set new take-profit at $2500 per unit sold.",
+      "preview": "Swap 0.5 ETH to USDC at market rate.",
       "risk_score": 0.0,
       "severity": "low",
-      "text_preview": "Set new take-profit at $2500 per unit sold.",
+      "text_preview": "Swap 0.5 ETH to USDC at market rate.",
       "triggered_patterns": []
     },
     {
       "id": "msg-0005",
-      "label": "Clean",
-      "preview": "Last chance \u2014 high-yield opportunity expires in 60 seconds.",
-      "risk_score": 30.0,
-      "severity": "low",
-      "text_preview": "Last chance \u2014 high-yield opportunity expires in 60 seconds.",
+      "label": "Suspicious",
+      "preview": "WARNING: Your account at RISK! Click here NOW!!",
+      "risk_score": 31.0,
+      "severity": "medium",
+      "text_preview": "WARNING: Your account at RISK! Click here NOW!!",
       "triggered_patterns": [
         "urgency",
-        "fomo"
+        "pressure",
+        "excessive_punctuation"
       ]
     },
     {
       "id": "msg-0006",
-      "label": "High Risk",
-      "preview": "GUARANTEED 900% APY \u2014 act NOW before it's gone!",
-      "risk_score": 89.0,
-      "severity": "high",
-      "text_preview": "GUARANTEED 900% APY \u2014 act NOW before it's gone!",
+      "label": "Suspicious",
+      "preview": "WARNING: Your account at RISK! Click here NOW!!",
+      "risk_score": 31.0,
+      "severity": "medium",
+      "text_preview": "WARNING: Your account at RISK! Click here NOW!!",
       "triggered_patterns": [
         "urgency",
-        "guaranteed_returns",
-        "fomo",
-        "shouting"
+        "pressure",
+        "excessive_punctuation"
       ]
     },
     {
@@ -92,5 +92,5 @@
     }
   ],
   "module": "prompt_injection",
-  "updated_at": "2026-06-13T08:15:30Z"
+  "updated_at": "2026-06-13T10:42:27Z"
 }
