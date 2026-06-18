@@ -45,6 +45,15 @@
     },
     {
       "id": "msg-0004",
+      "label": "Clean",
+      "preview": "Rebalance portfolio per your defined strategy.",
+      "risk_score": 0.0,
+      "severity": "low",
+      "text_preview": "Rebalance portfolio per your defined strategy.",
+      "triggered_patterns": []
+    },
+    {
+      "id": "msg-0005",
       "label": "Suspicious",
       "preview": "IMMEDIATE ACTION REQUIRED \u2014 Limited spots available!!!",
       "risk_score": 59.0,
@@ -59,21 +68,12 @@
       ]
     },
     {
-      "id": "msg-0005",
+      "id": "msg-0006",
       "label": "Clean",
       "preview": "Execute swap with 0.2% slippage tolerance.",
       "risk_score": 0.0,
       "severity": "low",
       "text_preview": "Execute swap with 0.2% slippage tolerance.",
-      "triggered_patterns": []
-    },
-    {
-      "id": "msg-0006",
-      "label": "Clean",
-      "preview": "Deposit USDC into verified pool with 8% APY.",
-      "risk_score": 0.0,
-      "severity": "low",
-      "text_preview": "Deposit USDC into verified pool with 8% APY.",
       "triggered_patterns": []
     },
     {
@@ -87,5 +87,5 @@
     }
   ],
   "module": "prompt_injection",
-  "updated_at": "2026-06-18T17:44:53Z"
+  "updated_at": "2026-06-18T20:02:20Z"
 }
