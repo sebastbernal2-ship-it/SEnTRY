@@ -45,26 +45,29 @@
     },
     {
       "id": "msg-0004",
-      "label": "High Risk",
-      "preview": "GUARANTEED 900% APY \u2014 act NOW before it's gone!",
-      "risk_score": 89.0,
-      "severity": "high",
-      "text_preview": "GUARANTEED 900% APY \u2014 act NOW before it's gone!",
+      "label": "Suspicious",
+      "preview": "WARNING: Your account at RISK! Click here NOW!!",
+      "risk_score": 31.0,
+      "severity": "medium",
+      "text_preview": "WARNING: Your account at RISK! Click here NOW!!",
       "triggered_patterns": [
         "urgency",
-        "guaranteed_returns",
-        "fomo",
-        "shouting"
+        "pressure",
+        "excessive_punctuation"
       ]
     },
     {
       "id": "msg-0005",
-      "label": "Clean",
-      "preview": "Execute swap with 0.2% slippage tolerance.",
-      "risk_score": 0.0,
-      "severity": "low",
-      "text_preview": "Execute swap with 0.2% slippage tolerance.",
-      "triggered_patterns": []
+      "label": "Suspicious",
+      "preview": "WARNING: Your account at RISK! Click here NOW!!",
+      "risk_score": 31.0,
+      "severity": "medium",
+      "text_preview": "WARNING: Your account at RISK! Click here NOW!!",
+      "triggered_patterns": [
+        "urgency",
+        "pressure",
+        "excessive_punctuation"
+      ]
     },
     {
       "id": "msg-0006",
@@ -91,5 +94,5 @@
     }
   ],
   "module": "prompt_injection",
-  "updated_at": "2026-06-23T10:02:34Z"
+  "updated_at": "2026-06-23T12:47:29Z"
 }
