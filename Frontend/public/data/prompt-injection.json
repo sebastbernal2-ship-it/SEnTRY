@@ -46,10 +46,10 @@
     {
       "id": "msg-0004",
       "label": "Clean",
-      "preview": "Swap 0.5 ETH to USDC at market rate.",
+      "preview": "Set new take-profit at $2500 per unit sold.",
       "risk_score": 0.0,
       "severity": "low",
-      "text_preview": "Swap 0.5 ETH to USDC at market rate.",
+      "text_preview": "Set new take-profit at $2500 per unit sold.",
       "triggered_patterns": []
     },
     {
@@ -68,25 +68,22 @@
     {
       "id": "msg-0006",
       "label": "Clean",
-      "preview": "Don't miss out \u2014 everyone is making 500% returns TODAY!",
-      "risk_score": 28.0,
+      "preview": "Swap 0.5 ETH to USDC at market rate.",
+      "risk_score": 0.0,
       "severity": "low",
-      "text_preview": "Don't miss out \u2014 everyone is making 500% returns TODAY!",
-      "triggered_patterns": [
-        "fomo",
-        "pressure"
-      ]
+      "text_preview": "Swap 0.5 ETH to USDC at market rate.",
+      "triggered_patterns": []
     },
     {
       "id": "msg-0007",
       "label": "Clean",
-      "preview": "Set new take-profit at $2500 per unit sold.",
+      "preview": "Swap 0.5 ETH to USDC at market rate.",
       "risk_score": 0.0,
       "severity": "low",
-      "text_preview": "Set new take-profit at $2500 per unit sold.",
+      "text_preview": "Swap 0.5 ETH to USDC at market rate.",
       "triggered_patterns": []
     }
   ],
   "module": "prompt_injection",
-  "updated_at": "2026-06-24T17:23:56Z"
+  "updated_at": "2026-06-24T19:15:31Z"
 }
