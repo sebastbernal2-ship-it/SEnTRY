@@ -58,34 +58,35 @@
     {
       "id": "msg-0005",
       "label": "Clean",
-      "preview": "Rebalance portfolio per your defined strategy.",
+      "preview": "Execute swap with 0.2% slippage tolerance.",
       "risk_score": 0.0,
       "severity": "low",
-      "text_preview": "Rebalance portfolio per your defined strategy.",
+      "text_preview": "Execute swap with 0.2% slippage tolerance.",
       "triggered_patterns": []
     },
     {
       "id": "msg-0006",
       "label": "Clean",
-      "preview": "Last chance \u2014 high-yield opportunity expires in 60 seconds.",
-      "risk_score": 30.0,
+      "preview": "Execute swap with 0.2% slippage tolerance.",
+      "risk_score": 0.0,
       "severity": "low",
-      "text_preview": "Last chance \u2014 high-yield opportunity expires in 60 seconds.",
-      "triggered_patterns": [
-        "urgency",
-        "fomo"
-      ]
+      "text_preview": "Execute swap with 0.2% slippage tolerance.",
+      "triggered_patterns": []
     },
     {
       "id": "msg-0007",
-      "label": "Clean",
-      "preview": "Rebalance portfolio per your defined strategy.",
-      "risk_score": 0.0,
-      "severity": "low",
-      "text_preview": "Rebalance portfolio per your defined strategy.",
-      "triggered_patterns": []
+      "label": "Suspicious",
+      "preview": "WARNING: Your account at RISK! Click here NOW!!",
+      "risk_score": 31.0,
+      "severity": "medium",
+      "text_preview": "WARNING: Your account at RISK! Click here NOW!!",
+      "triggered_patterns": [
+        "urgency",
+        "pressure",
+        "excessive_punctuation"
+      ]
     }
   ],
   "module": "prompt_injection",
-  "updated_at": "2026-06-28T20:20:30Z"
+  "updated_at": "2026-06-28T21:36:14Z"
 }
