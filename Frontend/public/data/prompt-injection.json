@@ -45,47 +45,52 @@
     },
     {
       "id": "msg-0004",
-      "label": "Clean",
-      "preview": "Swap 0.5 ETH to USDC at market rate.",
-      "risk_score": 0.0,
-      "severity": "low",
-      "text_preview": "Swap 0.5 ETH to USDC at market rate.",
-      "triggered_patterns": []
+      "label": "Suspicious",
+      "preview": "WARNING: Your account at RISK! Click here NOW!!",
+      "risk_score": 31.0,
+      "severity": "medium",
+      "text_preview": "WARNING: Your account at RISK! Click here NOW!!",
+      "triggered_patterns": [
+        "urgency",
+        "pressure",
+        "excessive_punctuation"
+      ]
     },
     {
       "id": "msg-0005",
       "label": "Clean",
-      "preview": "Rebalance portfolio per your defined strategy.",
+      "preview": "Deposit USDC into verified pool with 8% APY.",
       "risk_score": 0.0,
       "severity": "low",
-      "text_preview": "Rebalance portfolio per your defined strategy.",
+      "text_preview": "Deposit USDC into verified pool with 8% APY.",
       "triggered_patterns": []
     },
     {
       "id": "msg-0006",
-      "label": "Clean",
-      "preview": "Swap 0.5 ETH to USDC at market rate.",
-      "risk_score": 0.0,
-      "severity": "low",
-      "text_preview": "Swap 0.5 ETH to USDC at market rate.",
-      "triggered_patterns": []
+      "label": "Suspicious",
+      "preview": "WARNING: Your account at RISK! Click here NOW!!",
+      "risk_score": 31.0,
+      "severity": "medium",
+      "text_preview": "WARNING: Your account at RISK! Click here NOW!!",
+      "triggered_patterns": [
+        "urgency",
+        "pressure",
+        "excessive_punctuation"
+      ]
     },
     {
       "id": "msg-0007",
-      "label": "Suspicious",
-      "preview": "IMMEDIATE ACTION REQUIRED \u2014 Limited spots available!!!",
-      "risk_score": 59.0,
-      "severity": "medium",
-      "text_preview": "IMMEDIATE ACTION REQUIRED \u2014 Limited spots available!!!",
+      "label": "Clean",
+      "preview": "Last chance \u2014 high-yield opportunity expires in 60 seconds.",
+      "risk_score": 30.0,
+      "severity": "low",
+      "text_preview": "Last chance \u2014 high-yield opportunity expires in 60 seconds.",
       "triggered_patterns": [
         "urgency",
-        "fomo",
-        "pressure",
-        "shouting",
-        "excessive_punctuation"
+        "fomo"
       ]
     }
   ],
   "module": "prompt_injection",
-  "updated_at": "2026-06-29T16:50:53Z"
+  "updated_at": "2026-06-29T19:00:05Z"
 }
