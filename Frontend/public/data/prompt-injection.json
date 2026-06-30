@@ -46,24 +46,6 @@
     {
       "id": "msg-0004",
       "label": "Clean",
-      "preview": "Swap 0.5 ETH to USDC at market rate.",
-      "risk_score": 0.0,
-      "severity": "low",
-      "text_preview": "Swap 0.5 ETH to USDC at market rate.",
-      "triggered_patterns": []
-    },
-    {
-      "id": "msg-0005",
-      "label": "Clean",
-      "preview": "Execute swap with 0.2% slippage tolerance.",
-      "risk_score": 0.0,
-      "severity": "low",
-      "text_preview": "Execute swap with 0.2% slippage tolerance.",
-      "triggered_patterns": []
-    },
-    {
-      "id": "msg-0006",
-      "label": "Clean",
       "preview": "Set new take-profit at $2500 per unit sold.",
       "risk_score": 0.0,
       "severity": "low",
@@ -71,7 +53,7 @@
       "triggered_patterns": []
     },
     {
-      "id": "msg-0007",
+      "id": "msg-0005",
       "label": "Clean",
       "preview": "Don't miss out \u2014 everyone is making 500% returns TODAY!",
       "risk_score": 28.0,
@@ -81,8 +63,32 @@
         "fomo",
         "pressure"
       ]
+    },
+    {
+      "id": "msg-0006",
+      "label": "Clean",
+      "preview": "Swap 0.5 ETH to USDC at market rate.",
+      "risk_score": 0.0,
+      "severity": "low",
+      "text_preview": "Swap 0.5 ETH to USDC at market rate.",
+      "triggered_patterns": []
+    },
+    {
+      "id": "msg-0007",
+      "label": "Suspicious",
+      "preview": "IMMEDIATE ACTION REQUIRED \u2014 Limited spots available!!!",
+      "risk_score": 59.0,
+      "severity": "medium",
+      "text_preview": "IMMEDIATE ACTION REQUIRED \u2014 Limited spots available!!!",
+      "triggered_patterns": [
+        "urgency",
+        "fomo",
+        "pressure",
+        "shouting",
+        "excessive_punctuation"
+      ]
     }
   ],
   "module": "prompt_injection",
-  "updated_at": "2026-06-30T19:13:10Z"
+  "updated_at": "2026-06-30T21:10:35Z"
 }
