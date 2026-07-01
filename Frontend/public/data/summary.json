@@ -7,7 +7,7 @@
       "total_count": 2000
     },
     {
-      "flagged_count": 213,
+      "flagged_count": 214,
       "key": "behavior_manipulation",
       "title": "Behavior Manipulation Scoring",
       "total_count": 2000
@@ -26,5 +26,5 @@
     }
   ],
   "scan_status": "ok",
-  "updated_at": "2026-07-01T04:43:50Z"
+  "updated_at": "2026-07-01T08:42:42Z"
 }
