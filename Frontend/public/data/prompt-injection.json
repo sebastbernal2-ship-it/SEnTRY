@@ -46,40 +46,50 @@
     {
       "id": "msg-0004",
       "label": "Clean",
-      "preview": "Deposit USDC into verified pool with 8% APY.",
-      "risk_score": 0.0,
+      "preview": "Last chance \u2014 high-yield opportunity expires in 60 seconds.",
+      "risk_score": 30.0,
       "severity": "low",
-      "text_preview": "Deposit USDC into verified pool with 8% APY.",
-      "triggered_patterns": []
+      "text_preview": "Last chance \u2014 high-yield opportunity expires in 60 seconds.",
+      "triggered_patterns": [
+        "urgency",
+        "fomo"
+      ]
     },
     {
       "id": "msg-0005",
       "label": "Clean",
-      "preview": "Swap 0.5 ETH to USDC at market rate.",
-      "risk_score": 0.0,
+      "preview": "Don't miss out \u2014 everyone is making 500% returns TODAY!",
+      "risk_score": 28.0,
       "severity": "low",
-      "text_preview": "Swap 0.5 ETH to USDC at market rate.",
-      "triggered_patterns": []
+      "text_preview": "Don't miss out \u2014 everyone is making 500% returns TODAY!",
+      "triggered_patterns": [
+        "fomo",
+        "pressure"
+      ]
     },
     {
       "id": "msg-0006",
       "label": "Clean",
-      "preview": "Rebalance portfolio per your defined strategy.",
+      "preview": "Set new take-profit at $2500 per unit sold.",
       "risk_score": 0.0,
       "severity": "low",
-      "text_preview": "Rebalance portfolio per your defined strategy.",
+      "text_preview": "Set new take-profit at $2500 per unit sold.",
       "triggered_patterns": []
     },
     {
       "id": "msg-0007",
-      "label": "Clean",
-      "preview": "Deposit USDC into verified pool with 8% APY.",
-      "risk_score": 0.0,
-      "severity": "low",
-      "text_preview": "Deposit USDC into verified pool with 8% APY.",
-      "triggered_patterns": []
+      "label": "Suspicious",
+      "preview": "WARNING: Your account at RISK! Click here NOW!!",
+      "risk_score": 31.0,
+      "severity": "medium",
+      "text_preview": "WARNING: Your account at RISK! Click here NOW!!",
+      "triggered_patterns": [
+        "urgency",
+        "pressure",
+        "excessive_punctuation"
+      ]
     }
   ],
   "module": "prompt_injection",
-  "updated_at": "2026-07-03T08:40:00Z"
+  "updated_at": "2026-07-03T11:18:53Z"
 }
