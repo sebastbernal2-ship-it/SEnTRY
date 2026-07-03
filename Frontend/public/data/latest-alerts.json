@@ -1,46 +1,16 @@
 {
   "alerts": [
     {
-      "description": "Source tx-0006 shows manipulative behavior (score: 84.69). Factors: proposal frequency spike, unusually large proposal size, new destination behavior",
-      "id": "bhv-src-tx-0006-20260703T200411Z",
+      "description": "Source tx-0002 shows manipulative behavior (score: 81.03). Factors: proposal frequency spike, new destination behavior",
+      "id": "bhv-src-tx-0002-20260703T213131Z",
       "label": "High Risk",
       "module": "behavior_manipulation",
-      "score": 84.69,
+      "score": 81.03,
       "severity": "high",
-      "timestamp": "2026-07-03T20:04:11Z",
+      "timestamp": "2026-07-03T21:31:31Z",
       "title": "Behavior Manipulation Risk Detected"
-    },
-    {
-      "description": "Message contains manipulative patterns (score: 89.0)",
-      "id": "inj-msg-0000-20260703T200411Z",
-      "label": "High Risk",
-      "module": "prompt_injection",
-      "score": 89.0,
-      "severity": "high",
-      "timestamp": "2026-07-03T20:04:11Z",
-      "title": "Manipulative Communication Detected"
-    },
-    {
-      "description": "Address 0xDEAD...BEEF shows risky AML patterns (score: 100.0)",
-      "id": "aml-addr-0002-20260703T200411Z",
-      "label": "High Risk",
-      "module": "money_laundering",
-      "score": 100.0,
-      "severity": "high",
-      "timestamp": "2026-07-03T20:04:11Z",
-      "title": "High-Risk Address Detected"
-    },
-    {
-      "description": "Address 0xEEEE...0000 shows risky AML patterns (score: 100.0)",
-      "id": "aml-addr-0007-20260703T200411Z",
-      "label": "High Risk",
-      "module": "money_laundering",
-      "score": 100.0,
-      "severity": "high",
-      "timestamp": "2026-07-03T20:04:11Z",
-      "title": "High-Risk Address Detected"
     }
   ],
-  "new_alert_count": 4,
-  "updated_at": "2026-07-03T20:04:11Z"
+  "new_alert_count": 1,
+  "updated_at": "2026-07-03T21:31:31Z"
 }
