@@ -1,5 +1,16 @@
 {
-  "alerts": [],
-  "new_alert_count": 0,
-  "updated_at": "2026-07-03T13:18:24Z"
+  "alerts": [
+    {
+      "description": "Transaction tx-0006 flagged as anomalous (score: 85.96)",
+      "id": "txm-tx-0006-20260703T153145Z",
+      "label": "High Risk",
+      "module": "transaction_anomaly",
+      "score": 85.96,
+      "severity": "high",
+      "timestamp": "2026-07-03T15:31:45Z",
+      "title": "Anomalous Transaction Behavior"
+    }
+  ],
+  "new_alert_count": 1,
+  "updated_at": "2026-07-03T15:31:45Z"
 }
