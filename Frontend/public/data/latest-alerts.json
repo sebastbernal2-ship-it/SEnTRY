@@ -1,16 +1,16 @@
 {
   "alerts": [
     {
-      "description": "Transaction tx-0003 flagged as anomalous (score: 85.37)",
-      "id": "txm-tx-0003-20260704T021420Z",
+      "description": "Message contains manipulative patterns (score: 98.0)",
+      "id": "inj-msg-0007-20260704T055743Z",
       "label": "High Risk",
-      "module": "transaction_anomaly",
-      "score": 85.37,
+      "module": "prompt_injection",
+      "score": 98.0,
       "severity": "high",
-      "timestamp": "2026-07-04T02:14:20Z",
-      "title": "Anomalous Transaction Behavior"
+      "timestamp": "2026-07-04T05:57:43Z",
+      "title": "Manipulative Communication Detected"
     }
   ],
   "new_alert_count": 1,
-  "updated_at": "2026-07-04T02:14:20Z"
+  "updated_at": "2026-07-04T05:57:43Z"
 }
