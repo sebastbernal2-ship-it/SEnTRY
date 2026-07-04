@@ -13,7 +13,7 @@
       "total_count": 8
     },
     {
-      "flagged_count": 1,
+      "flagged_count": 2,
       "key": "prompt_injection",
       "title": "Prompt Injection Detection",
       "total_count": 8
@@ -26,5 +26,5 @@
     }
   ],
   "scan_status": "ok",
-  "updated_at": "2026-07-04T15:14:01Z"
+  "updated_at": "2026-07-04T16:29:24Z"
 }
