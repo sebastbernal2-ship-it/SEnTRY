@@ -1,16 +1,5 @@
 {
-  "alerts": [
-    {
-      "description": "Source tx-0003 shows manipulative behavior (score: 84.58). Factors: proposal frequency spike, unusually large proposal size, new destination behavior",
-      "id": "bhv-src-tx-0003-20260704T184138Z",
-      "label": "High Risk",
-      "module": "behavior_manipulation",
-      "score": 84.58,
-      "severity": "high",
-      "timestamp": "2026-07-04T18:41:38Z",
-      "title": "Behavior Manipulation Risk Detected"
-    }
-  ],
-  "new_alert_count": 1,
-  "updated_at": "2026-07-04T18:41:38Z"
+  "alerts": [],
+  "new_alert_count": 0,
+  "updated_at": "2026-07-04T20:01:59Z"
 }
