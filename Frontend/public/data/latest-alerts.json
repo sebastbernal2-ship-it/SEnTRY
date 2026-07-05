@@ -1,5 +1,16 @@
 {
-  "alerts": [],
-  "new_alert_count": 0,
-  "updated_at": "2026-07-05T12:06:43Z"
+  "alerts": [
+    {
+      "description": "Source tx-0001 shows manipulative behavior (score: 81.78). Factors: proposal frequency spike, new destination behavior",
+      "id": "bhv-src-tx-0001-20260705T140851Z",
+      "label": "High Risk",
+      "module": "behavior_manipulation",
+      "score": 81.78,
+      "severity": "high",
+      "timestamp": "2026-07-05T14:08:51Z",
+      "title": "Behavior Manipulation Risk Detected"
+    }
+  ],
+  "new_alert_count": 1,
+  "updated_at": "2026-07-05T14:08:51Z"
 }
