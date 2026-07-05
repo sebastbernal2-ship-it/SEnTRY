@@ -1,32 +1,7 @@
 {
   "items": [
     {
-      "amount": 28.8,
-      "day_of_week": 6,
-      "features_used": [
-        "id",
-        "amount",
-        "token_type",
-        "hour",
-        "day_of_week",
-        "gas_fee",
-        "is_new_address",
-        "time_since_last_tx",
-        "tx_frequency"
-      ],
-      "gas_fee": 48.18,
-      "hour": 18,
-      "id": "tx-0000",
-      "is_new_address": 0,
-      "label": "Suspicious",
-      "risk_score": 54.02,
-      "severity": "medium",
-      "time_since_last_tx": 142,
-      "token_type": 1,
-      "tx_frequency": 14
-    },
-    {
-      "amount": 34.67,
+      "amount": 41.51,
       "day_of_week": 4,
       "features_used": [
         "id",
@@ -39,19 +14,19 @@
         "time_since_last_tx",
         "tx_frequency"
       ],
-      "gas_fee": 5.23,
-      "hour": 5,
-      "id": "tx-0001",
+      "gas_fee": 36.19,
+      "hour": 18,
+      "id": "tx-0000",
       "is_new_address": 0,
       "label": "Clean",
-      "risk_score": 10.0,
+      "risk_score": 13.18,
       "severity": "low",
-      "time_since_last_tx": 438,
+      "time_since_last_tx": 614,
       "token_type": 1,
-      "tx_frequency": 3
+      "tx_frequency": 20
     },
     {
-      "amount": 49.08,
+      "amount": 9.63,
       "day_of_week": 3,
       "features_used": [
         "id",
@@ -64,44 +39,19 @@
         "time_since_last_tx",
         "tx_frequency"
       ],
-      "gas_fee": 23.11,
-      "hour": 5,
-      "id": "tx-0002",
+      "gas_fee": 62.51,
+      "hour": 22,
+      "id": "tx-0001",
       "is_new_address": 0,
-      "label": "Clean",
-      "risk_score": 20.0,
-      "severity": "low",
-      "time_since_last_tx": 184,
-      "token_type": 1,
-      "tx_frequency": 12
+      "label": "Suspicious",
+      "risk_score": 34.75,
+      "severity": "medium",
+      "time_since_last_tx": 137,
+      "token_type": 2,
+      "tx_frequency": 15
     },
     {
-      "amount": 46.1,
-      "day_of_week": 1,
-      "features_used": [
-        "id",
-        "amount",
-        "token_type",
-        "hour",
-        "day_of_week",
-        "gas_fee",
-        "is_new_address",
-        "time_since_last_tx",
-        "tx_frequency"
-      ],
-      "gas_fee": 54.61,
-      "hour": 4,
-      "id": "tx-0003",
-      "is_new_address": 1,
-      "label": "High Risk",
-      "risk_score": 70.54,
-      "severity": "high",
-      "time_since_last_tx": 502,
-      "token_type": 1,
-      "tx_frequency": 2
-    },
-    {
-      "amount": 36.22,
+      "amount": 21.6,
       "day_of_week": 4,
       "features_used": [
         "id",
@@ -114,69 +64,19 @@
         "time_since_last_tx",
         "tx_frequency"
       ],
-      "gas_fee": 88.9,
-      "hour": 18,
-      "id": "tx-0004",
-      "is_new_address": 1,
-      "label": "High Risk",
-      "risk_score": 82.9,
-      "severity": "high",
-      "time_since_last_tx": 958,
-      "token_type": 1,
-      "tx_frequency": 10
-    },
-    {
-      "amount": 45.95,
-      "day_of_week": 5,
-      "features_used": [
-        "id",
-        "amount",
-        "token_type",
-        "hour",
-        "day_of_week",
-        "gas_fee",
-        "is_new_address",
-        "time_since_last_tx",
-        "tx_frequency"
-      ],
-      "gas_fee": 78.26,
-      "hour": 13,
-      "id": "tx-0005",
-      "is_new_address": 0,
-      "label": "Suspicious",
-      "risk_score": 40.0,
-      "severity": "medium",
-      "time_since_last_tx": 936,
-      "token_type": 1,
-      "tx_frequency": 9
-    },
-    {
-      "amount": 34.46,
-      "day_of_week": 2,
-      "features_used": [
-        "id",
-        "amount",
-        "token_type",
-        "hour",
-        "day_of_week",
-        "gas_fee",
-        "is_new_address",
-        "time_since_last_tx",
-        "tx_frequency"
-      ],
-      "gas_fee": 87.39,
-      "hour": 5,
-      "id": "tx-0006",
+      "gas_fee": 92.92,
+      "hour": 4,
+      "id": "tx-0002",
       "is_new_address": 0,
       "label": "Clean",
       "risk_score": 0.0,
       "severity": "low",
-      "time_since_last_tx": 721,
+      "time_since_last_tx": 226,
       "token_type": 1,
-      "tx_frequency": 7
+      "tx_frequency": 8
     },
     {
-      "amount": 19.26,
+      "amount": 15.91,
       "day_of_week": 6,
       "features_used": [
         "id",
@@ -189,18 +89,118 @@
         "time_since_last_tx",
         "tx_frequency"
       ],
-      "gas_fee": 54.17,
+      "gas_fee": 56.67,
+      "hour": 12,
+      "id": "tx-0003",
+      "is_new_address": 1,
+      "label": "Suspicious",
+      "risk_score": 62.46,
+      "severity": "medium",
+      "time_since_last_tx": 472,
+      "token_type": 1,
+      "tx_frequency": 12
+    },
+    {
+      "amount": 39.84,
+      "day_of_week": 1,
+      "features_used": [
+        "id",
+        "amount",
+        "token_type",
+        "hour",
+        "day_of_week",
+        "gas_fee",
+        "is_new_address",
+        "time_since_last_tx",
+        "tx_frequency"
+      ],
+      "gas_fee": 44.82,
       "hour": 14,
-      "id": "tx-0007",
+      "id": "tx-0004",
       "is_new_address": 0,
       "label": "Clean",
-      "risk_score": 30.0,
+      "risk_score": 24.49,
       "severity": "low",
-      "time_since_last_tx": 585,
-      "token_type": 1,
-      "tx_frequency": 0
+      "time_since_last_tx": 53,
+      "token_type": 2,
+      "tx_frequency": 16
+    },
+    {
+      "amount": 47.63,
+      "day_of_week": 0,
+      "features_used": [
+        "id",
+        "amount",
+        "token_type",
+        "hour",
+        "day_of_week",
+        "gas_fee",
+        "is_new_address",
+        "time_since_last_tx",
+        "tx_frequency"
+      ],
+      "gas_fee": 65.15,
+      "hour": 17,
+      "id": "tx-0005",
+      "is_new_address": 1,
+      "label": "High Risk",
+      "risk_score": 85.54,
+      "severity": "high",
+      "time_since_last_tx": 710,
+      "token_type": 0,
+      "tx_frequency": 11
+    },
+    {
+      "amount": 40.53,
+      "day_of_week": 2,
+      "features_used": [
+        "id",
+        "amount",
+        "token_type",
+        "hour",
+        "day_of_week",
+        "gas_fee",
+        "is_new_address",
+        "time_since_last_tx",
+        "tx_frequency"
+      ],
+      "gas_fee": 70.51,
+      "hour": 2,
+      "id": "tx-0006",
+      "is_new_address": 1,
+      "label": "Suspicious",
+      "risk_score": 50.55,
+      "severity": "medium",
+      "time_since_last_tx": 286,
+      "token_type": 2,
+      "tx_frequency": 3
+    },
+    {
+      "amount": 37.16,
+      "day_of_week": 3,
+      "features_used": [
+        "id",
+        "amount",
+        "token_type",
+        "hour",
+        "day_of_week",
+        "gas_fee",
+        "is_new_address",
+        "time_since_last_tx",
+        "tx_frequency"
+      ],
+      "gas_fee": 58.31,
+      "hour": 17,
+      "id": "tx-0007",
+      "is_new_address": 1,
+      "label": "High Risk",
+      "risk_score": 73.51,
+      "severity": "high",
+      "time_since_last_tx": 869,
+      "token_type": 0,
+      "tx_frequency": 18
     }
   ],
   "module": "transaction_anomaly",
-  "updated_at": "2026-07-05T19:36:13Z"
+  "updated_at": "2026-07-05T20:41:07Z"
 }
