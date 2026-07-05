@@ -1,26 +1,5 @@
 {
-  "alerts": [
-    {
-      "description": "Transaction tx-0005 flagged as anomalous (score: 83.87)",
-      "id": "txm-tx-0005-20260705T175249Z",
-      "label": "High Risk",
-      "module": "transaction_anomaly",
-      "score": 83.87,
-      "severity": "high",
-      "timestamp": "2026-07-05T17:52:49Z",
-      "title": "Anomalous Transaction Behavior"
-    },
-    {
-      "description": "Source tx-0005 shows manipulative behavior (score: 81.45). Factors: proposal frequency spike, new destination behavior",
-      "id": "bhv-src-tx-0005-20260705T175249Z",
-      "label": "High Risk",
-      "module": "behavior_manipulation",
-      "score": 81.45,
-      "severity": "high",
-      "timestamp": "2026-07-05T17:52:49Z",
-      "title": "Behavior Manipulation Risk Detected"
-    }
-  ],
-  "new_alert_count": 2,
-  "updated_at": "2026-07-05T17:52:49Z"
+  "alerts": [],
+  "new_alert_count": 0,
+  "updated_at": "2026-07-05T19:36:13Z"
 }
