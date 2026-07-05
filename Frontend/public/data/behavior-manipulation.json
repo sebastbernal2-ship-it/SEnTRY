@@ -2,107 +2,103 @@
   "items": [
     {
       "id": "src-tx-0000",
-      "label": "Clean",
+      "label": "High Risk",
       "linked_transaction_id": "tx-0000",
-      "reason_codes": [],
-      "risk_score": 7.82,
-      "severity": "low",
+      "reason_codes": [
+        "proposal frequency spike",
+        "new destination behavior"
+      ],
+      "risk_score": 78.16,
+      "severity": "high",
       "source_key": "tx-0000",
       "title": "Behavior Manipulation Risk Detected"
     },
     {
       "id": "src-tx-0001",
-      "label": "Clean",
+      "label": "Suspicious",
       "linked_transaction_id": "tx-0001",
       "reason_codes": [
-        "proposal frequency spike"
+        "new destination behavior"
       ],
-      "risk_score": 26.62,
-      "severity": "low",
+      "risk_score": 48.5,
+      "severity": "medium",
       "source_key": "tx-0001",
       "title": "Behavior Manipulation Risk Detected"
     },
     {
       "id": "src-tx-0002",
-      "label": "Suspicious",
+      "label": "Clean",
       "linked_transaction_id": "tx-0002",
-      "reason_codes": [
-        "proposal frequency spike",
-        "unusually large proposal size",
-        "new destination behavior"
-      ],
-      "risk_score": 68.25,
-      "severity": "medium",
+      "reason_codes": [],
+      "risk_score": 2.48,
+      "severity": "low",
       "source_key": "tx-0002",
       "title": "Behavior Manipulation Risk Detected"
     },
     {
       "id": "src-tx-0003",
-      "label": "High Risk",
+      "label": "Suspicious",
       "linked_transaction_id": "tx-0003",
       "reason_codes": [
         "proposal frequency spike",
-        "new destination behavior"
+        "unusually large proposal size"
       ],
-      "risk_score": 75.2,
-      "severity": "high",
+      "risk_score": 44.51,
+      "severity": "medium",
       "source_key": "tx-0003",
       "title": "Behavior Manipulation Risk Detected"
     },
     {
       "id": "src-tx-0004",
-      "label": "Suspicious",
+      "label": "High Risk",
       "linked_transaction_id": "tx-0004",
       "reason_codes": [
-        "new destination behavior",
-        "bursty repeated behavior"
+        "proposal frequency spike",
+        "unusually large proposal size",
+        "new destination behavior"
       ],
-      "risk_score": 52.28,
-      "severity": "medium",
+      "risk_score": 75.35,
+      "severity": "high",
       "source_key": "tx-0004",
       "title": "Behavior Manipulation Risk Detected"
     },
     {
       "id": "src-tx-0005",
-      "label": "High Risk",
+      "label": "Suspicious",
       "linked_transaction_id": "tx-0005",
       "reason_codes": [
-        "unusually large proposal size",
-        "new destination behavior",
-        "bursty repeated behavior"
+        "proposal frequency spike"
       ],
-      "risk_score": 74.58,
-      "severity": "high",
+      "risk_score": 38.53,
+      "severity": "medium",
       "source_key": "tx-0005",
       "title": "Behavior Manipulation Risk Detected"
     },
     {
       "id": "src-tx-0006",
-      "label": "Suspicious",
+      "label": "Clean",
       "linked_transaction_id": "tx-0006",
       "reason_codes": [
-        "proposal frequency spike",
-        "new destination behavior"
+        "proposal frequency spike"
       ],
-      "risk_score": 42.48,
-      "severity": "medium",
+      "risk_score": 25.73,
+      "severity": "low",
       "source_key": "tx-0006",
       "title": "Behavior Manipulation Risk Detected"
     },
     {
       "id": "src-tx-0007",
-      "label": "Suspicious",
+      "label": "Clean",
       "linked_transaction_id": "tx-0007",
       "reason_codes": [
-        "proposal frequency spike",
-        "new destination behavior"
+        "unusually large proposal size"
       ],
-      "risk_score": 61.95,
-      "severity": "medium",
+      "risk_score": 19.68,
+      "severity": "low",
       "source_key": "tx-0007",
       "title": "Behavior Manipulation Risk Detected"
     }
   ],
   "module": "behavior_manipulation",
-  "updated_at": "2026-07-05T21:43:48Z"
+  "updated_at": "2026-07-05T22:45:29Z"
 }
