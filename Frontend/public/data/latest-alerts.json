@@ -1,26 +1,5 @@
 {
-  "alerts": [
-    {
-      "description": "Source tx-0004 shows manipulative behavior (score: 84.38). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
-      "id": "bhv-src-tx-0004-20260704T232733Z",
-      "label": "High Risk",
-      "module": "behavior_manipulation",
-      "score": 84.38,
-      "severity": "high",
-      "timestamp": "2026-07-04T23:27:33Z",
-      "title": "Behavior Manipulation Risk Detected"
-    },
-    {
-      "description": "Message contains manipulative patterns (score: 98.0)",
-      "id": "inj-msg-0006-20260704T232733Z",
-      "label": "High Risk",
-      "module": "prompt_injection",
-      "score": 98.0,
-      "severity": "high",
-      "timestamp": "2026-07-04T23:27:33Z",
-      "title": "Manipulative Communication Detected"
-    }
-  ],
-  "new_alert_count": 2,
-  "updated_at": "2026-07-04T23:27:33Z"
+  "alerts": [],
+  "new_alert_count": 0,
+  "updated_at": "2026-07-05T01:19:23Z"
 }
