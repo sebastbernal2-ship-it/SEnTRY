@@ -2,15 +2,14 @@
   "items": [
     {
       "id": "src-tx-0000",
-      "label": "Suspicious",
+      "label": "High Risk",
       "linked_transaction_id": "tx-0000",
       "reason_codes": [
         "proposal frequency spike",
-        "unusually large proposal size",
         "new destination behavior"
       ],
-      "risk_score": 56.75,
-      "severity": "medium",
+      "risk_score": 82.95,
+      "severity": "high",
       "source_key": "tx-0000",
       "title": "Behavior Manipulation Risk Detected"
     },
@@ -18,35 +17,37 @@
       "id": "src-tx-0001",
       "label": "Clean",
       "linked_transaction_id": "tx-0001",
-      "reason_codes": [],
-      "risk_score": 12.92,
+      "reason_codes": [
+        "proposal frequency spike"
+      ],
+      "risk_score": 27.83,
       "severity": "low",
       "source_key": "tx-0001",
       "title": "Behavior Manipulation Risk Detected"
     },
     {
       "id": "src-tx-0002",
-      "label": "High Risk",
+      "label": "Suspicious",
       "linked_transaction_id": "tx-0002",
       "reason_codes": [
         "proposal frequency spike",
+        "unusually large proposal size",
         "new destination behavior"
       ],
-      "risk_score": 81.45,
-      "severity": "high",
+      "risk_score": 59.52,
+      "severity": "medium",
       "source_key": "tx-0002",
       "title": "Behavior Manipulation Risk Detected"
     },
     {
       "id": "src-tx-0003",
-      "label": "Suspicious",
+      "label": "Clean",
       "linked_transaction_id": "tx-0003",
       "reason_codes": [
-        "unusually large proposal size",
-        "new destination behavior"
+        "proposal frequency spike"
       ],
-      "risk_score": 46.89,
-      "severity": "medium",
+      "risk_score": 27.39,
+      "severity": "low",
       "source_key": "tx-0003",
       "title": "Behavior Manipulation Risk Detected"
     },
@@ -56,33 +57,34 @@
       "linked_transaction_id": "tx-0004",
       "reason_codes": [
         "proposal frequency spike",
-        "unusually large proposal size"
+        "new destination behavior"
       ],
-      "risk_score": 37.41,
+      "risk_score": 48.25,
       "severity": "medium",
       "source_key": "tx-0004",
       "title": "Behavior Manipulation Risk Detected"
     },
     {
       "id": "src-tx-0005",
-      "label": "Clean",
+      "label": "High Risk",
       "linked_transaction_id": "tx-0005",
-      "reason_codes": [],
-      "risk_score": 1.79,
-      "severity": "low",
+      "reason_codes": [
+        "proposal frequency spike",
+        "unusually large proposal size",
+        "new destination behavior"
+      ],
+      "risk_score": 73.74,
+      "severity": "high",
       "source_key": "tx-0005",
       "title": "Behavior Manipulation Risk Detected"
     },
     {
       "id": "src-tx-0006",
-      "label": "High Risk",
+      "label": "Clean",
       "linked_transaction_id": "tx-0006",
-      "reason_codes": [
-        "proposal frequency spike",
-        "new destination behavior"
-      ],
-      "risk_score": 74.88,
-      "severity": "high",
+      "reason_codes": [],
+      "risk_score": 9.51,
+      "severity": "low",
       "source_key": "tx-0006",
       "title": "Behavior Manipulation Risk Detected"
     },
@@ -92,15 +94,15 @@
       "linked_transaction_id": "tx-0007",
       "reason_codes": [
         "proposal frequency spike",
-        "unusually large proposal size",
-        "new destination behavior"
+        "new destination behavior",
+        "bursty repeated behavior"
       ],
-      "risk_score": 70.04,
+      "risk_score": 78.0,
       "severity": "high",
       "source_key": "tx-0007",
       "title": "Behavior Manipulation Risk Detected"
     }
   ],
   "module": "behavior_manipulation",
-  "updated_at": "2026-07-06T17:31:38Z"
+  "updated_at": "2026-07-06T19:23:25Z"
 }
