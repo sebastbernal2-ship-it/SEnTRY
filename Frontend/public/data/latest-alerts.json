@@ -1,36 +1,5 @@
 {
-  "alerts": [
-    {
-      "description": "Transaction tx-0007 flagged as anomalous (score: 85.86)",
-      "id": "txm-tx-0007-20260705T235116Z",
-      "label": "High Risk",
-      "module": "transaction_anomaly",
-      "score": 85.86,
-      "severity": "high",
-      "timestamp": "2026-07-05T23:51:16Z",
-      "title": "Anomalous Transaction Behavior"
-    },
-    {
-      "description": "Source tx-0007 shows manipulative behavior (score: 88.27). Factors: proposal frequency spike, new destination behavior, bursty repeated behavior",
-      "id": "bhv-src-tx-0007-20260705T235116Z",
-      "label": "High Risk",
-      "module": "behavior_manipulation",
-      "score": 88.27,
-      "severity": "high",
-      "timestamp": "2026-07-05T23:51:16Z",
-      "title": "Behavior Manipulation Risk Detected"
-    },
-    {
-      "description": "Message contains manipulative patterns (score: 98.0)",
-      "id": "inj-msg-0004-20260705T235116Z",
-      "label": "High Risk",
-      "module": "prompt_injection",
-      "score": 98.0,
-      "severity": "high",
-      "timestamp": "2026-07-05T23:51:16Z",
-      "title": "Manipulative Communication Detected"
-    }
-  ],
-  "new_alert_count": 3,
-  "updated_at": "2026-07-05T23:51:16Z"
+  "alerts": [],
+  "new_alert_count": 0,
+  "updated_at": "2026-07-06T02:32:43Z"
 }
