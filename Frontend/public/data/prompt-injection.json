@@ -45,38 +45,36 @@
     },
     {
       "id": "msg-0004",
-      "label": "Suspicious",
-      "preview": "WARNING: Your account at RISK! Click here NOW!!",
-      "risk_score": 31.0,
-      "severity": "medium",
-      "text_preview": "WARNING: Your account at RISK! Click here NOW!!",
+      "label": "Clean",
+      "preview": "Last chance \u2014 high-yield opportunity expires in 60 seconds.",
+      "risk_score": 30.0,
+      "severity": "low",
+      "text_preview": "Last chance \u2014 high-yield opportunity expires in 60 seconds.",
       "triggered_patterns": [
         "urgency",
-        "pressure",
-        "excessive_punctuation"
+        "fomo"
       ]
     },
     {
       "id": "msg-0005",
-      "label": "Suspicious",
-      "preview": "WARNING: Your account at RISK! Click here NOW!!",
-      "risk_score": 31.0,
-      "severity": "medium",
-      "text_preview": "WARNING: Your account at RISK! Click here NOW!!",
-      "triggered_patterns": [
-        "urgency",
-        "pressure",
-        "excessive_punctuation"
-      ]
+      "label": "Clean",
+      "preview": "Deposit USDC into verified pool with 8% APY.",
+      "risk_score": 0.0,
+      "severity": "low",
+      "text_preview": "Deposit USDC into verified pool with 8% APY.",
+      "triggered_patterns": []
     },
     {
       "id": "msg-0006",
       "label": "Clean",
-      "preview": "Swap 0.5 ETH to USDC at market rate.",
-      "risk_score": 0.0,
+      "preview": "Last chance \u2014 high-yield opportunity expires in 60 seconds.",
+      "risk_score": 30.0,
       "severity": "low",
-      "text_preview": "Swap 0.5 ETH to USDC at market rate.",
-      "triggered_patterns": []
+      "text_preview": "Last chance \u2014 high-yield opportunity expires in 60 seconds.",
+      "triggered_patterns": [
+        "urgency",
+        "fomo"
+      ]
     },
     {
       "id": "msg-0007",
@@ -92,5 +90,5 @@
     }
   ],
   "module": "prompt_injection",
-  "updated_at": "2026-07-08T03:51:33Z"
+  "updated_at": "2026-07-08T06:35:24Z"
 }
