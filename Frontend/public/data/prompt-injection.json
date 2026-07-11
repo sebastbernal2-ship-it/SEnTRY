@@ -46,14 +46,23 @@
     {
       "id": "msg-0004",
       "label": "Clean",
-      "preview": "Rebalance portfolio per your defined strategy.",
+      "preview": "Swap 0.5 ETH to USDC at market rate.",
       "risk_score": 0.0,
       "severity": "low",
-      "text_preview": "Rebalance portfolio per your defined strategy.",
+      "text_preview": "Swap 0.5 ETH to USDC at market rate.",
       "triggered_patterns": []
     },
     {
       "id": "msg-0005",
+      "label": "Clean",
+      "preview": "Set new take-profit at $2500 per unit sold.",
+      "risk_score": 0.0,
+      "severity": "low",
+      "text_preview": "Set new take-profit at $2500 per unit sold.",
+      "triggered_patterns": []
+    },
+    {
+      "id": "msg-0006",
       "label": "High Risk",
       "preview": "GUARANTEED 900% APY \u2014 act NOW before it's gone!",
       "risk_score": 89.0,
@@ -67,24 +76,18 @@
       ]
     },
     {
-      "id": "msg-0006",
-      "label": "Clean",
-      "preview": "Deposit USDC into verified pool with 8% APY.",
-      "risk_score": 0.0,
-      "severity": "low",
-      "text_preview": "Deposit USDC into verified pool with 8% APY.",
-      "triggered_patterns": []
-    },
-    {
       "id": "msg-0007",
       "label": "Clean",
-      "preview": "Deposit USDC into verified pool with 8% APY.",
-      "risk_score": 0.0,
+      "preview": "Last chance \u2014 high-yield opportunity expires in 60 seconds.",
+      "risk_score": 30.0,
       "severity": "low",
-      "text_preview": "Deposit USDC into verified pool with 8% APY.",
-      "triggered_patterns": []
+      "text_preview": "Last chance \u2014 high-yield opportunity expires in 60 seconds.",
+      "triggered_patterns": [
+        "urgency",
+        "fomo"
+      ]
     }
   ],
   "module": "prompt_injection",
-  "updated_at": "2026-07-11T17:17:40Z"
+  "updated_at": "2026-07-11T18:13:12Z"
 }
