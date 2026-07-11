@@ -46,19 +46,22 @@
     {
       "id": "msg-0004",
       "label": "Clean",
-      "preview": "Swap 0.5 ETH to USDC at market rate.",
-      "risk_score": 0.0,
+      "preview": "Don't miss out \u2014 everyone is making 500% returns TODAY!",
+      "risk_score": 28.0,
       "severity": "low",
-      "text_preview": "Swap 0.5 ETH to USDC at market rate.",
-      "triggered_patterns": []
+      "text_preview": "Don't miss out \u2014 everyone is making 500% returns TODAY!",
+      "triggered_patterns": [
+        "fomo",
+        "pressure"
+      ]
     },
     {
       "id": "msg-0005",
       "label": "Clean",
-      "preview": "Set new take-profit at $2500 per unit sold.",
+      "preview": "Execute swap with 0.2% slippage tolerance.",
       "risk_score": 0.0,
       "severity": "low",
-      "text_preview": "Set new take-profit at $2500 per unit sold.",
+      "text_preview": "Execute swap with 0.2% slippage tolerance.",
       "triggered_patterns": []
     },
     {
@@ -77,17 +80,18 @@
     },
     {
       "id": "msg-0007",
-      "label": "Clean",
-      "preview": "Last chance \u2014 high-yield opportunity expires in 60 seconds.",
-      "risk_score": 30.0,
-      "severity": "low",
-      "text_preview": "Last chance \u2014 high-yield opportunity expires in 60 seconds.",
+      "label": "Suspicious",
+      "preview": "WARNING: Your account at RISK! Click here NOW!!",
+      "risk_score": 31.0,
+      "severity": "medium",
+      "text_preview": "WARNING: Your account at RISK! Click here NOW!!",
       "triggered_patterns": [
         "urgency",
-        "fomo"
+        "pressure",
+        "excessive_punctuation"
       ]
     }
   ],
   "module": "prompt_injection",
-  "updated_at": "2026-07-11T18:13:12Z"
+  "updated_at": "2026-07-11T19:37:26Z"
 }
