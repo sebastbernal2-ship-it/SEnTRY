@@ -45,25 +45,24 @@
     },
     {
       "id": "msg-0004",
-      "label": "High Risk",
-      "preview": "GUARANTEED 900% APY \u2014 act NOW before it's gone!",
-      "risk_score": 89.0,
-      "severity": "high",
-      "text_preview": "GUARANTEED 900% APY \u2014 act NOW before it's gone!",
+      "label": "Suspicious",
+      "preview": "WARNING: Your account at RISK! Click here NOW!!",
+      "risk_score": 31.0,
+      "severity": "medium",
+      "text_preview": "WARNING: Your account at RISK! Click here NOW!!",
       "triggered_patterns": [
         "urgency",
-        "guaranteed_returns",
-        "fomo",
-        "shouting"
+        "pressure",
+        "excessive_punctuation"
       ]
     },
     {
       "id": "msg-0005",
       "label": "Clean",
-      "preview": "Swap 0.5 ETH to USDC at market rate.",
+      "preview": "Set new take-profit at $2500 per unit sold.",
       "risk_score": 0.0,
       "severity": "low",
-      "text_preview": "Swap 0.5 ETH to USDC at market rate.",
+      "text_preview": "Set new take-profit at $2500 per unit sold.",
       "triggered_patterns": []
     },
     {
@@ -90,5 +89,5 @@
     }
   ],
   "module": "prompt_injection",
-  "updated_at": "2026-07-15T22:26:34Z"
+  "updated_at": "2026-07-15T23:33:03Z"
 }
