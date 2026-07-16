@@ -1,26 +1,5 @@
 {
-  "alerts": [
-    {
-      "description": "Transaction tx_1580 flagged as anomalous (score: 81.0)",
-      "id": "txm-tx_1580-20260716T164349Z",
-      "label": "High Risk",
-      "module": "transaction_anomaly",
-      "score": 81.0,
-      "severity": "high",
-      "timestamp": "2026-07-16T16:43:49Z",
-      "title": "Anomalous Transaction Behavior"
-    },
-    {
-      "description": "Transaction tx_1681 flagged as anomalous (score: 81.21)",
-      "id": "txm-tx_1681-20260716T164349Z",
-      "label": "High Risk",
-      "module": "transaction_anomaly",
-      "score": 81.21,
-      "severity": "high",
-      "timestamp": "2026-07-16T16:43:49Z",
-      "title": "Anomalous Transaction Behavior"
-    }
-  ],
-  "new_alert_count": 2,
-  "updated_at": "2026-07-16T16:43:49Z"
+  "alerts": [],
+  "new_alert_count": 0,
+  "updated_at": "2026-07-16T17:57:47Z"
 }
