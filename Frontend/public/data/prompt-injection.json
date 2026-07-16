@@ -45,29 +45,21 @@
     },
     {
       "id": "msg-0004",
-      "label": "Suspicious",
-      "preview": "WARNING: Your account at RISK! Click here NOW!!",
-      "risk_score": 31.0,
-      "severity": "medium",
-      "text_preview": "WARNING: Your account at RISK! Click here NOW!!",
-      "triggered_patterns": [
-        "urgency",
-        "pressure",
-        "excessive_punctuation"
-      ]
+      "label": "Clean",
+      "preview": "Set new take-profit at $2500 per unit sold.",
+      "risk_score": 0.0,
+      "severity": "low",
+      "text_preview": "Set new take-profit at $2500 per unit sold.",
+      "triggered_patterns": []
     },
     {
       "id": "msg-0005",
-      "label": "Suspicious",
-      "preview": "WARNING: Your account at RISK! Click here NOW!!",
-      "risk_score": 31.0,
-      "severity": "medium",
-      "text_preview": "WARNING: Your account at RISK! Click here NOW!!",
-      "triggered_patterns": [
-        "urgency",
-        "pressure",
-        "excessive_punctuation"
-      ]
+      "label": "Clean",
+      "preview": "Rebalance portfolio per your defined strategy.",
+      "risk_score": 0.0,
+      "severity": "low",
+      "text_preview": "Rebalance portfolio per your defined strategy.",
+      "triggered_patterns": []
     },
     {
       "id": "msg-0006",
@@ -81,13 +73,13 @@
     {
       "id": "msg-0007",
       "label": "Clean",
-      "preview": "Rebalance portfolio per your defined strategy.",
+      "preview": "Deposit USDC into verified pool with 8% APY.",
       "risk_score": 0.0,
       "severity": "low",
-      "text_preview": "Rebalance portfolio per your defined strategy.",
+      "text_preview": "Deposit USDC into verified pool with 8% APY.",
       "triggered_patterns": []
     }
   ],
   "module": "prompt_injection",
-  "updated_at": "2026-07-16T07:03:41Z"
+  "updated_at": "2026-07-16T09:27:27Z"
 }
