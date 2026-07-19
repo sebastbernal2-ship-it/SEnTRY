@@ -1,5 +1,16 @@
 {
-  "alerts": [],
-  "new_alert_count": 0,
-  "updated_at": "2026-07-19T22:29:56Z"
+  "alerts": [
+    {
+      "description": "Message contains manipulative patterns (score: 89.0)",
+      "id": "inj-msg-0005-20260719T233443Z",
+      "label": "High Risk",
+      "module": "prompt_injection",
+      "score": 89.0,
+      "severity": "high",
+      "timestamp": "2026-07-19T23:34:43Z",
+      "title": "Manipulative Communication Detected"
+    }
+  ],
+  "new_alert_count": 1,
+  "updated_at": "2026-07-19T23:34:43Z"
 }
