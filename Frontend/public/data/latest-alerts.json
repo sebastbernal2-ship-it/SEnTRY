@@ -1,5 +1,36 @@
 {
-  "alerts": [],
-  "new_alert_count": 0,
-  "updated_at": "2026-07-19T09:22:53Z"
+  "alerts": [
+    {
+      "description": "Message contains manipulative patterns (score: 89.0)",
+      "id": "inj-msg-0000-20260719T105532Z",
+      "label": "High Risk",
+      "module": "prompt_injection",
+      "score": 89.0,
+      "severity": "high",
+      "timestamp": "2026-07-19T10:55:32Z",
+      "title": "Manipulative Communication Detected"
+    },
+    {
+      "description": "Address 0xDEAD...BEEF shows risky AML patterns (score: 100.0)",
+      "id": "aml-addr-0002-20260719T105532Z",
+      "label": "High Risk",
+      "module": "money_laundering",
+      "score": 100.0,
+      "severity": "high",
+      "timestamp": "2026-07-19T10:55:32Z",
+      "title": "High-Risk Address Detected"
+    },
+    {
+      "description": "Address 0xEEEE...0000 shows risky AML patterns (score: 100.0)",
+      "id": "aml-addr-0007-20260719T105532Z",
+      "label": "High Risk",
+      "module": "money_laundering",
+      "score": 100.0,
+      "severity": "high",
+      "timestamp": "2026-07-19T10:55:32Z",
+      "title": "High-Risk Address Detected"
+    }
+  ],
+  "new_alert_count": 3,
+  "updated_at": "2026-07-19T10:55:32Z"
 }
