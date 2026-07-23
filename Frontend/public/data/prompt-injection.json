@@ -66,28 +66,27 @@
     },
     {
       "id": "msg-0006",
-      "label": "High Risk",
-      "preview": "GUARANTEED 900% APY \u2014 act NOW before it's gone!",
-      "risk_score": 89.0,
-      "severity": "high",
-      "text_preview": "GUARANTEED 900% APY \u2014 act NOW before it's gone!",
-      "triggered_patterns": [
-        "urgency",
-        "guaranteed_returns",
-        "fomo",
-        "shouting"
-      ]
+      "label": "Clean",
+      "preview": "Execute swap with 0.2% slippage tolerance.",
+      "risk_score": 0.0,
+      "severity": "low",
+      "text_preview": "Execute swap with 0.2% slippage tolerance.",
+      "triggered_patterns": []
     },
     {
       "id": "msg-0007",
-      "label": "Clean",
-      "preview": "Deposit USDC into verified pool with 8% APY.",
-      "risk_score": 0.0,
-      "severity": "low",
-      "text_preview": "Deposit USDC into verified pool with 8% APY.",
-      "triggered_patterns": []
+      "label": "Suspicious",
+      "preview": "WARNING: Your account at RISK! Click here NOW!!",
+      "risk_score": 31.0,
+      "severity": "medium",
+      "text_preview": "WARNING: Your account at RISK! Click here NOW!!",
+      "triggered_patterns": [
+        "urgency",
+        "pressure",
+        "excessive_punctuation"
+      ]
     }
   ],
   "module": "prompt_injection",
-  "updated_at": "2026-07-23T12:02:41Z"
+  "updated_at": "2026-07-23T14:29:39Z"
 }

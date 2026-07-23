@@ -1,5 +1,66 @@
 {
-  "alerts": [],
-  "new_alert_count": 0,
-  "updated_at": "2026-07-23T12:02:41Z"
+  "alerts": [
+    {
+      "description": "Transaction tx_913 flagged as anomalous (score: 80.3)",
+      "id": "txm-tx_913-20260723T142939Z",
+      "label": "High Risk",
+      "module": "transaction_anomaly",
+      "score": 80.3,
+      "severity": "high",
+      "timestamp": "2026-07-23T14:29:39Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1882 flagged as anomalous (score: 81.84)",
+      "id": "txm-tx_1882-20260723T142939Z",
+      "label": "High Risk",
+      "module": "transaction_anomaly",
+      "score": 81.84,
+      "severity": "high",
+      "timestamp": "2026-07-23T14:29:39Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Source tx_1852 shows manipulative behavior (score: 80.31). Factors: proposal frequency spike, unusually large proposal size, new destination behavior",
+      "id": "bhv-src-tx_1852-20260723T142939Z",
+      "label": "High Risk",
+      "module": "behavior_manipulation",
+      "score": 80.31,
+      "severity": "high",
+      "timestamp": "2026-07-23T14:29:39Z",
+      "title": "Behavior Manipulation Risk Detected"
+    },
+    {
+      "description": "Message contains manipulative patterns (score: 89.0)",
+      "id": "inj-msg-0000-20260723T142939Z",
+      "label": "High Risk",
+      "module": "prompt_injection",
+      "score": 89.0,
+      "severity": "high",
+      "timestamp": "2026-07-23T14:29:39Z",
+      "title": "Manipulative Communication Detected"
+    },
+    {
+      "description": "Address 0xDEAD...BEEF shows risky AML patterns (score: 100.0)",
+      "id": "aml-addr-0002-20260723T142939Z",
+      "label": "High Risk",
+      "module": "money_laundering",
+      "score": 100.0,
+      "severity": "high",
+      "timestamp": "2026-07-23T14:29:39Z",
+      "title": "High-Risk Address Detected"
+    },
+    {
+      "description": "Address 0xEEEE...0000 shows risky AML patterns (score: 100.0)",
+      "id": "aml-addr-0007-20260723T142939Z",
+      "label": "High Risk",
+      "module": "money_laundering",
+      "score": 100.0,
+      "severity": "high",
+      "timestamp": "2026-07-23T14:29:39Z",
+      "title": "High-Risk Address Detected"
+    }
+  ],
+  "new_alert_count": 6,
+  "updated_at": "2026-07-23T14:29:39Z"
 }
