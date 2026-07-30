@@ -46,15 +46,6 @@
     {
       "id": "msg-0004",
       "label": "Clean",
-      "preview": "Execute swap with 0.2% slippage tolerance.",
-      "risk_score": 0.0,
-      "severity": "low",
-      "text_preview": "Execute swap with 0.2% slippage tolerance.",
-      "triggered_patterns": []
-    },
-    {
-      "id": "msg-0005",
-      "label": "Clean",
       "preview": "Don't miss out \u2014 everyone is making 500% returns TODAY!",
       "risk_score": 28.0,
       "severity": "low",
@@ -65,7 +56,35 @@
       ]
     },
     {
+      "id": "msg-0005",
+      "label": "High Risk",
+      "preview": "GUARANTEED 900% APY \u2014 act NOW before it's gone!",
+      "risk_score": 89.0,
+      "severity": "high",
+      "text_preview": "GUARANTEED 900% APY \u2014 act NOW before it's gone!",
+      "triggered_patterns": [
+        "urgency",
+        "guaranteed_returns",
+        "fomo",
+        "shouting"
+      ]
+    },
+    {
       "id": "msg-0006",
+      "label": "High Risk",
+      "preview": "GUARANTEED 900% APY \u2014 act NOW before it's gone!",
+      "risk_score": 89.0,
+      "severity": "high",
+      "text_preview": "GUARANTEED 900% APY \u2014 act NOW before it's gone!",
+      "triggered_patterns": [
+        "urgency",
+        "guaranteed_returns",
+        "fomo",
+        "shouting"
+      ]
+    },
+    {
+      "id": "msg-0007",
       "label": "Clean",
       "preview": "Last chance \u2014 high-yield opportunity expires in 60 seconds.",
       "risk_score": 30.0,
@@ -75,17 +94,8 @@
         "urgency",
         "fomo"
       ]
-    },
-    {
-      "id": "msg-0007",
-      "label": "Clean",
-      "preview": "Execute swap with 0.2% slippage tolerance.",
-      "risk_score": 0.0,
-      "severity": "low",
-      "text_preview": "Execute swap with 0.2% slippage tolerance.",
-      "triggered_patterns": []
     }
   ],
   "module": "prompt_injection",
-  "updated_at": "2026-07-30T04:18:45Z"
+  "updated_at": "2026-07-30T07:07:08Z"
 }
