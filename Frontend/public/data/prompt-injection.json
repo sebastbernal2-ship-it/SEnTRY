@@ -45,6 +45,15 @@
     },
     {
       "id": "msg-0004",
+      "label": "Clean",
+      "preview": "Deposit USDC into verified pool with 8% APY.",
+      "risk_score": 0.0,
+      "severity": "low",
+      "text_preview": "Deposit USDC into verified pool with 8% APY.",
+      "triggered_patterns": []
+    },
+    {
+      "id": "msg-0005",
       "label": "High Risk",
       "preview": "GUARANTEED 900% APY \u2014 act NOW before it's gone!",
       "risk_score": 89.0,
@@ -56,15 +65,6 @@
         "fomo",
         "shouting"
       ]
-    },
-    {
-      "id": "msg-0005",
-      "label": "Clean",
-      "preview": "Swap 0.5 ETH to USDC at market rate.",
-      "risk_score": 0.0,
-      "severity": "low",
-      "text_preview": "Swap 0.5 ETH to USDC at market rate.",
-      "triggered_patterns": []
     },
     {
       "id": "msg-0006",
@@ -80,14 +80,18 @@
     },
     {
       "id": "msg-0007",
-      "label": "Clean",
-      "preview": "Deposit USDC into verified pool with 8% APY.",
-      "risk_score": 0.0,
-      "severity": "low",
-      "text_preview": "Deposit USDC into verified pool with 8% APY.",
-      "triggered_patterns": []
+      "label": "Suspicious",
+      "preview": "WARNING: Your account at RISK! Click here NOW!!",
+      "risk_score": 31.0,
+      "severity": "medium",
+      "text_preview": "WARNING: Your account at RISK! Click here NOW!!",
+      "triggered_patterns": [
+        "urgency",
+        "pressure",
+        "excessive_punctuation"
+      ]
     }
   ],
   "module": "prompt_injection",
-  "updated_at": "2026-08-08T22:37:33Z"
+  "updated_at": "2026-08-08T23:04:45Z"
 }
