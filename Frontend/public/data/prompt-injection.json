@@ -46,24 +46,22 @@
     {
       "id": "msg-0004",
       "label": "Clean",
-      "preview": "Deposit USDC into verified pool with 8% APY.",
+      "preview": "Rebalance portfolio per your defined strategy.",
       "risk_score": 0.0,
       "severity": "low",
-      "text_preview": "Deposit USDC into verified pool with 8% APY.",
+      "text_preview": "Rebalance portfolio per your defined strategy.",
       "triggered_patterns": []
     },
     {
       "id": "msg-0005",
-      "label": "High Risk",
-      "preview": "GUARANTEED 900% APY \u2014 act NOW before it's gone!",
-      "risk_score": 89.0,
-      "severity": "high",
-      "text_preview": "GUARANTEED 900% APY \u2014 act NOW before it's gone!",
+      "label": "Clean",
+      "preview": "Last chance \u2014 high-yield opportunity expires in 60 seconds.",
+      "risk_score": 30.0,
+      "severity": "low",
+      "text_preview": "Last chance \u2014 high-yield opportunity expires in 60 seconds.",
       "triggered_patterns": [
         "urgency",
-        "guaranteed_returns",
-        "fomo",
-        "shouting"
+        "fomo"
       ]
     },
     {
@@ -93,5 +91,5 @@
     }
   ],
   "module": "prompt_injection",
-  "updated_at": "2026-08-08T23:04:45Z"
+  "updated_at": "2026-08-08T23:43:20Z"
 }
