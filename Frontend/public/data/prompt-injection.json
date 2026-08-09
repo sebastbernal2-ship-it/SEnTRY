@@ -45,38 +45,30 @@
     },
     {
       "id": "msg-0004",
-      "label": "Suspicious",
-      "preview": "WARNING: Your account at RISK! Click here NOW!!",
-      "risk_score": 31.0,
-      "severity": "medium",
-      "text_preview": "WARNING: Your account at RISK! Click here NOW!!",
-      "triggered_patterns": [
-        "urgency",
-        "pressure",
-        "excessive_punctuation"
-      ]
+      "label": "Clean",
+      "preview": "Set new take-profit at $2500 per unit sold.",
+      "risk_score": 0.0,
+      "severity": "low",
+      "text_preview": "Set new take-profit at $2500 per unit sold.",
+      "triggered_patterns": []
     },
     {
       "id": "msg-0005",
       "label": "Clean",
-      "preview": "Execute swap with 0.2% slippage tolerance.",
+      "preview": "Deposit USDC into verified pool with 8% APY.",
       "risk_score": 0.0,
       "severity": "low",
-      "text_preview": "Execute swap with 0.2% slippage tolerance.",
+      "text_preview": "Deposit USDC into verified pool with 8% APY.",
       "triggered_patterns": []
     },
     {
       "id": "msg-0006",
-      "label": "Suspicious",
-      "preview": "WARNING: Your account at RISK! Click here NOW!!",
-      "risk_score": 31.0,
-      "severity": "medium",
-      "text_preview": "WARNING: Your account at RISK! Click here NOW!!",
-      "triggered_patterns": [
-        "urgency",
-        "pressure",
-        "excessive_punctuation"
-      ]
+      "label": "Clean",
+      "preview": "Set new take-profit at $2500 per unit sold.",
+      "risk_score": 0.0,
+      "severity": "low",
+      "text_preview": "Set new take-profit at $2500 per unit sold.",
+      "triggered_patterns": []
     },
     {
       "id": "msg-0007",
@@ -93,5 +85,5 @@
     }
   ],
   "module": "prompt_injection",
-  "updated_at": "2026-08-09T19:44:48Z"
+  "updated_at": "2026-08-09T20:15:19Z"
 }
