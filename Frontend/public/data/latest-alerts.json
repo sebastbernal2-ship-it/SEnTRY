@@ -1,36 +1,16 @@
 {
   "alerts": [
     {
-      "description": "Transaction tx_913 flagged as anomalous (score: 80.3)",
-      "id": "txm-tx_913-20260810T094110Z",
+      "description": "Message contains manipulative patterns (score: 98.0)",
+      "id": "inj-msg-0004-20260810T104910Z",
       "label": "High Risk",
-      "module": "transaction_anomaly",
-      "score": 80.3,
+      "module": "prompt_injection",
+      "score": 98.0,
       "severity": "high",
-      "timestamp": "2026-08-10T09:41:10Z",
-      "title": "Anomalous Transaction Behavior"
-    },
-    {
-      "description": "Transaction tx_1882 flagged as anomalous (score: 81.84)",
-      "id": "txm-tx_1882-20260810T094110Z",
-      "label": "High Risk",
-      "module": "transaction_anomaly",
-      "score": 81.84,
-      "severity": "high",
-      "timestamp": "2026-08-10T09:41:10Z",
-      "title": "Anomalous Transaction Behavior"
-    },
-    {
-      "description": "Source tx_1852 shows manipulative behavior (score: 80.31). Factors: proposal frequency spike, unusually large proposal size, new destination behavior",
-      "id": "bhv-src-tx_1852-20260810T094110Z",
-      "label": "High Risk",
-      "module": "behavior_manipulation",
-      "score": 80.31,
-      "severity": "high",
-      "timestamp": "2026-08-10T09:41:10Z",
-      "title": "Behavior Manipulation Risk Detected"
+      "timestamp": "2026-08-10T10:49:10Z",
+      "title": "Manipulative Communication Detected"
     }
   ],
-  "new_alert_count": 3,
-  "updated_at": "2026-08-10T09:41:10Z"
+  "new_alert_count": 1,
+  "updated_at": "2026-08-10T10:49:10Z"
 }
