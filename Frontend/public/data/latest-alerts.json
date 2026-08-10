@@ -1,36 +1,36 @@
 {
   "alerts": [
     {
-      "description": "Transaction tx-0001 flagged as anomalous (score: 83.23)",
-      "id": "txm-tx-0001-20260810T075518Z",
+      "description": "Transaction tx_913 flagged as anomalous (score: 80.3)",
+      "id": "txm-tx_913-20260810T094110Z",
       "label": "High Risk",
       "module": "transaction_anomaly",
-      "score": 83.23,
+      "score": 80.3,
       "severity": "high",
-      "timestamp": "2026-08-10T07:55:18Z",
+      "timestamp": "2026-08-10T09:41:10Z",
       "title": "Anomalous Transaction Behavior"
     },
     {
-      "description": "Source tx-0001 shows manipulative behavior (score: 80.78). Factors: proposal frequency spike, new destination behavior",
-      "id": "bhv-src-tx-0001-20260810T075518Z",
+      "description": "Transaction tx_1882 flagged as anomalous (score: 81.84)",
+      "id": "txm-tx_1882-20260810T094110Z",
       "label": "High Risk",
-      "module": "behavior_manipulation",
-      "score": 80.78,
+      "module": "transaction_anomaly",
+      "score": 81.84,
       "severity": "high",
-      "timestamp": "2026-08-10T07:55:18Z",
-      "title": "Behavior Manipulation Risk Detected"
+      "timestamp": "2026-08-10T09:41:10Z",
+      "title": "Anomalous Transaction Behavior"
     },
     {
-      "description": "Message contains manipulative patterns (score: 98.0)",
-      "id": "inj-msg-0005-20260810T075518Z",
+      "description": "Source tx_1852 shows manipulative behavior (score: 80.31). Factors: proposal frequency spike, unusually large proposal size, new destination behavior",
+      "id": "bhv-src-tx_1852-20260810T094110Z",
       "label": "High Risk",
-      "module": "prompt_injection",
-      "score": 98.0,
+      "module": "behavior_manipulation",
+      "score": 80.31,
       "severity": "high",
-      "timestamp": "2026-08-10T07:55:18Z",
-      "title": "Manipulative Communication Detected"
+      "timestamp": "2026-08-10T09:41:10Z",
+      "title": "Behavior Manipulation Risk Detected"
     }
   ],
   "new_alert_count": 3,
-  "updated_at": "2026-08-10T07:55:18Z"
+  "updated_at": "2026-08-10T09:41:10Z"
 }
