@@ -59,34 +59,34 @@
     {
       "id": "msg-0005",
       "label": "Clean",
-      "preview": "Execute swap with 0.2% slippage tolerance.",
+      "preview": "Swap 0.5 ETH to USDC at market rate.",
       "risk_score": 0.0,
       "severity": "low",
-      "text_preview": "Execute swap with 0.2% slippage tolerance.",
+      "text_preview": "Swap 0.5 ETH to USDC at market rate.",
       "triggered_patterns": []
     },
     {
       "id": "msg-0006",
       "label": "Clean",
-      "preview": "Execute swap with 0.2% slippage tolerance.",
+      "preview": "Deposit USDC into verified pool with 8% APY.",
       "risk_score": 0.0,
       "severity": "low",
-      "text_preview": "Execute swap with 0.2% slippage tolerance.",
+      "text_preview": "Deposit USDC into verified pool with 8% APY.",
       "triggered_patterns": []
     },
     {
       "id": "msg-0007",
       "label": "Clean",
-      "preview": "Don't miss out \u2014 everyone is making 500% returns TODAY!",
-      "risk_score": 28.0,
+      "preview": "Last chance \u2014 high-yield opportunity expires in 60 seconds.",
+      "risk_score": 30.0,
       "severity": "low",
-      "text_preview": "Don't miss out \u2014 everyone is making 500% returns TODAY!",
+      "text_preview": "Last chance \u2014 high-yield opportunity expires in 60 seconds.",
       "triggered_patterns": [
-        "fomo",
-        "pressure"
+        "urgency",
+        "fomo"
       ]
     }
   ],
   "module": "prompt_injection",
-  "updated_at": "2026-08-24T06:06:10Z"
+  "updated_at": "2026-08-24T07:19:21Z"
 }
