@@ -45,23 +45,28 @@
     },
     {
       "id": "msg-0004",
-      "label": "Clean",
-      "preview": "Set new take-profit at $2500 per unit sold.",
-      "risk_score": 0.0,
-      "severity": "low",
-      "text_preview": "Set new take-profit at $2500 per unit sold.",
-      "triggered_patterns": []
+      "label": "Suspicious",
+      "preview": "WARNING: Your account at RISK! Click here NOW!!",
+      "risk_score": 31.0,
+      "severity": "medium",
+      "text_preview": "WARNING: Your account at RISK! Click here NOW!!",
+      "triggered_patterns": [
+        "urgency",
+        "pressure",
+        "excessive_punctuation"
+      ]
     },
     {
       "id": "msg-0005",
-      "label": "Clean",
-      "preview": "Last chance \u2014 high-yield opportunity expires in 60 seconds.",
-      "risk_score": 30.0,
-      "severity": "low",
-      "text_preview": "Last chance \u2014 high-yield opportunity expires in 60 seconds.",
+      "label": "Suspicious",
+      "preview": "WARNING: Your account at RISK! Click here NOW!!",
+      "risk_score": 31.0,
+      "severity": "medium",
+      "text_preview": "WARNING: Your account at RISK! Click here NOW!!",
       "triggered_patterns": [
         "urgency",
-        "fomo"
+        "pressure",
+        "excessive_punctuation"
       ]
     },
     {
@@ -78,18 +83,17 @@
     },
     {
       "id": "msg-0007",
-      "label": "Suspicious",
-      "preview": "WARNING: Your account at RISK! Click here NOW!!",
-      "risk_score": 31.0,
-      "severity": "medium",
-      "text_preview": "WARNING: Your account at RISK! Click here NOW!!",
+      "label": "Clean",
+      "preview": "Last chance \u2014 high-yield opportunity expires in 60 seconds.",
+      "risk_score": 30.0,
+      "severity": "low",
+      "text_preview": "Last chance \u2014 high-yield opportunity expires in 60 seconds.",
       "triggered_patterns": [
         "urgency",
-        "pressure",
-        "excessive_punctuation"
+        "fomo"
       ]
     }
   ],
   "module": "prompt_injection",
-  "updated_at": "2026-08-24T10:53:02Z"
+  "updated_at": "2026-08-24T11:36:20Z"
 }
