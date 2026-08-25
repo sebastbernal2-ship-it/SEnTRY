@@ -58,6 +58,15 @@
     },
     {
       "id": "msg-0005",
+      "label": "Clean",
+      "preview": "Rebalance portfolio per your defined strategy.",
+      "risk_score": 0.0,
+      "severity": "low",
+      "text_preview": "Rebalance portfolio per your defined strategy.",
+      "triggered_patterns": []
+    },
+    {
+      "id": "msg-0006",
       "label": "High Risk",
       "preview": "GUARANTEED 900% APY \u2014 act NOW before it's gone!",
       "risk_score": 89.0,
@@ -69,15 +78,6 @@
         "fomo",
         "shouting"
       ]
-    },
-    {
-      "id": "msg-0006",
-      "label": "Clean",
-      "preview": "Swap 0.5 ETH to USDC at market rate.",
-      "risk_score": 0.0,
-      "severity": "low",
-      "text_preview": "Swap 0.5 ETH to USDC at market rate.",
-      "triggered_patterns": []
     },
     {
       "id": "msg-0007",
@@ -96,5 +96,5 @@
     }
   ],
   "module": "prompt_injection",
-  "updated_at": "2026-08-25T16:10:33Z"
+  "updated_at": "2026-08-25T16:58:10Z"
 }
