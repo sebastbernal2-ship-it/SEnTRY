@@ -46,6 +46,18 @@
     {
       "id": "msg-0004",
       "label": "Clean",
+      "preview": "Last chance \u2014 high-yield opportunity expires in 60 seconds.",
+      "risk_score": 30.0,
+      "severity": "low",
+      "text_preview": "Last chance \u2014 high-yield opportunity expires in 60 seconds.",
+      "triggered_patterns": [
+        "urgency",
+        "fomo"
+      ]
+    },
+    {
+      "id": "msg-0005",
+      "label": "Clean",
       "preview": "Swap 0.5 ETH to USDC at market rate.",
       "risk_score": 0.0,
       "severity": "low",
@@ -53,7 +65,16 @@
       "triggered_patterns": []
     },
     {
-      "id": "msg-0005",
+      "id": "msg-0006",
+      "label": "Clean",
+      "preview": "Rebalance portfolio per your defined strategy.",
+      "risk_score": 0.0,
+      "severity": "low",
+      "text_preview": "Rebalance portfolio per your defined strategy.",
+      "triggered_patterns": []
+    },
+    {
+      "id": "msg-0007",
       "label": "High Risk",
       "preview": "GUARANTEED 900% APY \u2014 act NOW before it's gone!",
       "risk_score": 89.0,
@@ -65,32 +86,8 @@
         "fomo",
         "shouting"
       ]
-    },
-    {
-      "id": "msg-0006",
-      "label": "Clean",
-      "preview": "Deposit USDC into verified pool with 8% APY.",
-      "risk_score": 0.0,
-      "severity": "low",
-      "text_preview": "Deposit USDC into verified pool with 8% APY.",
-      "triggered_patterns": []
-    },
-    {
-      "id": "msg-0007",
-      "label": "Suspicious",
-      "preview": "IMMEDIATE ACTION REQUIRED \u2014 Limited spots available!!!",
-      "risk_score": 59.0,
-      "severity": "medium",
-      "text_preview": "IMMEDIATE ACTION REQUIRED \u2014 Limited spots available!!!",
-      "triggered_patterns": [
-        "urgency",
-        "fomo",
-        "pressure",
-        "shouting",
-        "excessive_punctuation"
-      ]
     }
   ],
   "module": "prompt_injection",
-  "updated_at": "2026-08-28T11:04:43Z"
+  "updated_at": "2026-08-28T21:22:06Z"
 }
