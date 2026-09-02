@@ -45,20 +45,24 @@
     },
     {
       "id": "msg-0004",
-      "label": "Clean",
-      "preview": "Set new take-profit at $2500 per unit sold.",
-      "risk_score": 0.0,
-      "severity": "low",
-      "text_preview": "Set new take-profit at $2500 per unit sold.",
-      "triggered_patterns": []
+      "label": "Suspicious",
+      "preview": "WARNING: Your account at RISK! Click here NOW!!",
+      "risk_score": 31.0,
+      "severity": "medium",
+      "text_preview": "WARNING: Your account at RISK! Click here NOW!!",
+      "triggered_patterns": [
+        "urgency",
+        "pressure",
+        "excessive_punctuation"
+      ]
     },
     {
       "id": "msg-0005",
       "label": "Clean",
-      "preview": "Rebalance portfolio per your defined strategy.",
+      "preview": "Swap 0.5 ETH to USDC at market rate.",
       "risk_score": 0.0,
       "severity": "low",
-      "text_preview": "Rebalance portfolio per your defined strategy.",
+      "text_preview": "Swap 0.5 ETH to USDC at market rate.",
       "triggered_patterns": []
     },
     {
@@ -76,13 +80,13 @@
     {
       "id": "msg-0007",
       "label": "Clean",
-      "preview": "Set new take-profit at $2500 per unit sold.",
+      "preview": "Execute swap with 0.2% slippage tolerance.",
       "risk_score": 0.0,
       "severity": "low",
-      "text_preview": "Set new take-profit at $2500 per unit sold.",
+      "text_preview": "Execute swap with 0.2% slippage tolerance.",
       "triggered_patterns": []
     }
   ],
   "module": "prompt_injection",
-  "updated_at": "2026-09-02T11:09:38Z"
+  "updated_at": "2026-09-02T15:07:39Z"
 }
