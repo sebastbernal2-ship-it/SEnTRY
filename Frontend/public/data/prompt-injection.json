@@ -46,6 +46,15 @@
     {
       "id": "msg-0004",
       "label": "Clean",
+      "preview": "Execute swap with 0.2% slippage tolerance.",
+      "risk_score": 0.0,
+      "severity": "low",
+      "text_preview": "Execute swap with 0.2% slippage tolerance.",
+      "triggered_patterns": []
+    },
+    {
+      "id": "msg-0005",
+      "label": "Clean",
       "preview": "Swap 0.5 ETH to USDC at market rate.",
       "risk_score": 0.0,
       "severity": "low",
@@ -53,24 +62,12 @@
       "triggered_patterns": []
     },
     {
-      "id": "msg-0005",
-      "label": "Clean",
-      "preview": "Last chance \u2014 high-yield opportunity expires in 60 seconds.",
-      "risk_score": 30.0,
-      "severity": "low",
-      "text_preview": "Last chance \u2014 high-yield opportunity expires in 60 seconds.",
-      "triggered_patterns": [
-        "urgency",
-        "fomo"
-      ]
-    },
-    {
       "id": "msg-0006",
       "label": "Clean",
-      "preview": "Rebalance portfolio per your defined strategy.",
+      "preview": "Deposit USDC into verified pool with 8% APY.",
       "risk_score": 0.0,
       "severity": "low",
-      "text_preview": "Rebalance portfolio per your defined strategy.",
+      "text_preview": "Deposit USDC into verified pool with 8% APY.",
       "triggered_patterns": []
     },
     {
@@ -89,5 +86,5 @@
     }
   ],
   "module": "prompt_injection",
-  "updated_at": "2026-09-05T17:42:06Z"
+  "updated_at": "2026-09-05T19:36:33Z"
 }
