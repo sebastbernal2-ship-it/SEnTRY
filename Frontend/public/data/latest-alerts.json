@@ -1,26 +1,16 @@
 {
   "alerts": [
     {
-      "description": "Message contains manipulative patterns (score: 89.0)",
-      "id": "inj-msg-0005-20260922T225452Z",
-      "label": "High Risk",
-      "module": "prompt_injection",
-      "score": 89.0,
-      "severity": "high",
-      "timestamp": "2026-09-22T22:54:52Z",
-      "title": "Manipulative Communication Detected"
-    },
-    {
       "description": "Message contains manipulative patterns (score: 98.0)",
-      "id": "inj-msg-0007-20260922T225452Z",
+      "id": "inj-msg-0004-20260923T012351Z",
       "label": "High Risk",
       "module": "prompt_injection",
       "score": 98.0,
       "severity": "high",
-      "timestamp": "2026-09-22T22:54:52Z",
+      "timestamp": "2026-09-23T01:23:51Z",
       "title": "Manipulative Communication Detected"
     }
   ],
-  "new_alert_count": 2,
-  "updated_at": "2026-09-22T22:54:52Z"
+  "new_alert_count": 1,
+  "updated_at": "2026-09-23T01:23:51Z"
 }
