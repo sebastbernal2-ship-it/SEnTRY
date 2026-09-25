@@ -1,16 +1,26 @@
 {
   "alerts": [
     {
-      "description": "Message contains manipulative patterns (score: 89.0)",
-      "id": "inj-msg-0005-20260925T015508Z",
+      "description": "Transaction tx_1580 flagged as anomalous (score: 81.0)",
+      "id": "txm-tx_1580-20260925T073412Z",
       "label": "High Risk",
-      "module": "prompt_injection",
-      "score": 89.0,
+      "module": "transaction_anomaly",
+      "score": 81.0,
       "severity": "high",
-      "timestamp": "2026-09-25T01:55:08Z",
-      "title": "Manipulative Communication Detected"
+      "timestamp": "2026-09-25T07:34:12Z",
+      "title": "Anomalous Transaction Behavior"
+    },
+    {
+      "description": "Transaction tx_1681 flagged as anomalous (score: 81.21)",
+      "id": "txm-tx_1681-20260925T073412Z",
+      "label": "High Risk",
+      "module": "transaction_anomaly",
+      "score": 81.21,
+      "severity": "high",
+      "timestamp": "2026-09-25T07:34:12Z",
+      "title": "Anomalous Transaction Behavior"
     }
   ],
-  "new_alert_count": 1,
-  "updated_at": "2026-09-25T01:55:08Z"
+  "new_alert_count": 2,
+  "updated_at": "2026-09-25T07:34:12Z"
 }
